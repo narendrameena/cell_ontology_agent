@@ -58,9 +58,32 @@ def cmd_curate(args) -> int:
         organism=args.organism)
     dossier = agent.curate(req)
     _print_summary(dossier)
+    if getattr(args, "reason", False):
+        from cellscribe import reasoning
+        dossier.reasoning = reasoning.classify(dossier)
+        r = dossier.reasoning.get("reasoner") or {}
+        if r.get("available"):
+            print("Reason  : ELK coherent=%s, classifies under genus=%s"
+                  % (r.get("coherent"), r.get("classifies_under_genus")))
+        else:
+            print("Reason  : structural %s (install a JRE + robot.jar for ELK)"
+                  % dossier.reasoning["structural"])
+    if getattr(args, "robot_owl", ""):
+        from cellscribe.tools import robot_tools
+        ok, msg = robot_tools.materialize_dossier(dossier, args.robot_owl, reason_after=True)
+        print("ROBOT   : template->OWL %s -> %s  [%s]" % ("ok" if ok else "FAILED", args.robot_owl, msg[:80]))
     if args.out:
         paths = dossier.save(args.out)
         print("\nSaved: " + ", ".join(paths.values()))
+    return 0
+
+
+def cmd_integrations(args) -> int:
+    from cellscribe import integrations
+    print("CellScribe ecosystem integrations (live if the package/tool is installed):\n")
+    for name, live in integrations.status().items():
+        print("  [%s] %s" % ("live" if live else " -- ", name))
+    print("\n(built-in fallbacks run when an integration is unavailable)")
     return 0
 
 
@@ -105,6 +128,8 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--out", default="", help="output directory for the dossier")
     c.add_argument("--offline", action="store_true", help="cache-only, no network")
     c.add_argument("--no-llm", action="store_true", help="force deterministic mode")
+    c.add_argument("--reason", action="store_true", help="run the ELK reasoner (needs Java + robot.jar)")
+    c.add_argument("--robot-owl", default="", help="materialise the draft into an OWL file via ROBOT")
     c.set_defaults(func=cmd_curate)
 
     d = sub.add_parser("demo", help="run the bundled worked examples")
@@ -115,6 +140,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     t = sub.add_parser("tools", help="list the tool registry")
     t.set_defaults(func=cmd_tools)
+
+    i = sub.add_parser("integrations", help="show which ecosystem integrations are live")
+    i.set_defaults(func=cmd_integrations)
     return p
 
 

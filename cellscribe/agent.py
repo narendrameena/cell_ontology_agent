@@ -124,7 +124,8 @@ class CuratorAgent:
                   prov="EBI OLS4", query=request.name)
 
         # 2. parent (genus) grounding, with one self-correction
-        parent_query = request.parent_hint or _derive_parent(request.name + " " + request.description)
+        parent_query = request.parent_hint or _derive_parent(
+            request.name + " " + (request.description or ""))
         parent = self._ground(parent_query, "cl")
         if not (parent and parent.curie.startswith("CL:")):
             alt = _derive_parent(request.description or request.name)
@@ -154,15 +155,22 @@ class CuratorAgent:
                   summary="%d papers" % len(papers), prov="Europe PMC",
                   query=request.name)
 
-        # 5. marker panel (record species + anatomical context — markers are context-dependent)
+        # 5. marker panel — ONLY transcriptomic markers become `expresses` axioms;
+        #    surface-protein markers are handled separately (has plasma membrane part).
         ctx = location.label if location else request.location_hint
+        prior_markers = list(request.markers)
+        panel = None
         if request.expr_csv:
-            panel = self.mark.from_matrix(
-                request.expr_csv, request.cluster_col, request.target_cluster,
-                candidate_genes=request.markers or None,
-                species=request.organism, context=ctx)
-        else:
-            prior_markers = list(request.markers) + list(request.surface_markers)
+            try:
+                panel = self.mark.from_matrix(
+                    request.expr_csv, request.cluster_col, request.target_cluster,
+                    candidate_genes=request.markers or None,
+                    species=request.organism, context=ctx, prefer_nsforest=True)
+            except Exception as exc:   # unreadable path / bad CSV / missing column -> fall back
+                self._log(trace, "marker_panel", "matrix unreadable — falling back to prior",
+                          summary="%s: %s" % (type(exc).__name__, str(exc)[:70]))
+                panel = None
+        if panel is None:
             co = sum(1 for m in prior_markers
                      if any(m.lower() in (p.title + " " + p.snippet).lower() for p in papers))
             panel = self.mark.from_prior(prior_markers, literature_hits=len(papers),
@@ -223,6 +231,12 @@ class CuratorAgent:
             if drafted:
                 definition.textual = drafted
                 definition.drafted_by = "llm:%s (grounded, CL house-style)" % self.llm.model
+                # keep the ROBOT template + OBO def in sync with the polished prose
+                if len(definition.robot_row) > 3:
+                    definition.robot_row[3] = drafted
+                definition.obo_lines = [
+                    ('def: "%s" [CELLSCRIBE:auto-draft]' % drafted) if l.startswith("def:") else l
+                    for l in definition.obo_lines]
         self._log(trace, "draft_definition", "compose text + OWL + ROBOT",
                   summary=definition.textual)
 

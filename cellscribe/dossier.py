@@ -260,6 +260,8 @@ class CurationDossier:
 
     def to_sssom(self) -> str:
         """SSSOM mapping row (align-to-existing, or a cross-species bridge)."""
+        if not self.existing:   # nothing to map to -> no SSSOM row (a new term is not a mapping)
+            return "# no existing CL term to map to (this is a new-term proposal, not a mapping)"
         cross = self.taxon is not None and self.request.organism.lower() not in ("homo sapiens", "human")
         pred = "semapv:crossSpeciesExactMatch" if cross else "skos:exactMatch"
         hdr = ["subject_label", "predicate_id", "object_id", "object_label",

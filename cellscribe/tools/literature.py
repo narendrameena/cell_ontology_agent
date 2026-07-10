@@ -45,7 +45,7 @@ def build_query_cascade(name: str, markers: Optional[List[str]] = None,
             if len(t) > 2 and t.lower() not in _STOP]
     qs: List[str] = []
     if name and mm and organism:
-        qs.append('"%s" AND %s' % (name, mm))
+        qs.append('"%s" AND %s AND "%s"' % (name, mm, organism))   # species-scoped first
     if name and mm:
         qs.append('"%s" AND %s' % (name, mm))
         qs.append("%s AND %s" % (" ".join(toks), mm))       # unquoted tokens

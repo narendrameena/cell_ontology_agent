@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "cellscribe"
-version = "0.1.0"
+version = "0.2.0"
 description = "CellScribe — a grounded, agentic assistant for Cell Ontology curation (Biomni-inspired)"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -12,6 +12,7 @@ dependencies = ["requests>=2.20"]
 
 [project.optional-dependencies]
 markers = ["pandas>=0.25", "numpy>=1.18"]
+nsforest = ["nsforest", "scanpy", "anndata"]   # real NS-Forest panels (else built-in fallback)
 
 [project.scripts]
 cellscribe = "cellscribe.cli:main"

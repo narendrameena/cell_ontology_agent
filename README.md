@@ -223,7 +223,33 @@ location caveat; data-linked reference + T-type **hypothesis** framing; **T-type
 issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** export; a **GitHub Action**
 (`.github/workflows/curate.yml`) that drafts a dossier on a `new term` issue (paper Fig 7 workflow).
 
-**Genuinely remaining (needs heavier infra):** swap the NS-Forest re-implementation for the real
-`nsforest` package on Scanpy/AnnData; add an **EL reasoner (ELK/WHELK)** to auto-classify drafts and
-verify taxon constraints; SPIRES/OntoGPT-grade evidence extraction; round-trip ROBOT templates into a
-live **ODK** repo; and integrate with (not duplicate) OntoGPT / DRAGON-AI / Aurelian.
+**Implemented — Tier 4 (heavier infra):**
+- **EL reasoner (ELK via ROBOT)** — [`reasoning.py`](cellscribe/reasoning.py) materialises the drafted
+  equivalence axiom into OWL and runs **ELK** to check coherence + genus subsumption, and detects the
+  incoherency that taxon-constraint violations produce (`--reason`; needs Java + `robot.jar`).
+- **ROBOT template → OWL → ODK round-trip** — [`tools/robot_tools.py`](cellscribe/tools/robot_tools.py)
+  materialises a valid ROBOT template into OWL (`--robot-owl out.owl`); [`odk/`](odk/) scaffolds the
+  `robot merge` → PR cycle.
+- **Real NS-Forest** — used automatically when `nsforest`+`scanpy`+`anndata` are installed
+  (`pip install cellscribe[nsforest]`), otherwise the built-in re-implementation runs.
+- **SPIRES-style extraction** — [`spires.py`](cellscribe/spires.py) fills a fixed, grounded schema
+  (defers to `ontogpt` if installed).
+- **Ecosystem adapters** — [`integrations.py`](cellscribe/integrations.py) detects and defers to
+  **OntoGPT / DRAGON-AI / Aurelian** when installed, else falls back (`cellscribe integrations`).
+
+**Genuinely remaining:** classification against a full CL import module (vs the self-contained draft);
+the real NS-Forest run and the OntoGPT/DRAGON-AI/Aurelian hand-offs are wired but exercised only when
+those packages are installed.
+
+## Verification
+
+Audited for correctness (an independent pass surfaced and fixed bugs — surface-vs-transcriptomic axioms,
+an OLS null-field crash, organism scoping, marker minimality, unreadable-matrix fallback, atomic caching).
+Three offline, deterministic test suites (39 tests) cover the tools, edge cases + audit regressions, and
+the integrations (ELK/ROBOT run for real when Java is present):
+
+```bash
+python tests/test_cellscribe.py     # tools, agent runs
+python tests/test_edge_cases.py     # degenerate inputs + audit-finding regressions
+python tests/test_integrations.py   # ELK reasoning, ROBOT round-trip, SPIRES, adapters
+```

@@ -64,7 +64,8 @@ class OLSSearchTool(Tool):
             desc = doc.get("description") or []
             out.append(TermMatch(
                 query=query,
-                curie=doc.get("obo_id") or (doc.get("short_form", "").replace("_", ":")),
+                # a present-but-null short_form would break .replace -> guard with `or ""`
+                curie=doc.get("obo_id") or ((doc.get("short_form") or "").replace("_", ":")),
                 iri=doc.get("iri", ""),
                 label=label,
                 ontology=doc.get("ontology_name", ontology),

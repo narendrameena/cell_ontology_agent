@@ -8,6 +8,8 @@ evidence-bearing dossier plus its own critique — never an unverified answer.
 from .agent import CuratorAgent
 from .models import CurationRequest
 from .dossier import CurationDossier
+from . import reasoning, integrations, spires
 
-__version__ = "0.1.0"
-__all__ = ["CuratorAgent", "CurationRequest", "CurationDossier", "__version__"]
+__version__ = "0.2.0"
+__all__ = ["CuratorAgent", "CurationRequest", "CurationDossier",
+           "reasoning", "integrations", "spires", "__version__"]

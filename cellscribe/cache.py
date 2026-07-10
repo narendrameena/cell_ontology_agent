@@ -94,8 +94,12 @@ def http_get_json(
         return None
 
     try:
-        with open(path, "w") as fh:
+        # atomic write: temp file + os.replace, so concurrent readers/writers
+        # (e.g. the benchmark thread pool) never see a half-written cache file.
+        tmp = "%s.tmp.%d" % (path, os.getpid())
+        with open(tmp, "w") as fh:
             json.dump(data, fh)
+        os.replace(tmp, path)
         _record_index(key, url, params)
     except Exception:
         pass

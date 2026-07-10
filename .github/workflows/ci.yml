@@ -19,5 +19,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests (offline, uses shipped fixtures)
-        run: python tests/test_cellscribe.py
+      - name: Run tests (offline, uses shipped fixtures; ELK tests self-skip without Java)
+        run: |
+          python tests/test_cellscribe.py
+          python tests/test_edge_cases.py
+          python tests/test_integrations.py

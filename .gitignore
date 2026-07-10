@@ -22,3 +22,4 @@ out/
 id_*
 benchmark/.bench_cache/
 benchmark/run*.log
+.tools/

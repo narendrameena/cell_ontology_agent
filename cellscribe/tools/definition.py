@@ -54,8 +54,8 @@ class DefinitionDrafter(Tool):
                  surface: Optional[List[TermMatch]] = None,
                  surface_ungrounded: Optional[List[str]] = None,
                  organism: str = "Homo sapiens") -> Definition:
-        genus_label = parent.label if parent else "cell"
-        genus_curie = parent.curie if parent else "CL:0000000"
+        genus_label = parent.label if (parent and parent.label) else "cell"
+        genus_curie = parent.curie if (parent and parent.curie) else "CL:0000000"
         markers = panel.markers if panel else []
         functions = functions or []
         surface = surface or []
