@@ -1,0 +1,38 @@
+name: cellscribe-curate
+
+# Draft a Cell Ontology entry when a 'new term' issue is opened (paper Fig 7 workflow):
+# issue -> CellScribe drafts a grounded, evidenced dossier -> posted for a curator to review.
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  curate:
+    if: contains(github.event.issue.labels.*.name, 'new term') || github.event.label.name == 'new term'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run CellScribe on the issue
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          # ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}   # optional: enable LLM drafting
+        run: python -m cellscribe.action
+      - name: Post the draft dossier as a comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('dossier.md', 'utf8');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });

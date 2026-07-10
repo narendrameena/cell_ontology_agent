@@ -57,8 +57,9 @@ $ python -m cellscribe.cli curate --name "striatal parvalbumin-positive GABAergi
 Verdict : PROPOSE new term for curator approval   (a human makes the final call)
 ```
 
-The dossier is written as **JSON + Markdown + a ROBOT template (`.robot.tsv`) +
-an OWL/Manchester snippet (`.omn`)**. Example computable draft:
+Each dossier is written in the formats CL editors actually ingest: **JSON · Markdown ·
+ROBOT template · OWL/Manchester · KGCL · MIRACL · a pre-filled GitHub new-term issue ·
+SSSOM (when aligning) · KG triples**. Example computable draft:
 
 ```
 Class: CL:NEW_0000001   # "striatal parvalbumin-positive GABAergic interneuron"
@@ -197,12 +198,26 @@ CL_JSON=cl-full.json python benchmark/run_benchmark.py && python benchmark/make_
 * Seeding knowledge-graph edges — grounded CURIEs + relations (`part of`, `expresses`) are graph edges by construction.
 * A teaching example of a grounded, verifiable agentic workflow.
 
-## Honest limitations & roadmap
+## Roadmap status (grounded in the CL paper)
 
-* Parent/genus derivation is a heuristic + OLS grounding; production should take the parent from a reference taxonomy or an LLM proposal *validated against CL by a reasoner (ELK)*.
-* The marker test is a faithful NS-Forest *re-implementation*; swap in the real `nsforest` package and Scanpy/AnnData for scale.
-* Evidence extraction is sentence-level keyword matching; upgrade to SPIRES/OntoGPT-style schema-constrained extraction.
-* Next: ELK reasoning to auto-classify drafts; ROBOT-template round-trip into an ODK repo; batch mode over a whole atlas with a gold-standard **precision/recall + curator edit-distance** evaluation; integrate with ecosystem tools (OntoGPT, DRAGON-AI, Aurelian) rather than duplicate them.
+**Implemented — Tier 1 (biology):** genus-differentia definitions; GO functions via `capable of`
+(RO:0002215); surface markers → `has plasma membrane part` (RO:0002104) some PRO vs
+transcriptomic `expresses` (RO:0002292); GO × marker intersection (QuickGO, ECO:0000269/0000318);
+CL house-style definition prompt.
+
+**Implemented — Tier 2 (rigour):** marker precision/recall + species + anatomical **context**;
+**taxon constraints** — organism → NCBITaxon + `present_in_taxon` (RO:0002175) and a broadly-conserved
+location caveat; data-linked reference + T-type **hypothesis** framing; **T-type naming policy**
+(parent + top markers, source name kept as synonym).
+
+**Implemented — Tier 3 (workflow-native outputs):** **KGCL**, **MIRACL**, pre-filled **GitHub new-term
+issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** export; a **GitHub Action**
+(`.github/workflows/curate.yml`) that drafts a dossier on a `new term` issue (paper Fig 7 workflow).
+
+**Genuinely remaining (needs heavier infra):** swap the NS-Forest re-implementation for the real
+`nsforest` package on Scanpy/AnnData; add an **EL reasoner (ELK/WHELK)** to auto-classify drafts and
+verify taxon constraints; SPIRES/OntoGPT-grade evidence extraction; round-trip ROBOT templates into a
+live **ODK** repo; and integrate with (not duplicate) OntoGPT / DRAGON-AI / Aurelian.
 
 ---
 

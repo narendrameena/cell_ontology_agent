@@ -31,8 +31,7 @@ os.environ["CELLSCRIBE_CACHE"] = os.path.join(HERE, ".bench_cache")
 from cellscribe.agent import CuratorAgent, _derive_parent
 from cellscribe.tools.ontology import OLSSearchTool
 
-CL_JSON = os.environ.get("CL_JSON",
-    "/tmp/claude-2106/-mnt-beegfs-scratch-miska-nm667-inProgress-againg-cell-ontology-interview/db6c7f5d-ea24-4506-92bb-be7fb1c192d0/scratchpad/cl-full.json")
+CL_JSON = os.environ.get("CL_JSON", os.path.join(ROOT, "cl-full.json"))
 RESULTS = os.path.join(HERE, "results")
 os.makedirs(RESULTS, exist_ok=True)
 random.seed(0)

@@ -26,7 +26,9 @@ from .tools.definition import DefinitionDrafter
 from .tools.go_support import QuickGOTool
 from .tools.literature import EuropePMCTool
 from .tools.markers import MarkerPanelTool
+from .tools.naming import suggest_official_name
 from .tools.ontology import OLSSearchTool
+from .tools.taxon import ground_taxon, taxon_caveat
 from .tools.validation import critique
 
 # Ordered specific -> generic. Match on word-START boundaries (\b<key>) so that,
@@ -152,17 +154,19 @@ class CuratorAgent:
                   summary="%d papers" % len(papers), prov="Europe PMC",
                   query=request.name)
 
-        # 5. marker panel
+        # 5. marker panel (record species + anatomical context — markers are context-dependent)
+        ctx = location.label if location else request.location_hint
         if request.expr_csv:
             panel = self.mark.from_matrix(
                 request.expr_csv, request.cluster_col, request.target_cluster,
-                candidate_genes=request.markers or None)
+                candidate_genes=request.markers or None,
+                species=request.organism, context=ctx)
         else:
             prior_markers = list(request.markers) + list(request.surface_markers)
             co = sum(1 for m in prior_markers
                      if any(m.lower() in (p.title + " " + p.snippet).lower() for p in papers))
             panel = self.mark.from_prior(prior_markers, literature_hits=len(papers),
-                                         grounded=co)
+                                         grounded=co, species=request.organism, context=ctx)
         self._log(trace, "marker_panel", "test marker specificity",
                   summary="panel=[%s] score=%.2f (%s)"
                   % (", ".join(panel.markers), panel.score, panel.method))
@@ -222,7 +226,18 @@ class CuratorAgent:
         self._log(trace, "draft_definition", "compose text + OWL + ROBOT",
                   summary=definition.textual)
 
-        # 8. critique
+        # 8. taxon + naming policy (Tier 2: taxon constraints, T-type naming)
+        taxon = ground_taxon(request.organism)
+        caveat = taxon_caveat(parent.label if parent else "", location.label if location else "")
+        official = suggest_official_name(parent.label if parent else "cell",
+                                         panel.markers if panel else [],
+                                         location.label if location else "")
+        if taxon or caveat:
+            self._log(trace, "taxon", "ground organism + taxon constraint",
+                      summary=("%s (%s)" % (taxon.label, taxon.curie) if taxon else "ungrounded")
+                      + ("  ⚠ caveat" if caveat else ""), prov="NCBI Taxonomy")
+
+        # 9. critique
         crit = critique(request.name, existing, parent, location, panel, papers)
         self._log(trace, "critic", "verification & confidence",
                   summary="confidence=%.2f needs_review=%s"
@@ -231,7 +246,8 @@ class CuratorAgent:
         return CurationDossier(
             request=request, existing=existing, parent=parent, location=location,
             functions=functions, surface=surface, surface_ungrounded=surface_ungrounded,
-            go_support=go_support, panel=panel, papers=papers, definition=definition,
+            go_support=go_support, taxon=taxon, official_name=official, taxon_caveat=caveat,
+            panel=panel, papers=papers, definition=definition,
             critique=crit, trace=trace, llm_used=llm_used)
 
     def _ground(self, query: str, ontology: str) -> Optional[TermMatch]:

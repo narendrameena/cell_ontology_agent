@@ -22,12 +22,15 @@ os.environ["CELLSCRIBE_CACHE"] = os.path.join(ROOT, "demo_data", "fixtures")
 CSV = os.path.join(ROOT, "demo_data", "striatum_demo_expr.csv")
 
 from cellscribe.agent import CuratorAgent, _derive_parent
+from cellscribe.dossier import CurationDossier
 from cellscribe.models import CurationRequest, MarkerPanel, TermMatch
 from cellscribe.tools.definition import DefinitionDrafter
 from cellscribe.tools.go_support import QuickGOTool, taxon_for
 from cellscribe.tools.literature import build_query_cascade
 from cellscribe.tools.markers import MarkerPanelTool
+from cellscribe.tools.naming import suggest_official_name
 from cellscribe.tools.ontology import OLSSearchTool
+from cellscribe.tools.taxon import ground_taxon, taxon_caveat
 from cellscribe.tools.validation import critique
 
 
@@ -162,6 +165,57 @@ def test_definition_uses_correct_relations():
 def test_taxon_mapping():
     assert "9606" in taxon_for("Homo sapiens")
     assert "10090" in taxon_for("Mus musculus")
+
+
+# ----------------------------------------------------- Tier 2/3 (taxon, naming, outputs)
+def test_taxon_grounding():
+    assert ground_taxon("Homo sapiens").curie == "NCBITaxon:9606"
+    assert ground_taxon("Mus musculus").curie == "NCBITaxon:10090"
+    assert ground_taxon("not a species") is None
+
+
+def test_taxon_caveat_and_official_name():
+    assert taxon_caveat("neuron", "striatum")            # broad genus + location -> caveat
+    assert not taxon_caveat("interneuron", "striatum")   # specific genus -> no caveat
+    nm = suggest_official_name("interneuron", ["GAD1", "PVALB"], "striatum")
+    assert "interneuron" in nm and "GAD1/PVALB" in nm
+
+
+def test_marker_panel_precision_recall_context():
+    mp = MarkerPanelTool().from_matrix(
+        CSV, "cluster", "striatal_PV_interneuron",
+        candidate_genes=["GAD1", "GAD2", "PVALB", "AQP4"],
+        species="Homo sapiens", context="striatum")
+    assert 0.0 <= mp.precision <= 1.0 and 0.0 <= mp.recall <= 1.0
+    assert mp.species == "Homo sapiens" and mp.context == "striatum"
+
+
+def test_cl_native_outputs():
+    req = CurationRequest(name="striatal PV interneuron", markers=["GAD1", "PVALB"],
+                          location_hint="striatum", organism="Homo sapiens",
+                          orcid="0000-0002-1825-0097", reference_data="CxG:dataset-v1")
+    parent = TermMatch("interneuron", "CL:0000099", "", "interneuron", "cl", score=1.0)
+    loc = TermMatch("striatum", "UBERON:0002435", "", "striatum", "uberon", score=1.0)
+    func = TermMatch("GABA biosynthetic process", "GO:0009449", "", "GABA biosynthetic process", "go", score=1.0)
+    panel = MarkerPanel(["GAD1", "PVALB"], 1.0, "test")
+    d = DefinitionDrafter()(req.name, parent, loc, panel, functions=[func])
+    doss = CurationDossier(request=req, parent=parent, location=loc, functions=[func],
+                           panel=panel, definition=d, taxon=ground_taxon("Homo sapiens"),
+                           official_name="interneuron of the striatum, GAD1/PVALB-expressing")
+    assert "create class" in doss.to_kgcl()
+    assert doss.to_miracl().splitlines()[0].startswith("proposed_name")
+    assert "Preferred label" in doss.to_github_issue()
+    kg = doss.to_kg_tsv()
+    assert "part_of\tUBERON:0002435" in kg
+    assert "capable_of\tGO:0009449" in kg
+    assert "present_in_taxon\tNCBITaxon:9606" in kg
+
+
+def test_sssom_align_output():
+    req = CurationRequest(name="CD4-positive, alpha-beta T cell")
+    existing = TermMatch("x", "CL:0000624", "", "CD4-positive, alpha-beta T cell", "cl", score=1.0)
+    s = CurationDossier(request=req, existing=existing).to_sssom()
+    assert "skos:exactMatch" in s and "CL:0000624" in s
 
 
 # --------------------------------------------------------------- self-runner

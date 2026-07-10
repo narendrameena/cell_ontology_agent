@@ -53,7 +53,8 @@ class MarkerPanelTool(Tool):
 
     def from_matrix(self, expr_csv: str, cluster_col: str, target_cluster: str,
                     candidate_genes: Optional[List[str]] = None,
-                    max_markers: int = 3, thresh: float = 0.0) -> MarkerPanel:
+                    max_markers: int = 3, thresh: float = 0.0,
+                    species: str = "", context: str = "") -> MarkerPanel:
         if pd is None:
             raise RuntimeError("pandas/numpy required for matrix mode")
         df = pd.read_csv(expr_csv)
@@ -86,14 +87,24 @@ class MarkerPanelTool(Tool):
         if not panel and ranked:
             panel = ranked[:1]
             best = per_gene[panel[0]]["fbeta"]
+        # combined-panel precision/recall (NS-Forest reports these alongside F-beta)
+        if panel:
+            on = (df[panel] > thresh).all(axis=1)
+            tp = int((on & in_t).sum()); fp = int((on & ~in_t).sum()); fn = int((~on & in_t).sum())
+            fprec = round(tp / (tp + fp), 3) if (tp + fp) else 0.0
+            frec = round(tp / (tp + fn), 3) if (tp + fn) else 0.0
+        else:
+            fprec = frec = 0.0
         return MarkerPanel(
             markers=panel, score=round(float(best), 3), method="NS-Forest-style (F-beta, beta=0.5)",
+            precision=fprec, recall=frec, species=species, context=context,
             per_gene={g: per_gene[g] for g in panel},
-            note="Minimal panel maximising in-cluster specificity on the supplied matrix.",
+            note="Minimal panel maximising in-cluster specificity on the supplied matrix. "
+                 "Markers are context-dependent: this separation holds within the stated context.",
         )
 
     def from_prior(self, genes: List[str], literature_hits: int = 0,
-                   grounded: int = 0) -> MarkerPanel:
+                   grounded: int = 0, species: str = "", context: str = "") -> MarkerPanel:
         """No expression matrix: score confidence from evidence, not data."""
         genes = [g for g in genes if g]
         if not genes:
@@ -103,7 +114,7 @@ class MarkerPanelTool(Tool):
         grd = (grounded / len(genes)) if genes else 0.0
         score = round(0.35 + 0.35 * lit + 0.30 * grd, 3)
         return MarkerPanel(
-            markers=genes[:4], score=min(score, 0.9),
+            markers=genes[:4], score=min(score, 0.9), species=species, context=context,
             method="prior (evidence-weighted, no matrix)",
             note="No expression matrix supplied; confidence reflects literature + grounding, "
                  "not a data-driven separation. Supply --expr for a real NS-Forest-style test.",

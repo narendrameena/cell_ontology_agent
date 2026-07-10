@@ -47,8 +47,12 @@ class Paper:
 class MarkerPanel:
     """A minimal marker set with a specificity score (NS-Forest-style)."""
     markers: List[str]
-    score: float                    # 0-1, higher = cleaner separation
+    score: float                    # F-beta of the combined panel (0-1)
     method: str
+    precision: float = 0.0          # combined-panel precision on the reference data
+    recall: float = 0.0             # combined-panel recall
+    species: str = ""               # species/taxon the markers were derived in
+    context: str = ""               # anatomical context (markers are context-dependent!)
     per_gene: Dict[str, Dict[str, float]] = field(default_factory=dict)
     note: str = ""
 
@@ -115,6 +119,8 @@ class CurationRequest:
     cluster_col: str = "cluster"
     target_cluster: str = ""
     taxonomy_ref: str = ""         # e.g. a BICAN taxonomy id / dataset DOI
+    reference_data: str = ""       # versioned reference-dataset link (e.g. CELLxGENE id + version)
+    orcid: str = ""                # submitter ORCID (for the CL GitHub new-term issue)
     organism: str = "Homo sapiens"
 
     def to_dict(self) -> Dict[str, Any]:

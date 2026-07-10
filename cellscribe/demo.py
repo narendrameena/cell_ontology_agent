@@ -45,6 +45,8 @@ def run_demo(out: str = "demo_output", offline: Optional[bool] = None,
         expr_csv=DEMO_CSV if os.path.exists(DEMO_CSV) else "",
         cluster_col="cluster", target_cluster="striatal_PV_interneuron",
         taxonomy_ref="BICAN Human Basal Ganglia consensus taxonomy (illustrative)",
+        reference_data="CELLxGENE:human-basal-ganglia-v1 (illustrative)",
+        orcid="0000-0002-1825-0097",
         organism="Homo sapiens")
     db = agent.curate(b)
     pb = db.save(out)

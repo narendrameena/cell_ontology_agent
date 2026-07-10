@@ -18,8 +18,9 @@ os.makedirs(FIG, exist_ok=True)
 plt.rcParams.update({
     "font.family": "DejaVu Sans", "font.size": 9, "axes.linewidth": 0.8,
     "axes.spines.top": False, "axes.spines.right": False,
-    "axes.titlesize": 10, "axes.titleweight": "bold", "xtick.labelsize": 8,
-    "ytick.labelsize": 8, "legend.fontsize": 7.5, "figure.dpi": 150,
+    "axes.titlesize": 9.5, "axes.titleweight": "bold", "axes.titlepad": 14,
+    "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 7.5,
+    "figure.dpi": 150,
 })
 TEAL, NAVY, AMBER, CORAL, GREEN, GREY = "#1B9AAA", "#0F2E44", "#E8883A", "#D95D4E", "#2E9B76", "#9AA7B0"
 
@@ -36,7 +37,8 @@ M = json.load(open(os.path.join(RES, "metrics.json")))
 
 
 def letter(ax, s):
-    ax.text(-0.14, 1.06, s, transform=ax.transAxes, fontsize=13, fontweight="bold", va="top")
+    ax.text(-0.19, 1.16, s, transform=ax.transAxes, fontsize=13, fontweight="bold",
+            va="top", ha="left")
 
 
 def barlabels(ax, bars, fmt="%.2f", dy=0.01):
@@ -45,9 +47,9 @@ def barlabels(ax, bars, fmt="%.2f", dy=0.01):
                 ha="center", va="bottom", fontsize=7.5)
 
 
-fig, axes = plt.subplots(2, 3, figsize=(12.5, 7.4))
+fig, axes = plt.subplots(2, 3, figsize=(13.2, 8.2))
 fig.suptitle("CellScribe recovers expert-curated Cell Ontology definitions from cell-type names",
-             fontsize=12, fontweight="bold", y=0.99)
+             fontsize=12, fontweight="bold", y=0.995)
 
 # ---- Panel a: B1 recognition recall ----
 ax = axes[0, 0]
@@ -87,8 +89,8 @@ for name, cnt, col in parts:
     bottom += frac
 ax.set_xlim(-0.6, 1.9); ax.set_xticks([]); ax.set_ylim(0, 1.0); ax.set_ylabel("fraction of terms")
 ax.set_title("Genus derivation vs curated is_a (n=%d)" % b2["n"])
-ax.legend(handles=[Patch(color=c, label=l) for l, _, c in parts], loc="center right",
-          frameon=False, bbox_to_anchor=(1.98, 0.5))
+ax.legend(handles=[Patch(color=c, label=l) for l, _, c in parts], loc="center left",
+          frameon=False, bbox_to_anchor=(0.40, 0.5), handlelength=1.1, fontsize=7.5)
 letter(ax, "c")
 
 # ---- Panel d: B4 surface marker -> PRO ----
@@ -145,7 +147,8 @@ for (r, cc), cell in tbl.get_celld().items():
 ax.set_title("Benchmark summary")
 letter(ax, "f")
 
-fig.tight_layout(rect=[0, 0, 1, 0.965])
-fig.savefig(os.path.join(FIG, "benchmark_figure.png"), dpi=300, bbox_inches="tight")
-fig.savefig(os.path.join(FIG, "benchmark_figure.pdf"), bbox_inches="tight")
-print("wrote", os.path.join(FIG, "benchmark_figure.png"))
+fig.tight_layout(rect=[0, 0, 1, 0.95], h_pad=3.4, w_pad=2.4)
+for ext in ("png", "svg", "pdf"):
+    fig.savefig(os.path.join(FIG, "benchmark_figure." + ext),
+                dpi=(300 if ext == "png" else None), bbox_inches="tight")
+print("wrote benchmark_figure.{png,svg,pdf} ->", FIG)
