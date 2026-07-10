@@ -131,6 +131,3 @@ python benchmark/make_figures.py                              # -> benchmark/fig
 ```
 Sample sizes via `N1/N3/N4/N6` env vars; `WORKERS` sets thread-pool size. Per-term results are in
 `benchmark/results/*.csv`; aggregate metrics in `results/metrics.json`.
-
-*Resources: EBI OLS4 (CL, Uberon, GO, PRO), Europe PMC, QuickGO. Gold standard: Cell Ontology,
-CC-BY 4.0. This is an independent evaluation, not affiliated with the Cell Ontology project.*

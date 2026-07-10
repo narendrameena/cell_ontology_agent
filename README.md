@@ -1,7 +1,5 @@
 # CellScribe — a grounded, agentic assistant for Cell Ontology curation
 
-*Cell-ontology Literature-And-marker Reasoning Agent.*
-
 CellScribe takes a cell type (a name, optionally a description, marker genes and an
 expression matrix) and returns a **curation dossier**: grounded ontology terms,
 a tested marker panel, cited literature, a *computable* draft definition
@@ -229,7 +227,3 @@ issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** e
 `nsforest` package on Scanpy/AnnData; add an **EL reasoner (ELK/WHELK)** to auto-classify drafts and
 verify taxon constraints; SPIRES/OntoGPT-grade evidence extraction; round-trip ROBOT templates into a
 live **ODK** repo; and integrate with (not duplicate) OntoGPT / DRAGON-AI / Aurelian.
-
----
-
-*Built by Narendra Meena. Public data: EBI OLS4, Europe PMC. MIT-licensed. Not affiliated with the Cell Ontology / OBO Foundry projects.*
