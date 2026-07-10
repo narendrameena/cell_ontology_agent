@@ -1,0 +1,150 @@
+any_pr,exact,gold_pr,grounded,pr_label,symbol
+1,1,PR:000002972,PR:000002972,macrophage mannose receptor 1,macrophage mannose receptor 1
+1,1,PR:000001338,PR:000001338,complement receptor type 2,complement receptor type 2
+1,1,PR:000002978,PR:000002978,lymphocyte antigen 6G,lymphocyte antigen 6G
+1,1,PR:000001892,PR:000001892,CD33 molecule,CD33
+1,1,PR:000001968,PR:000001968,tyrosine-protein phosphatase non-receptor type substrate 1,tyrosine-protein phosphatase non-receptor type substrate 1
+0,0,PR:000001254,,C-C chemokine receptor type 1,C-C
+1,1,PR:000001852,PR:000001852,cytotoxic T-lymphocyte protein 4,cytotoxic T-lymphocyte protein 4
+1,0,PR:000003460,PR:000003458,V(D)J recombination-activating protein 2,V(D)J
+1,0,PR:000002023,PR:P26715-2,NKG2-A/NKG2-B type II integral membrane protein,NKG2-A/NKG2-B
+1,0,PR:O76036,PR:000001893,natural cytotoxicity triggering receptor 1 (human),natural cytotoxicity triggering receptor 1
+1,1,PR:000001084,PR:000001084,T-cell surface glycoprotein CD8 alpha chain,T-cell surface glycoprotein CD8 alpha chain
+1,1,PR:000002027,PR:000002027,T-cell surface glycoprotein CD1c,T-cell surface glycoprotein CD1c
+1,1,PR:000002105,PR:000002105,thrombomodulin,thrombomodulin
+1,1,PR:000001004,PR:000001004,CD4 molecule,CD4
+0,0,PR:Q9Y5Y4,,prostaglandin D2 receptor 2 (human),prostaglandin D2 receptor 2
+1,1,PR:000001931,PR:000001931,sialoadhesin,sialoadhesin
+1,0,PR:000003457,PR:000003458,V(D)J recombination-activating protein 1,V(D)J
+1,1,PR:000001483,PR:000001483,low affinity immunoglobulin gamma Fc region receptor III,low affinity immunoglobulin gamma Fc region receptor III
+1,1,PR:000002025,PR:000002025,T-cell surface glycoprotein CD1a,T-cell surface glycoprotein CD1a
+1,1,PR:000001889,PR:000001889,CD14 molecule,CD14
+1,1,PR:000008982,PR:000008982,interleukin-17 receptor B,interleukin-17 receptor B
+0,0,PR:000001256,,C-X-C chemokine receptor type 1,C-X-C
+1,1,PR:000008994,PR:000008994,interleukin-1 receptor-like 1,interleukin-1 receptor-like 1
+1,1,PR:000009619,PR:000009619,killer cell lectin-like receptor 4,killer cell lectin-like receptor 4
+1,1,PR:000002062,PR:000002062,macrophage colony-stimulating factor 1 receptor,macrophage colony-stimulating factor 1 receptor
+1,1,PR:000001083,PR:000001083,CD2 molecule,CD2
+1,1,PR:000001337,PR:000001337,complement receptor type 1,complement receptor type 1
+1,0,PR:P01589,PR:000001380,interleukin-2 receptor subunit alpha (human),interleukin-2 receptor subunit alpha
+1,1,PR:000001879,PR:000001879,leukosialin,leukosialin
+1,1,PR:000001898,PR:000001898,neprilysin,neprilysin
+1,1,PR:000001954,PR:000001954,tumor necrosis factor receptor superfamily member 11A,tumor necrosis factor receptor superfamily member 11A
+0,0,PR:000001207,,C-X-C chemokine receptor type 3,C-X-C
+0,0,PR:000009143,,integrin beta-7,integrin beta-7
+1,1,PR:000001963,PR:000001963,CD27 molecule,CD27
+1,1,PR:000001809,PR:000001809,CD59-like glycoprotein,CD59-like glycoprotein
+1,1,PR:000001479,PR:000001479,low affinity immunoglobulin gamma Fc region receptor II,low affinity immunoglobulin gamma Fc region receptor II
+0,0,PR:000009616,,T-cell surface glycoprotein YE1/48,T-cell surface glycoprotein YE1
+1,1,PR:000002031,PR:000002031,aminopeptidase N,aminopeptidase N
+1,1,PR:000001580,PR:000001580,fMet-Leu-Phe receptor,fMet-Leu-Phe receptor
+1,1,PR:000001806,PR:000001806,C-type lectin domain family 6 member A,C-type lectin domain family 6 member A
+0,0,PR:000001255,,C-C chemokine receptor type 3,C-C
+1,1,PR:000001310,PR:000001310,CD83 molecule,CD83
+1,1,PR:000001813,PR:000001813,adhesion G protein-coupled receptor E1,adhesion G protein-coupled receptor E1
+1,1,PR:000001402,PR:000001402,killer cell lectin-like receptor subfamily D member 1,killer cell lectin-like receptor subfamily D member 1
+1,1,PR:000001860,PR:000001860,inducible T-cell costimulator,inducible T-cell costimulator
+1,0,PR:000001206,PR:O35188,CX3C chemokine receptor 1,CX3C
+1,1,PR:000001412,PR:000001412,CD86 molecule,CD86
+1,0,PR:000001833,PR:000001319,SLAM family member 1,SLAM
+1,1,PR:000001919,PR:000001919,programmed cell death protein 1,programmed cell death protein 1
+1,1,PR:000001925,PR:000001925,scavenger receptor cysteine-rich type 1 protein M130,scavenger receptor cysteine-rich type 1 protein M130
+0,0,PR:000001024,,neural cell adhesion molecule 1,neural cell adhesion 1
+1,1,PR:000001839,PR:000001839,T-cell surface glycoprotein CD5,T-cell surface glycoprotein CD5
+1,0,PR:O95971,PR:000001082,CD160 antigen (human),CD160
+1,1,PR:000001289,PR:000001289,membrane-spanning 4-domains subfamily A member 1,membrane-spanning 4-domains subfamily A member 1
+1,1,PR:000001343,PR:000001343,CD69 molecule,CD69
+1,1,PR:000001002,PR:000001002,CD19 molecule,CD19
+1,1,PR:000005178,PR:000005178,CD9 molecule,CD9
+1,1,PR:000003516,PR:000003516,lactosylceramide 4-alpha-galactosyltransferase,lactosylceramide 4-alpha-galactosyltransferase
+1,1,PR:000001907,PR:000001907,platelet glycoprotein Ib alpha chain,platelet glycoprotein Ib alpha chain
+1,1,PR:000006169,PR:000006169,cell surface glycoprotein CD200 receptor 3,cell surface glycoprotein CD200 receptor 3
+1,0,PR:000002015,PR:000001818,MHC class II histocompatibility antigen alpha chain DRA,MHC
+1,1,PR:000001292,PR:000001292,C-type lectin domain family 4 member C,C-type lectin domain family 4 member C
+0,0,PR:000001344,,ectonucleotide pyrophosphatase/phosphodiesterase family member 3,ectonucleotide pyrophosphatase
+1,1,PR:000009618,PR:000009618,killer cell lectin-like receptor 3,killer cell lectin-like receptor 3
+1,1,PR:000002039,PR:000002039,glutamyl aminopeptidase,glutamyl aminopeptidase
+1,1,PR:000001945,PR:000001945,transferrin receptor protein 1,transferrin receptor protein 1
+1,1,PR:000001869,PR:000001869,interleukin-7 receptor subunit alpha,interleukin-7 receptor subunit alpha
+1,1,PR:000007939,PR:000007939,glial fibrillary acidic protein,glial fibrillary acidic protein
+0,0,PR:000006172,,CD209 molecule-like protein B,CD209-like protein B
+1,1,PR:000001786,PR:000001786,prominin-1,prominin-1
+1,1,PR:000001836,PR:000001836,CD7 molecule,CD7
+0,0,PR:000002981,,lymphocyte antigen 76 (mouse),lymphocyte antigen 76
+1,0,PR:P28906,PR:000001003,hematopoietic progenitor cell antigen CD34 (human),hematopoietic progenitor cell antigen CD34
+1,1,PR:000001300,PR:000001300,CD209 molecule,CD209
+0,0,PR:000025402,,T cell receptor co-receptor CD8,T
+1,0,PR:P16871,PR:000001869,interleukin-7 receptor subunit alpha (human),interleukin-7 receptor subunit alpha
+1,1,PR:000009127,PR:000009127,integrin alpha-IIb,integrin alpha-IIb
+0,0,PR:P10721,,mast/stem cell growth factor receptor Kit (human),mast
+0,0,PR:000001200,,C-C chemokine receptor type 4,C-C
+0,0,PR:000001332,,cell adhesion molecule CEACAM8,cell adhesion CEACAM8
+1,1,PR:000001010,PR:000001010,integrin alpha-E,integrin alpha-E
+1,1,PR:000007597,PR:000007597,protein c-Fos,protein c-Fos
+1,0,PR:000001318,PR:P14151,L-selectin,L-selectin
+1,1,PR:000001465,PR:000001465,high affinity immunoglobulin gamma Fc receptor I,high affinity immunoglobulin gamma Fc receptor I
+1,1,PR:000001859,PR:000001859,immunoglobulin lambda-like polypeptide 1,immunoglobulin lambda-like polypeptide 1
+1,1,PR:000001807,PR:000001807,C-type lectin domain family 7 member A,C-type lectin domain family 7 member A
+1,1,PR:000001012,PR:000001012,integrin alpha-M,integrin alpha-M
+1,1,PR:000001447,PR:000001447,cadherin-1,cadherin-1
+0,0,PR:000001202,,C-C chemokine receptor type 6,C-C
+1,0,PR:Q12918,PR:000025670,killer cell lectin-like receptor subfamily B member 1 (human),killer cell lectin-like receptor subfamily B member 1
+0,0,PR:000002065,,mast/stem cell growth factor receptor,mast
+0,0,PR:000002979,,lymphocyte antigen 6A-2/6E-1,lymphocyte antigen 6A-2
+1,1,PR:000001456,PR:000001456,"alpha-(1,3)-fucosyltransferase 4","alpha-(1,3)-fucosyltransferase 4"
+1,1,PR:000002112,PR:000002112,vascular endothelial growth factor receptor 2,vascular endothelial growth factor receptor 2
+1,1,PR:000001026,PR:000001026,lymphocyte antigen 75,lymphocyte antigen 75
+1,1,PR:000001932,PR:000001932,signal transducer CD24,signal transducer CD24
+1,1,PR:000001867,PR:000001867,interleukin-5 receptor subunit alpha,interleukin-5 receptor subunit alpha
+1,1,PR:000009623,PR:000009623,killer cell lectin-like receptor 8,killer cell lectin-like receptor 8
+0,0,PR:000001008,,integrin alpha-2,integrin alpha-2
+1,1,PR:000001905,PR:000001905,platelet glycoprotein 4,platelet glycoprotein 4
+1,1,PR:000001935,PR:000001935,syndecan-1,syndecan-1
+1,1,PR:000001885,PR:000001885,macrophage scavenger receptor types I and II,macrophage scavenger receptor types I and II
+1,0,PR:P38570,PR:000001010,integrin alpha-E (human),integrin alpha-E
+1,1,PR:000001013,PR:000001013,integrin alpha-X,integrin alpha-X
+1,1,PR:000001319,PR:000001319,SLAM family member 5,SLAM
+1,1,PR:000001874,PR:000001874,KLRB1-like protein,KLRB1-like protein
+1,1,PR:000001017,PR:000001017,receptor-type tyrosine-protein phosphatase C isoform CD45RO,receptor-type tyrosine-protein phosphatase C isoform CD45RO
+1,1,PR:000001858,PR:000001858,immunoglobulin iota chain,immunoglobulin iota chain
+1,1,PR:000010329,PR:000010329,tyrosine-protein kinase Mer,tyrosine-protein kinase Mer
+0,0,PR:A0A0B4J238,,T cell receptor alpha variable 1-2 (human),T
+1,1,PR:000001345,PR:000001345,endoglin,endoglin
+1,0,PR:000001408,PR:000001281,ADP-ribosyl cyclase/cyclic ADP-ribose hydrolase 1,ADP-ribosyl cyclase
+1,1,PR:000001014,PR:000001014,receptor-type tyrosine-protein phosphatase C isoform CD45RABC,receptor-type tyrosine-protein phosphatase C isoform CD45RABC
+0,0,PR:P13591,,neural cell adhesion molecule 1 (human),neural cell adhesion 1
+0,0,PR:000009129,,integrin alpha-4,integrin alpha-4
+1,1,PR:000001843,PR:000001843,Thy-1 membrane glycoprotein,Thy-1 membrane glycoprotein
+1,1,PR:000001380,PR:000001380,interleukin-2 receptor subunit alpha,interleukin-2 receptor subunit alpha
+1,1,PR:000001288,PR:000001288,B-cell receptor CD22,B-cell receptor CD22
+1,1,PR:000016401,PR:000016401,transmembrane emp24 domain-containing protein 1,transmembrane emp24 domain-containing protein 1
+0,0,PR:000001257,,C-X-C chemokine receptor type 2,C-X-C
+1,1,PR:000001293,PR:000001293,C-type lectin domain family 4 member K,C-type lectin domain family 4 member K
+1,1,PR:000002977,PR:000002977,killer cell lectin-like receptor subfamily B member 1C,killer cell lectin-like receptor subfamily B member 1C
+1,0,PR:Q96E93,PR:000009426,killer cell lectin-like receptor subfamily G member 1 (human),killer cell lectin-like receptor subfamily G member 1
+1,1,PR:000001015,PR:000001015,receptor-type tyrosine-protein phosphatase C isoform CD45RA,receptor-type tyrosine-protein phosphatase C isoform CD45RA
+1,1,PR:000001944,PR:000001944,transcription factor PU.1,transcription factor PU.1
+1,1,PR:000002037,PR:000002037,complement component C1q receptor,complement component C1q receptor
+1,1,PR:000002980,PR:000002980,lymphocyte antigen 6C2,lymphocyte antigen 6C2
+0,0,PR:000001209,,C-X-C chemokine receptor type 5,C-X-C
+1,1,PR:000001381,PR:000001381,interleukin-2 receptor subunit beta,interleukin-2 receptor subunit beta
+1,1,PR:000016043,PR:000016043,T-cell acute lymphocytic leukemia protein 1,T-cell acute lymphocytic leukemia protein 1
+1,1,PR:000001006,PR:000001006,receptor-type tyrosine-protein phosphatase C,receptor-type tyrosine-protein phosphatase C
+1,1,PR:000002001,PR:000002001,receptor-type tyrosine-protein kinase FLT3,receptor-type tyrosine-protein kinase FLT3
+1,0,PR:P49961,PR:000001854,ectonucleoside triphosphate diphosphohydrolase 1 (human),ectonucleoside triphosphate diphosphohydrolase 1
+1,1,PR:000001460,PR:000001460,glycophorin-A,glycophorin-A
+1,1,PR:000001950,PR:000001950,tumor necrosis factor ligand superfamily member 5,tumor necrosis factor ligand superfamily member 5
+1,1,PR:000002064,PR:000002064,macrosialin,macrosialin
+1,1,PR:000001884,PR:000001884,macrophage receptor MARCO,macrophage receptor MARCO
+1,0,PR:O95944,PR:000001894,natural cytotoxicity triggering receptor 2 (human),natural cytotoxicity triggering receptor 2
+1,1,PR:000001398,PR:000001398,leukocyte immunoglobulin-like receptor subfamily A member 4,leukocyte immunoglobulin-like receptor subfamily A member 4
+0,0,PR:000001444,,cadherin-5,cadherin-5
+1,0,PR:P56199,PR:000001007,integrin alpha-1 (human),integrin alpha-1
+1,1,PR:000002028,PR:000002028,antigen-presenting glycoprotein CD1d,antigen-presenting glycoprotein CD1d
+1,1,PR:000001307,PR:000001307,CD44 molecule,CD44
+0,0,PR:000001203,,C-C chemokine receptor type 7,C-C
+1,1,PR:000001003,PR:000001003,CD34 molecule,CD34
+1,1,PR:000001880,PR:000001880,low affinity immunoglobulin epsilon Fc receptor,low affinity immunoglobulin epsilon Fc receptor
+1,1,PR:000009766,PR:000009766,galectin-1,galectin-1
+1,1,PR:000001969,PR:000001969,urokinase plasminogen activator surface receptor,urokinase plasminogen activator surface receptor
+1,1,PR:000001865,PR:000001865,interleukin-3 receptor class 2 alpha chain,interleukin-3 receptor class 2 alpha chain

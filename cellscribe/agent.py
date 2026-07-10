@@ -110,8 +110,11 @@ class CuratorAgent:
                   summary=" -> ".join(plan or default_plan)
                   + (" (LLM)" if plan else " (default)"))
 
-        # 1. existing-term check
-        existing_hits = self.ols(request.name, ontology="cl", rows=5, offline=self.offline)
+        # 1. existing-term check (only CL cell-type CURIEs count as a duplicate; an
+        #    imported anatomy/GO term returned by the CL search is not a cell type)
+        existing_hits = [h for h in self.ols(request.name, ontology="cl", rows=5,
+                                             offline=self.offline)
+                         if h.curie.startswith("CL:")]
         existing = existing_hits[0] if existing_hits else None
         self._log(trace, "ols_search", "existing-term check in CL",
                   summary=("nearest: %s (%s) %.2f" % (existing.label, existing.curie, existing.score)

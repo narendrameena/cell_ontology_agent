@@ -20,3 +20,4 @@ out/
 .env
 *.pem
 id_*
+benchmark/.bench_cache/

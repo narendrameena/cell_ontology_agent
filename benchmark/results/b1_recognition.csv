@@ -1,0 +1,401 @@
+curie,label,r1,r3,r5,syn,syn_r5
+CL:4307095,COP NN_1 Bmp4 committed oligodendrocyte precursor (Mmus),1,1,1,5275 COP NN_1,1
+CL:0002519,interrenal epithelial cell,1,1,1,,
+CL:4033171,pelvic ganglion nNOS/VIP neuron,1,1,1,,
+CL:0002666,type II spiral ligament fibrocyte,1,1,1,type 2 otic fibrocyte,1
+CL:0000168,insulin secreting cell,1,1,1,,
+CL:0001201,"B cell, CD19-positive",1,1,1,"B lymphocyte, CD19-positive",1
+CL:0011008,embryonic hemocyte,1,1,1,,
+CL:0009042,enteroendocrine cell of colon,1,1,1,colon enteroendocrine cell,1
+CL:0002602,annulus pulposus cell,1,1,1,anulus pulposus cell,1
+CL:4052009,crypt-top fibroblast,1,1,1,CTFs,1
+CL:4301615,olfactory ensheathing cell (Mmus),1,1,1,1185 OEC NN_1,1
+CL:0002179,foveolar cell of stomach,1,1,1,surface mucosal cell of stomach,1
+CL:0009004,retinal cell,1,1,1,,
+CL:0002407,mature Vgamma2-positive thymocyte,1,1,1,Vgamma2-positive,1
+CL:1000414,endothelial cell of venule,1,1,1,,
+CL:0000916,dendritic epidermal T cell,1,1,1,DETC,1
+CL:0010002,epithelial cell of umbilical artery,1,1,1,umbilical artery epithelial cell,1
+CL:0000585,obsolete null cell,0,0,0,,
+CL:0002090,polar body,1,1,1,,
+CL:0000587,cold sensing thermoreceptor cell,1,1,1,,
+CL:4033162,myenteric ganglion of small intestine VIP neuron,1,1,1,,
+CL:0000397,ganglion interneuron,1,1,1,,
+CL:1001126,inner renal medulla vasa recta cell,1,1,1,,
+CL:4070017,lateral pyloric motor neuron,1,1,1,LP,1
+CL:0001051,"CD4-positive, CXCR3-negative, CCR6-negative, alpha-beta T cell",1,1,1,non-Th1/Th17 CD4+ T cell,0
+CL:0020007,dorso-striatal cholinergic-GABAergic neuron,1,1,1,,
+CL:4030023,respiratory tract hillock cell,1,1,1,hillock cell of respiratory tract,1
+CL:4079003,cervical dorsal root ganglion Nav1.9 neuron,0,0,0,,
+CL:1000601,ureteral cell,1,1,1,,
+CL:0000616,obsolete sporangiospore,0,0,0,,
+CL:0002209,intermediate epitheliocyte,1,1,1,undifferentiated columnar cell of tracheobronchial tree,1
+CL:0000414,obsolete cell by ploidy,0,0,0,,
+CL:4033056,onychocyte,1,1,1,,
+CL:0000309,copper accumulating cell,1,1,1,cuprophilic cell,1
+CL:4310058,STR D1 MSN direct pathway medium spiny neuron (Primate),1,1,1,STR D1 MSN,1
+CL:4023087,fan Martinotti neuron,1,1,1,fanning-out Martinotti neuron,1
+CL:0002292,type I cell of carotid body,1,1,1,glomus cell,1
+CL:0008039,lower motor neuron,1,1,1,,
+CL:1000298,mesothelial cell of dura mater,1,1,1,squamous mesothelial cell of dura mater,1
+CL:0000422,mitogenic signaling cell,1,1,1,,
+CL:0002390,uninucleate blastconidium,1,1,1,,
+CL:0003042,M9-OFF retinal ganglion cell,1,1,1,,
+CL:0002235,luminal cell of prostatic acinus,1,1,1,,
+CL:1000850,macula densa epithelial cell,1,1,1,macula densa cell,1
+CL:2000010,dermis blood vessel endothelial cell,1,1,1,,
+CL:0000858,fast muscle myoblast,1,1,1,,
+CL:1000182,malpighian tubule tip cell,1,1,1,,
+CL:0009005,salivary gland cell,1,1,1,,
+CL:0004222,flag B amacrine cell,1,1,1,,
+CL:0012000,astrocyte of the forebrain,1,1,1,forebrain astrocyte,1
+CL:0002001,"CD34-positive, CD38-positive granulocyte monocyte progenitor",1,1,1,,
+CL:0000261,obsolete anterior cell,0,0,0,,
+CL:4072031,sst chodl GABAergic interneuron (Homo sapiens),1,1,1,long-range GABAergic interneuron (Homo sapiens),1
+CL:0020073,"AVPV/PeN kisspeptin neuron, mouse",1,1,1,AVPV Kiss1 neuron,1
+CL:0000059,ameloblast,1,1,1,amelocyte,1
+CL:0000391,obsolete podocyte (sensu Diptera),0,0,0,,
+CL:4033014,peg cell,1,1,1,FTE stem-like cell,1
+CL:4307066,Tanycyte NN_2 Mroh5 alpha1-tanycyte (Mmus),1,1,1,5246 Tanycyte NN_2,1
+CL:0002576,perineurial cell,1,1,1,perineurial glial cell,1
+CL:4030047,matrix D2 medium spiny neuron,1,1,1,D2-matrix,1
+CL:4301582,CBX Purkinje Gaba_1 Purkinje cell (Mmus),1,1,1,1152 CBX Purkinje Gaba_1,1
+CL:4052014,pancreatic islet capillary endothelial cell,1,1,1,islet endothelial cell,1
+CL:4023018,pvalb GABAergic interneuron,1,1,1,,
+CL:1001434,olfactory bulb interneuron,1,1,1,,
+CL:0000004,obsolete cell by organism,0,0,0,,
+CL:1000893,kidney venous blood vessel cell,1,1,1,,
+CL:0009073,medullary thymic epithelial cell type 3,1,1,1,corneocyte-like mTECs,1
+CL:4301598,Astro-OLF NN_3 astrocyte (Mmus),1,1,1,1168 Astro-OLF NN_3,1
+CL:0002304,non-pigmented ciliary epithelial cell,1,1,1,NPE cell,1
+CL:0001021,"CD34-positive, CD38-positive common lymphoid progenitor",1,1,1,CD10-positive common lymphocyte precursor,1
+CL:4033058,luminal hormone-sensing cell of mammary gland,1,1,1,hormone sensing cell,1
+CL:0002272,motilin secreting cell,1,1,1,,
+CL:4030017,epithelial cell of late distal convoluted tubule,1,1,1,DCT2 cell,1
+CL:0000263,obsolete vegetative cell (sensu Mycetozoa),0,0,0,,
+CL:0000801,gamma-delta intraepithelial T cell,1,1,1,IEL,1
+CL:1000330,serous cell of epithelium of trachea,1,1,1,,
+CL:0000930,"CD4-negative, CD8-negative type I NK T cell secreting interleukin-4",0,0,0,"CD4-negative, CD8-negative type I NK T cell secreting IL-4",0
+CL:0000999,CD4-positive CD11b-positive dendritic cell,1,1,1,DC.4+,0
+CL:4072017,agouti-related protein expressing neuron,1,1,1,AgRP neuron,1
+CL:0000598,pyramidal neuron,1,1,1,projection neuron,0
+CL:4072016,NPY interneuron,1,1,1,NPY-expressing neuron,1
+CL:0020050,ascending interneuron of myenteric plexus,1,1,1,ascending myenteric interneuron,1
+CL:0004243,WF3-2 amacrine cell,0,0,0,,
+CL:0000382,scolopale cell,1,1,1,scolopidial sheath cell,1
+CL:0000336,adrenal medulla chromaffin cell,1,1,1,medullary chromaffin cell of adrenal gland,1
+CL:0002250,intestinal crypt stem cell,1,1,1,stem cell of intestinal crypt of Lieberkuhn,1
+CL:0010015,coronet cell,1,1,1,,
+CL:0009056,transit amplifying cell of anorectum,1,1,1,anorectum transit amplifying cell,1
+CL:0000457,biogenic amine secreting cell,1,1,1,,
+CL:0002171,globose cell of olfactory epithelium,1,1,1,blastema cell of olfactory epithelium,1
+CL:1000085,stratified non keratinized epithelial stem cell,1,1,1,,
+CL:0002128,Tc17 cell,1,1,1,CD8-positive Th17 cell,1
+CL:4030029,blood lymphocyte,1,1,1,,
+CL:0000525,syncytiotrophoblast cell,1,1,1,syncytial trophoblast cell,1
+CL:0020068,CA3 pyramidal cell,1,1,1,CA3 pyramidal neuron,1
+CL:0002302,type A synovial cell,1,1,1,type A synoviocyte,1
+CL:4079022,sacral dorsal root ganglion Nav1.7 neuron,0,0,0,,
+CL:0020039,deep zone articular chondrocyte,1,1,1,radial zone articular chondrocyte,1
+CL:0000853,olfactory epithelial supporting cell,1,1,1,olfactory epithelial support cell,1
+CL:4310129,STRd D1 Matrix MSN matrix D1 medium spiny neuron (Primate),1,1,1,D1-Matrix,1
+CL:1000617,kidney inner medulla cell,1,1,1,,
+CL:0020067,entorhinal cortex layer II stellate cell,1,1,1,EC LII stellate cell,1
+CL:1000437,epithelial cell of nasolacrimal duct,1,1,1,,
+CL:0002114,CD38-positive unswitched memory B cell,1,1,1,CD38+ unswitched memory B cell,1
+CL:0004231,recurving diffuse amacrine cell,1,1,1,,
+CL:0000384,ligament cell,1,1,1,,
+CL:1000487,smooth muscle cell of prostate,1,1,1,smooth muscle fiber of prostate,1
+CL:4070011,lateral gastric neuron,1,1,1,LG,0
+CL:0002518,kidney epithelial cell,1,1,1,,
+CL:0002238,male gonocyte,1,1,1,male primordial germ cell,1
+CL:1000364,transitional myocyte of anterior internodal tract,1,1,1,,
+CL:0001013,mature interstitial dendritic cell,1,1,1,,
+CL:0002125,CD27-negative gamma-delta T cell,1,1,1,gammadelta-17 cells,0
+CL:0000772,immature eosinophil,1,1,1,immature eosinocyte,1
+CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",1,1,1,cytotoxic T cell,1
+CL:4300360,olfactory areas astrocyte (Mmus),1,1,1,320 Astro-OLF NN,1
+CL:0000783,multinucleated phagocyte,1,1,1,,
+CL:0000137,osteocyte,1,1,1,bone cell,0
+CL:1001005,glomerular capillary endothelial cell,1,1,1,,
+CL:2000076,hindlimb stylopod vein endothelial cell,1,1,1,,
+CL:0002000,Kit-positive erythroid progenitor cell,1,1,1,c- Kit-positive erythroid progenitor cell,1
+CL:0009003,larval midgut cell,1,1,1,,
+CL:0000289,obsolete chemotactic amoeboid cell (sensu Mycetozoa),0,0,0,,
+CL:0000376,humidity receptor cell,1,1,1,,
+CL:4023063,medial ganglionic eminence derived interneuron,1,1,1,MGE interneuron,1
+CL:4033170,pelvic ganglion nNOS neuron,1,1,1,,
+CL:0000547,proerythroblast,1,1,1,rubriblast,1
+CL:0000627,obsolete transporting cell,0,0,0,,
+CL:0000161,obsolete acid secreting cell,0,0,0,,
+CL:0000335,mesenchyme condensation cell,1,1,1,,
+CL:4029003,somatic nurse-like cell,1,1,1,,
+CL:4301613,myelin-forming oligodendrocyte (Mmus),1,1,1,1183 MFOL NN_3,1
+CL:0020040,calcified zone articular chondrocyte,1,1,1,,
+CL:4023083,obsolete chandelier cell,0,0,0,,
+CL:0002545,thoracic aorta endothelial cell,1,1,1,,
+CL:4310126,STR-BF TAC3-PLPP4-LHX8 GABA TAC3-positive striatal interneuron (Primate),1,1,1,STR-BF TAC3-PLPP4-LHX8 GABA,1
+CL:0017011,hillock cell of prostatic urethral epithelium,1,1,1,hillock cell of prostatic urethra,1
+CL:0002063,pulmonary alveolar type 2 cell,1,1,1,cuboidal type II cell,1
+CL:0013000,forebrain radial glial cell,1,1,1,,
+CL:4079010,intrinsic cardiac ganglion TH neuron,1,1,1,catecholaminergic intrinsic cardiac neuron,1
+CL:0000986,IgM plasma cell,1,1,1,,
+CL:0000903,natural T-regulatory cell,1,1,1,nTreg,1
+CL:4023066,horizontal pyramidal neuron,1,1,1,,
+CL:1000449,epithelial cell of nephron,1,1,1,,
+CL:4301584,CB Granule Glut_1 cerebellar granule cell (Mmus),1,1,1,1154 CB Granule Glut_1,1
+CL:0002661,luminal cell of lactiferous terminal ductal lobular unit,1,1,1,,
+CL:1000381,type 1 vestibular sensory cell of epithelium of crista of ampulla of semicircular duct of membranous labyrinth,1,1,1,,
+CL:0002062,pulmonary alveolar type 1 cell,1,1,1,lung type 1 cells,1
+CL:0005002,xanthoblast,1,1,1,,
+CL:0009069,CD8aa(II) thymocyte,1,1,1,,
+CL:2000091,endometrial microvascular endothelial cell,1,1,1,,
+CL:2000013,fibroblast of skin of abdomen,1,1,1,,
+CL:4030003,interstitial cell of thymus,1,1,1,thymic interstitial cell,1
+CL:4052050,luminal epithelial cell of endometrium,1,1,1,endometrial luminal epithelial cell,1
+CL:0002404,fetal thymocyte,1,1,1,,
+CL:0000345,dental papilla cell,1,1,1,,
+CL:0002268,P/D1 enteroendocrine cell,0,0,0,,
+CL:4307037,Astro-NT NN_2 Gm30524 astrocyte (Mmus),1,1,1,5217 Astro-NT NN_2,1
+CL:0000486,garland cell,1,1,1,garland nephrocyte,1
+CL:0009044,lymphocyte of small intestine lamina propria,1,1,1,gastrointestinal tract small intestine (lamina propria) leukocyte,1
+CL:1000435,epithelial cell of lacrimal drainage system,1,1,1,epithelial cell of lacrimal duct,1
+CL:1001575,uterine cervix squamous cell,1,1,1,cervix squamous cell,1
+CL:0002313,endocrine-paracrine cell of prostate gland,1,1,1,glandular cell of prostate,1
+CL:0000798,gamma-delta T cell,1,1,1,gamma-delta T lymphocyte,1
+CL:0001017,mature CD1a-positive Langerhans cell,1,1,1,,
+CL:0000068,duct epithelial cell,1,1,1,,
+CL:4033063,endovascular extravillous trophoblast cell,1,1,1,eEVT,1
+CL:0002045,fraction A pre-pro B cell,1,1,1,fraction A,1
+CL:0000493,obsolete regulatory T cell,0,0,0,,
+CL:4030024,hillock cell,1,1,1,,
+CL:0000925,activated CD4-positive type I NK T cell,1,1,1,activated CD4-positive type I NK T lymphocyte,1
+CL:0002465,CD11b-positive dendritic cell,1,1,1,,
+CL:4052058,Merkel cell of epidermis,1,1,1,epdiermal Merkel cell,1
+CL:0000716,lymph gland crystal cell,1,1,1,,
+CL:4307132,microglial cell (Mmus),1,1,1,1194 Microglia NN_1,1
+CL:0003008,G5 retinal ganglion cell,1,1,1,,
+CL:4079027,sacral dorsal root ganglion substance P neuron,1,1,1,sacral dorsal root ganglion SP neuron,1
+CL:0000260,obsolete mucilage cell,0,0,0,,
+CL:4310111,SN-VTR GAD2 Dopa dopaminergic neuron (Primate),1,1,1,SN-VTR GAD2 Dopa,1
+CL:4052006,intestinal enteroendocrine progenitor,1,1,1,EEC Progenitor,1
+CL:0000614,basophilic myelocyte,1,1,1,,
+CL:4028001,pulmonary capillary endothelial cell,1,1,1,lung capillary endothelial cell,1
+CL:0000918,Tc2 cell,1,1,1,CD8-positive Th2 cell,1
+CL:0000189,slow muscle cell,1,1,1,slow muscle fiber,1
+CL:4079032,thoracic dorsal root ganglion Nav1.9 neuron,0,0,0,,
+CL:1000357,microfold cell of epithelium proper of jejunum,1,1,1,,
+CL:1001592,gallbladder glandular cell,1,1,1,gall bladder glandular cell,1
+CL:0020014,intrinsically photosensitive retinal ganglion cell,1,1,1,photosensitive ganglion cell,1
+CL:1000606,kidney nerve cell,1,1,1,,
+CL:4023070,obsolete caudal ganglionic eminence derived GABAergic cortical interneuron,0,0,0,CGE cortical interneuron,0
+CL:0000310,iron accumulating cell,1,1,1,,
+CL:0000111,obsolete peripheral neuron,0,0,0,,
+CL:0000523,mononuclear cytotrophoblast cell,1,1,1,,
+CL:1001596,salivary gland glandular cell,1,1,1,salivary gland glandular cells,1
+CL:0000791,mature alpha-beta T cell,1,1,1,mature alpha-beta T lymphocyte,1
+CL:1000703,kidney pelvis urothelial cell,1,1,1,,
+CL:1000366,transitional myocyte of middle internodal tract,1,1,1,,
+CL:0000504,enterochromaffin-like cell,1,1,1,ECL,1
+CL:4304384,hypothalamic gonadotropin-releasing hormone neuron (Mmus),1,1,1,0628 HY Gnrh1 Glut_1,1
+CL:0000383,nephrogenic mesenchyme stem cell,1,1,1,,
+CL:0002458,langerin-positive dermal dendritic cell,1,1,1,,
+CL:0000489,scotopic photoreceptor cell,1,1,1,,
+CL:0000152,exocrine cell,1,1,1,,
+CL:1000698,kidney resident macrophage,1,1,1,,
+CL:0000090,obsolete female germ line stem cell (sensu Vertebrata),0,0,0,,
+CL:0000818,transitional stage B cell,1,1,1,transitional B cell,1
+CL:0000776,immature neutrophil,1,1,1,immatuer neutrophilic leukocyte,1
+CL:4033008,vein endothelial cell of respiratory system,1,1,1,,
+CL:0000521,fungal cell,1,1,1,,
+CL:0009014,Peyer's patch lymphocyte,1,1,1,Peyer's patch resident lymphocyte,1
+CL:0000884,mucosa-associated lymphoid tissue macrophage,1,1,1,,
+CL:4033045,lung migratory dendritic cell,1,1,1,lung mDC,1
+CL:4072006,A9 dopaminergic neuron,1,1,1,A9 nigral dopamine neuron,1
+CL:0000256,uric acid accumulating cell,1,1,1,,
+CL:4023065,meis2 expressing cortical GABAergic cell,1,1,1,,
+CL:0000095,neuron associated cell,1,1,1,,
+CL:0020055,calretinin-positive intrinsic primary afferent neuron of myenteric plexus,1,1,1,calretinin-positive myenteric sensory neuron,1
+CL:0003006,G4-ON retinal ganglion cell,1,1,1,,
+CL:1001213,arcuate artery endothelial cell,1,1,1,,
+CL:0000425,pore cell,1,1,1,,
+CL:0001658,visual pigment cell (sensu Nematoda and Protostomia),1,1,1,,
+CL:0000293,obsolete structural cell,0,0,0,,
+CL:0000926,CD4-positive type I NK T cell secreting interferon-gamma,1,1,1,CD4-positive type I NK T cell secreting IFN-gamma,1
+CL:0000301,pole cell,1,1,1,,
+CL:2000036,anterior lateral line neuromast supporting cell,1,1,1,anterior lateral line neuromast support cell,1
+CL:0002170,keratinized cell of the oral mucosa,1,1,1,,
+CL:0002375,Schwann cell precursor,1,1,1,Schwann cell precursor cell,1
+CL:0003050,S cone cell,1,1,1,S cone,1
+CL:0000757,type 5 cone bipolar cell (sensu Mus),1,1,1,DB4 cone bipolar cell,1
+CL:4079008,cervical dorsal root ganglion TRPV1 neuron,1,1,1,capsaicin-sensitive nociceptor,1
+CL:0009114,monocytoid B cell,1,1,1,,
+CL:0008019,mesenchymal cell,1,1,1,mesenchyme cell,1
+CL:0000164,enteroendocrine cell,1,1,1,,
+CL:1000488,cholangiocyte,1,1,1,epithelial cell of bile duct,1
+CL:0000423,tip cell,1,1,1,,
+CL:4307012,CBX MLI Cdh22 Gaba molecular layer interneuron (Mmus),1,1,1,1151 CBX MLI Cdh22 Gaba_1,1
+CL:4079024,sacral dorsal root ganglion peripherin neuron,1,1,1,sacral dorsal root ganglion Peripherin neuron,1
+CL:0000837,hematopoietic multipotent progenitor cell,1,1,1,MPP,1
+CL:4307035,Astro-NT NN_2 Sez6l astrocyte (Mmus),1,1,1,5215 Astro-NT NN_2,1
+CL:0002409,mature Vgamma2-negative thymocyte,1,1,1,Vgamma2-negative,1
+CL:4301571,DCO Il22 Gly-Gaba_1 cerebellar neuron (Mmus),1,1,1,1141 DCO Il22 Gly-Gaba_1,1
+CL:0008032,rosehip neuron,1,1,1,,
+CL:1000340,enterocyte of epithelium proper of duodenum,1,1,1,,
+CL:0000710,neurecto-epithelial cell,1,1,1,neuroepithelial cell,1
+CL:4300101,STR D1 Gaba direct pathway medium spiny neuron (Mmus),1,1,1,061 STR D1 Gaba,1
+CL:4023038,L6b glutamatergic cortical neuron,1,1,1,,
+CL:0000854,interneuromast cell,1,1,1,,
+CL:4042019,beta1-tanycyte,1,1,1,vmARH tanycyte,1
+CL:0000243,obsolete glial cell (sensu Vertebrata),0,0,0,,
+CL:4052029,subpleural fibroblast,1,1,1,,
+CL:4023052,Betz upper motor neuron,1,1,1,,
+CL:0000665,obsolete permanently open valve cell,0,0,0,,
+CL:0000680,muscle precursor cell,1,1,1,,
+CL:0002343,"decidual natural killer cell, human",1,1,1,dNK cell,1
+CL:0019022,endothelial cell of pericentral hepatic sinusoid,1,1,1,central venous hepatic sinusoidal endothelial cell,1
+CL:4310128,STRd Cholinergic GABA dorso-striatal cholinergic-GABAergic neuron (Primate),1,1,1,STRd Cholinergic GABA,1
+CL:0000494,UV sensitive photoreceptor cell,1,1,1,,
+CL:1000489,reticular cell of splenic cord,1,1,1,,
+CL:0004220,flag amacrine cell,1,1,1,,
+CL:4023008,intratelencephalic-projecting glutamatergic cortical neuron,1,1,1,IT neuron,0
+CL:0000734,obsolete embryonic gland plasmatocyte,0,0,0,,
+CL:0000056,myoblast,1,1,1,,
+CL:0008037,gamma motor neuron,1,1,1,fusimotor neuron,1
+CL:4023073,obsolete choroid plexus cell,0,0,0,,
+CL:0002622,prostate stromal cell,1,1,1,,
+CL:1000338,enterocyte of epithelium of crypt of Lieberkuhn of small intestine,1,1,1,,
+CL:0010020,cardiac glial cell,1,1,1,,
+CL:0002214,type IIa muscle cell,1,1,1,fast twitch A,1
+CL:2000045,foreskin melanocyte,1,1,1,melanocyte of foreskin,1
+CL:0002403,mature Vgamma2-positive fetal thymocyte,1,1,1,fetal Vgamma2-positive,1
+CL:0002533,immature CD16-positive myeloid dendritic cell,1,1,1,,
+CL:2000080,mesenchymal stem cell of abdominal adipose tissue,1,1,1,mesenchymal stem cell of abdominal adipose,1
+CL:0001052,"CD8-positive, CXCR3-negative, CCR6-negative, alpha-beta T cell",1,1,1,non-Tc1/Tc17 CD8+ T cell,0
+CL:0000645,pituicyte,1,1,1,,
+CL:1000302,fibroblast of papillary layer of dermis,1,1,1,,
+CL:4023118,L5/6 non-Martinotti sst GABAergic interneuron (Mmus),0,0,0,L5/6 non-Martinotti SST (Mus musculus),0
+CL:0000051,common lymphoid progenitor,1,1,1,common lymphocyte precursor,1
+CL:0007005,notochordal cell,1,1,1,,
+CL:4033104,superior cervical ganglion TH/NPY neuron,1,1,1,SCG TH/NPY neuron,1
+CL:0000330,obsolete collenchymal cell,0,0,0,,
+CL:0002315,supporting cell of cochlea,1,1,1,,
+CL:4033094,age-associated B cell,1,1,1,ABC,0
+CL:0000192,smooth muscle cell,1,1,1,non-striated muscle cell,1
+CL:4079005,cervical dorsal root ganglion Piezo2 neuron,1,1,1,mechanosensitive DRG neuron,1
+CL:0002086,specialized cardiac myocyte,1,1,1,,
+CL:0000566,angioblastic mesenchymal cell,1,1,1,angioblast,1
+CL:0001005,mature CD8-alpha-positive CD11b-negative dendritic cell,1,1,1,,
+CL:4040003,fetal pre-type II pulmonary alveolar epithelial cell,1,1,1,fetal alveolar pre-type II epithelial cell,1
+CL:0009025,mesothelial cell of colon,1,1,1,mesothelial cell of large intestine,1
+CL:0002383,conidium of conidiophore head,1,1,1,,
+CL:1000838,kidney proximal convoluted tubule epithelial cell,1,1,1,,
+CL:0002115,B220-positive CD38-positive unswitched memory B cell,1,1,1,,
+CL:4023041,L5 extratelencephalic projecting glutamatergic cortical neuron,1,1,1,subcerebral projection (SCPN) neuron,1
+CL:0002412,"Vgamma1.1-positive, Vdelta6.3-positive thymocyte",0,0,0,Vg1.1+Vd6.3+ T cell,0
+CL:1000451,obsolete epithelial cell of visceral layer of glomerular capsule,0,0,0,,
+CL:1001590,epididymis secretory cell,1,1,1,epididymal glandular cell,1
+CL:1001216,interlobulary artery endothelial cell,1,1,1,,
+CL:0000556,megakaryocyte,1,1,1,megacaryocyte,1
+CL:4032000,club-like cell of the urethral epithelium,1,1,1,club cell of the urethra epithelium,1
+CL:4310122,STR SST-ADARB2 GABA sst GABAergic interneuron (Primate),1,1,1,STR SST GABA,1
+CL:0002531,mature CD1a-positive dermal dendritic cell,1,1,1,,
+CL:4033132,celiac ganglion SOM neuron,1,1,1,CG SOM neuron,1
+CL:0002641,epithelial cell of esophageal gland proper,1,1,1,,
+CL:2000052,umbilical artery endothelial cell,1,1,1,,
+CL:0000338,neuroblast (sensu Nematoda and Protostomia),1,1,1,neuroblast,1
+CL:0000006,neuronal receptor cell,1,1,1,neuronal receptor cell (sensu Animalia),1
+CL:1000479,Purkinje myocyte of atrioventricular node,1,1,1,,
+CL:0000807,DN3 thymocyte,1,1,1,early cortical thymocyte,1
+CL:4028006,alveolar adventitial fibroblast,1,1,1,adventitial fibroblast,1
+CL:0002309,corticotroph,1,1,1,,
+CL:0000672,obsolete tracheary element,0,0,0,,
+CL:0001002,mature CD8-alpha-negative CD11b-negative dendritic cell,1,1,1,,
+CL:0000935,"CD4-negative, CD8-negative, alpha-beta intraepithelial T cell",1,1,1,"CD4-negative, CD8-negative, alpha-beta intraepithelial T lymphocyte",1
+CL:1001609,muscle fibroblast,1,1,1,,
+CL:0004244,WF4 amacrine cell,1,1,1,,
+CL:0002492,strial marginal cell,1,1,1,,
+CL:4307114,ABC NN_1 Dapl1 arachnoid barrier cell (Mmus),1,1,1,5294 ABC NN_1,1
+CL:4023042,L6 corticothalamic-projecting glutamatergic cortical neuron,1,1,1,L6 CT,1
+CL:1000333,serous cell of epithelium of lobular bronchiole,1,1,1,,
+CL:4052033,biliary tuft cell,1,1,1,gallbladder/extrahepatic bile duct tuft cell,1
+CL:0000131,gut endothelial cell,1,1,1,,
+CL:0002591,smooth muscle cell of the pulmonary artery,1,1,1,,
+CL:4030009,epithelial cell of proximal tubule segment 1,1,1,1,epithelial cell of segment 1 of proximal tubule,1
+CL:4307098,NFOL NN_2 9630013A20Rik newly formed oligodendrocyte (Mmus),1,1,1,5278 NFOL NN_2,1
+CL:0002657,glandular cell of esophagus,1,1,1,,
+CL:4042038,rostral primary motorneuron,1,1,1,RoP,1
+CL:3000001,Hofbauer cell,1,1,1,fetal Hofbauer cell,1
+CL:4030039,von Economo neuron,1,1,1,VEN,0
+CL:0000196,insect flight muscle cell,1,1,1,,
+CL:0000695,Cajal-Retzius cell,1,1,1,CR cells,0
+CL:0004233,DAPI-3 amacrine cell,0,0,0,,
+CL:0000267,obsolete prespore cell,0,0,0,,
+CL:0001202,CD86-positive plasmablast,1,1,1,"CD86-positive, CD20-negative plasmablast",1
+CL:4030008,pronephric podocyte,1,1,1,pronephric glomerular visceral epithelial cell,1
+CL:0000662,neuroglioblast (sensu Nematoda),1,1,1,,
+CL:0004237,fountain amacrine cell,1,1,1,,
+CL:0019002,tracheobronchial chondrocyte,1,1,1,chondrocyte of tracheobronchial tree,1
+CL:0009047,macrophage of medullary sinus of lymph node,1,1,1,medullary sinus macrophage,1
+CL:1000305,fibroblast of connective tissue of glandular part of prostate,1,1,1,,
+CL:1000682,kidney medulla interstitial cell,1,1,1,,
+CL:4033161,myenteric ganglion of small intestine nNOS neuron,1,1,1,nitrergic myenteric neuron of small intestine,1
+CL:0000000,cell,1,1,1,,
+CL:0000162,parietal cell,1,1,1,gastric parietal cell,1
+CL:0009077,subcapsular thymic epithelial cell,1,1,1,,
+CL:0002275,pancreatic PP cell,1,1,1,PP cell of pancreatic islet,1
+CL:0002217,intermediate trophoblast cell,1,1,1,,
+CL:0008018,somatic muscle myoblast,1,1,1,,
+CL:0000210,photoreceptor cell,1,1,1,,
+CL:0002644,endo-epithelial cell of tympanic part of viscerocranial mucosa,1,1,1,,
+CL:0000789,alpha-beta T cell,1,1,1,alpha-beta T lymphocyte,1
+CL:0020072,CA1 pyramidal cell,1,1,1,CA1 pyramidal neuron,1
+CL:1001588,colon glandular cell,1,1,1,colon glandular cells,1
+CL:0000349,extraembryonic cell,1,1,1,,
+CL:4033038,"lung resident memory CD4-positive, alpha-beta T cell",1,1,1,lung resident memory CD4 T cell,1
+CL:0000548,obsolete animal cell,0,0,0,metazoan cell,0
+CL:0000062,osteoblast,1,1,1,,
+CL:0002589,smooth muscle cell of the brachiocephalic vasculature,1,1,1,,
+CL:4023062,dentate gyrus neuron,1,1,1,,
+CL:0002654,epithelial cell of stratum corneum of esophageal epithelium,1,1,1,,
+CL:4310104,OT D1 ICj Islands of Calleja granule cell (Primate),1,1,1,D1-ICj (Islands of Calleja),1
+CL:0000013,obsolete dentine secreting cell,0,0,0,,
+CL:0000896,"activated CD4-positive, alpha-beta T cell",1,1,1,"activated CD4-positive, alpha-beta T lymphocyte",1
+CL:0000060,odontoblast,1,1,1,,
+CL:4033005,serous secreting cell of bronchus submucosal gland,1,1,1,,
+CL:4033158,geniculate ganglion SPARCL1 neuron,1,1,1,,
+CL:0000009,obsolete fusiform initial,0,0,0,xylem initial,0
+CL:4023050,L6 intratelencephalic projecting glutamatergic neuron of the primary motor cortex,1,1,1,L6 IT M1,1
+CL:0019018,blood vessel smooth muscle cell,1,1,1,smooth muscle cell of blood vessel,1
+CL:1000909,kidney loop of Henle epithelial cell,1,1,1,,
+CL:0000410,CNS long range interneuron,1,1,1,,
+CL:0000799,immature gamma-delta T cell,1,1,1,immature gamma-delta T lymphocyte,1
+CL:0000501,granulosa cell,1,1,1,granulosa cell of ovary,1
+CL:1000719,kidney inner medulla collecting duct intercalated cell,1,1,1,,
+CL:2000046,ventricular cardiac muscle cell,1,1,1,,
+CL:0000834,neutrophil progenitor cell,1,1,1,neutrophil stem cell,1
+CL:0002175,primary follicular cell of ovary,1,1,1,,
+CL:0002082,type II cell of adrenal medulla,1,1,1,adrenal secreting cell of the adrenal medulla,1
+CL:4023108,oxytocin-secreting magnocellular cell,1,1,1,,
+CL:0000765,erythroblast,1,1,1,normoblast,1
+CL:0000420,syncytial epithelial cell,1,1,1,,
+CL:0009000,sensory neuron of spinal nerve,1,1,1,spinal sensory neuron,1
+CL:0002567,light melanocyte,1,1,1,amelanotic melanocyte,1
+CL:1001509,glycinergic neuron,1,1,1,,
+CL:0000341,pigment cell (sensu Nematoda and Protostomia),1,1,1,,
+CL:0000091,Kupffer cell,1,1,1,hepatic macrophage,1
+CL:0002060,melanophage,1,1,1,,
+CL:0005012,multiciliated epithelial cell,1,1,1,multi-ciliated cell,1
+CL:0000488,visible light photoreceptor cell,1,1,1,,
+CL:0001075,"KLRG1-positive innate lymphoid cell, human",1,1,1,KLRG1-positive ILC,1
+CL:0000560,band form neutrophil,1,1,1,band,1
+CL:2000064,ovarian surface epithelial cell,1,1,1,,
+CL:0011114,segmented neutrophil of bone marrow,1,1,1,,
+CL:4052032,granzyme H-associated CD8 T cell,1,1,1,granzyme H+ CD8 T cell,1
+CL:2000028,cerebellum glutamatergic neuron,1,1,1,,
+CL:0002362,cerebellar granule cell precursor,1,1,1,granule cell precursor,1
+CL:0000485,mucosal type mast cell,1,1,1,MC(T),1
+CL:0000649,spinous cell of epidermis,1,1,1,prickle cell of epidermis,1
+CL:0002076,endo-epithelial cell,1,1,1,,
+CL:0000078,peridermal cell,1,1,1,,
+CL:0000176,ecdysteroid secreting cell,1,1,1,,

@@ -1,0 +1,372 @@
+category,curie,derived,gold,grounded,label
+ancestor,CL:4307095,oligodendrocyte,CL:4301611,CL:0000128,COP NN_1 Bmp4 committed oligodendrocyte precursor (Mmus)
+ancestor,CL:0002519,epithelial cell,CL:0002518,CL:0000066,interrenal epithelial cell
+ancestor,CL:4033171,neuron,CL:0011102,CL:0000540,pelvic ganglion nNOS/VIP neuron
+defaulted,CL:0002666,cell,CL:0020005,CL:0000000,type II spiral ligament fibrocyte
+defaulted,CL:0000168,cell,CL:0000151;CL:0000154;CL:0000167;CL:0000255,CL:0000000,insulin secreting cell
+exact,CL:0001201,B cell,CL:0000236;CL:0001200,CL:0000236,"B cell, CD19-positive"
+defaulted,CL:0011008,cell,CL:0000387,CL:0000000,embryonic hemocyte
+defaulted,CL:0009042,cell,CL:0000164;CL:0011108;CL:1001516,CL:0000000,enteroendocrine cell of colon
+defaulted,CL:0002602,cell,CL:0002320,CL:0000000,annulus pulposus cell
+miss,CL:4052009,epithelial cell,CL:4052007,CL:0000066,crypt-top fibroblast
+defaulted,CL:4301615,cell,CL:0011028,CL:0000000,olfactory ensheathing cell (Mmus)
+defaulted,CL:0002179,cell,CL:0000075;CL:0002180,CL:0000000,foveolar cell of stomach
+defaulted,CL:0009004,cell,CL:0002319,CL:0000000,retinal cell
+ancestor,CL:0002407,T cell,CL:0002405,CL:0000084,mature Vgamma2-positive thymocyte
+ancestor,CL:1000414,endothelial cell,CL:0000071;CL:0002139,CL:0000115,endothelial cell of venule
+ancestor,CL:0000916,T cell,CL:0000800,CL:0000084,dendritic epidermal T cell
+exact,CL:0010002,epithelial cell,CL:0000066,CL:0000066,epithelial cell of umbilical artery
+defaulted,CL:0002090,cell,CL:0000021,CL:0000000,polar body
+defaulted,CL:0000587,cell,CL:0000205,CL:0000000,cold sensing thermoreceptor cell
+ancestor,CL:4033162,neuron,CL:0007011,CL:0000540,myenteric ganglion of small intestine VIP neuron
+exact,CL:0000397,interneuron,CL:0000099,CL:0000099,ganglion interneuron
+defaulted,CL:1001126,cell,CL:1000617;CL:1001036,CL:0000000,inner renal medulla vasa recta cell
+ancestor,CL:4070017,neuron,CL:0000100,CL:0000540,lateral pyloric motor neuron
+ancestor,CL:0001051,T cell,CL:0000624,CL:0000084,"CD4-positive, CXCR3-negative, CCR6-negative, alpha-beta T cell"
+ancestor,CL:0020007,interneuron,CL:0002613;CL:0008061;CL:0011005,CL:0000099,dorso-striatal cholinergic-GABAergic neuron
+ancestor,CL:4030023,epithelial cell,CL:0002368;CL:4030024,CL:0000066,respiratory tract hillock cell
+ancestor,CL:4079003,neuron,CL:1001451,CL:0000540,cervical dorsal root ganglion Nav1.9 neuron
+defaulted,CL:1000601,cell,CL:0000000;CL:0000255,CL:0000000,ureteral cell
+ancestor,CL:0002209,epithelial cell,CL:0002202,CL:0000066,intermediate epitheliocyte
+defaulted,CL:4033056,cell,CL:0000240;CL:4052061,CL:0000000,onychocyte
+defaulted,CL:0000309,cell,CL:0000308,CL:0000000,copper accumulating cell
+ancestor,CL:4310058,neuron,CL:4023026,CL:0000540,STR D1 MSN direct pathway medium spiny neuron (Primate)
+ancestor,CL:4023087,neuron,CL:0000099;CL:4023076,CL:0000540,fan Martinotti neuron
+defaulted,CL:0002292,cell,CL:0000710,CL:0000000,type I cell of carotid body
+ancestor,CL:0008039,neuron,CL:0005024,CL:0000540,lower motor neuron
+defaulted,CL:1000298,cell,CL:0000077;CL:0002319,CL:0000000,mesothelial cell of dura mater
+defaulted,CL:0000422,cell,CL:0000000,CL:0000000,mitogenic signaling cell
+defaulted,CL:0002390,cell,CL:0002384;CL:0002385,CL:0000000,uninucleate blastconidium
+defaulted,CL:0003042,cell,CL:0003040;CL:4023033,CL:0000000,M9-OFF retinal ganglion cell
+ancestor,CL:0002235,epithelial cell,CL:0002233;CL:0002340,CL:0000066,luminal cell of prostatic acinus
+exact,CL:1000850,epithelial cell,CL:0000066;CL:0000067;CL:0002305;CL:1000618,CL:0000066,macula densa epithelial cell
+ancestor,CL:2000010,endothelial cell,CL:0000071,CL:0000115,dermis blood vessel endothelial cell
+defaulted,CL:0000858,cell,CL:0000056;CL:0000515,CL:0000000,fast muscle myoblast
+defaulted,CL:1000182,cell,CL:0000255;CL:0000423,CL:0000000,malpighian tubule tip cell
+defaulted,CL:0009005,cell,CL:0000255,CL:0000000,salivary gland cell
+defaulted,CL:0004222,cell,CL:0004220;CL:4030028,CL:0000000,flag B amacrine cell
+exact,CL:0012000,astrocyte,CL:0000127;CL:2000005,CL:0000127,astrocyte of the forebrain
+miss,CL:0002001,T cell,CL:0000557,CL:0000084,"CD34-positive, CD38-positive granulocyte monocyte progenitor"
+ancestor,CL:4072031,interneuron,CL:4023121,CL:0000099,sst chodl GABAergic interneuron (Homo sapiens)
+miss,CL:0020073,interneuron,CL:0000617;CL:0000700;CL:4023123,CL:0000099,"AVPV/PeN kisspeptin neuron, mouse"
+defaulted,CL:0000059,cell,CL:0000146;CL:0002077;CL:1100001,CL:0000000,ameloblast
+miss,CL:4033014,T cell,CL:4052019,CL:0000084,peg cell
+defaulted,CL:4307066,cell,CL:4042017;CL:4301603,CL:0000000,Tanycyte NN_2 Mroh5 alpha1-tanycyte (Mmus)
+miss,CL:0002576,fibroblast,CL:0000125;CL:0002320,CL:0000057,perineurial cell
+ancestor,CL:4030047,neuron,CL:0002613;CL:4023029,CL:0000540,matrix D2 medium spiny neuron
+defaulted,CL:4301582,cell,CL:4300353,CL:0000000,CBX Purkinje Gaba_1 Purkinje cell (Mmus)
+ancestor,CL:4052014,endothelial cell,CL:0000666;CL:0002144,CL:0000115,pancreatic islet capillary endothelial cell
+ancestor,CL:4023018,interneuron,CL:0011005;CL:0012001;CL:4023063,CL:0000099,pvalb GABAergic interneuron
+exact,CL:1001434,interneuron,CL:0000099;CL:0000101,CL:0000099,olfactory bulb interneuron
+defaulted,CL:1000893,cell,CL:1000854,CL:0000000,kidney venous blood vessel cell
+ancestor,CL:0009073,epithelial cell,CL:0002365,CL:0000066,medullary thymic epithelial cell type 3
+ancestor,CL:4301598,astrocyte,CL:4300360,CL:0000127,Astro-OLF NN_3 astrocyte (Mmus)
+ancestor,CL:0002304,epithelial cell,CL:0000710,CL:0000066,non-pigmented ciliary epithelial cell
+miss,CL:0001021,T cell,CL:0000051;CL:0000995,CL:0000084,"CD34-positive, CD38-positive common lymphoid progenitor"
+miss,CL:4033058,T cell,CL:0002326,CL:0000084,luminal hormone-sensing cell of mammary gland
+defaulted,CL:0002272,cell,CL:0000167,CL:0000000,motilin secreting cell
+exact,CL:4030017,epithelial cell,CL:0000066;CL:1000849,CL:0000066,epithelial cell of late distal convoluted tubule
+ancestor,CL:0000801,T cell,CL:0000800;CL:0020035,CL:0000084,gamma-delta intraepithelial T cell
+miss,CL:1000330,epithelial cell,CL:0000313;CL:0019001,CL:0000066,serous cell of epithelium of trachea
+ancestor,CL:0000930,T cell,CL:0000921;CL:0000924,CL:0000084,"CD4-negative, CD8-negative type I NK T cell secreting interleukin-4"
+miss,CL:0000999,T cell,CL:0000766;CL:0002465,CL:0000084,CD4-positive CD11b-positive dendritic cell
+miss,CL:4072017,interneuron,CL:0000617;CL:0012001,CL:0000099,agouti-related protein expressing neuron
+miss,CL:0000598,glutamatergic neuron,CL:0000540;CL:2000029,CL:0000679,pyramidal neuron
+ancestor,CL:4072016,interneuron,CL:0011005,CL:0000099,NPY interneuron
+miss,CL:0020050,interneuron,CL:0020047,CL:0000099,ascending interneuron of myenteric plexus
+defaulted,CL:0004243,cell,CL:0004253,CL:0000000,WF3-2 amacrine cell
+miss,CL:0000382,neuron,CL:0000255;CL:0000378,CL:0000540,scolopale cell
+defaulted,CL:0000336,cell,CL:0000166;CL:0000457;CL:1000426,CL:0000000,adrenal medulla chromaffin cell
+ancestor,CL:0002250,epithelial cell,CL:0000034;CL:0000048;CL:0002563,CL:0000066,intestinal crypt stem cell
+defaulted,CL:0010015,cell,CL:0000066,CL:0000000,coronet cell
+defaulted,CL:0009056,cell,CL:0002253;CL:4047017,CL:0000000,transit amplifying cell of anorectum
+defaulted,CL:0000457,cell,CL:0000151,CL:0000000,biogenic amine secreting cell
+ancestor,CL:0002171,epithelial cell,CL:0002169,CL:0000066,globose cell of olfactory epithelium
+miss,CL:1000085,epithelial cell,CL:0000357,CL:0000066,stratified non keratinized epithelial stem cell
+ancestor,CL:0002128,T cell,CL:0000908,CL:0000084,Tc17 cell
+defaulted,CL:4030029,cell,CL:0000542;CL:2000001,CL:0000000,blood lymphocyte
+exact,CL:0000525,trophoblast cell,CL:0000351;CL:4052002,CL:0000351,syncytiotrophoblast cell
+exact,CL:0020068,glutamatergic neuron,CL:0000679;CL:1001571,CL:0000679,CA3 pyramidal cell
+miss,CL:0002302,macrophage,CL:0000214;CL:0000234,CL:0000235,type A synovial cell
+ancestor,CL:4079022,neuron,CL:1001451,CL:0000540,sacral dorsal root ganglion Nav1.7 neuron
+defaulted,CL:0020039,cell,CL:1001607,CL:0000000,deep zone articular chondrocyte
+miss,CL:0000853,neuron,CL:0000630;CL:0002167,CL:0000540,olfactory epithelial supporting cell
+ancestor,CL:4310129,neuron,CL:4030043;CL:4310058,CL:0000540,STRd D1 Matrix MSN matrix D1 medium spiny neuron (Primate)
+defaulted,CL:1000617,cell,CL:1000504,CL:0000000,kidney inner medulla cell
+exact,CL:0020067,glutamatergic neuron,CL:0000122;CL:0000679;CL:0010012,CL:0000679,entorhinal cortex layer II stellate cell
+ancestor,CL:1000437,epithelial cell,CL:0000072;CL:1000435,CL:0000066,epithelial cell of nasolacrimal duct
+ancestor,CL:0002114,B cell,CL:0000970,CL:0000236,CD38-positive unswitched memory B cell
+defaulted,CL:0004231,cell,CL:0004251,CL:0000000,recurving diffuse amacrine cell
+defaulted,CL:0000384,cell,CL:0000630,CL:0000000,ligament cell
+defaulted,CL:1000487,cell,CL:0000192,CL:0000000,smooth muscle cell of prostate
+ancestor,CL:4070011,neuron,CL:0000100,CL:0000540,lateral gastric neuron
+exact,CL:0002518,epithelial cell,CL:0000066;CL:1000497,CL:0000066,kidney epithelial cell
+defaulted,CL:0002238,cell,CL:0000670,CL:0000000,male gonocyte
+defaulted,CL:1000364,cell,CL:1000480,CL:0000000,transitional myocyte of anterior internodal tract
+miss,CL:0001013,T cell,CL:0000841;CL:0001007,CL:0000084,mature interstitial dendritic cell
+ancestor,CL:0002125,T cell,CL:0000800,CL:0000084,CD27-negative gamma-delta T cell
+defaulted,CL:0000772,cell,CL:0000771,CL:0000000,immature eosinophil
+ancestor,CL:0000794,T cell,CL:0000625,CL:0000084,"CD8-positive, alpha-beta cytotoxic T cell"
+exact,CL:4300360,astrocyte,CL:0000127,CL:0000127,olfactory areas astrocyte (Mmus)
+defaulted,CL:0000783,cell,CL:0000228;CL:0000518,CL:0000000,multinucleated phagocyte
+defaulted,CL:0000137,cell,CL:0001035;CL:0002320,CL:0000000,osteocyte
+ancestor,CL:1001005,endothelial cell,CL:0002188;CL:1000892,CL:0000115,glomerular capillary endothelial cell
+ancestor,CL:2000076,endothelial cell,CL:0002543,CL:0000115,hindlimb stylopod vein endothelial cell
+miss,CL:0002000,T cell,CL:0001066,CL:0000084,Kit-positive erythroid progenitor cell
+defaulted,CL:0009003,cell,CL:0000255,CL:0000000,larval midgut cell
+defaulted,CL:0000376,cell,CL:0000006,CL:0000000,humidity receptor cell
+exact,CL:4023063,interneuron,CL:0000099,CL:0000099,medial ganglionic eminence derived interneuron
+ancestor,CL:4033170,neuron,CL:0011102,CL:0000540,pelvic ganglion nNOS neuron
+defaulted,CL:0000547,cell,CL:0000764;CL:0002242,CL:0000000,proerythroblast
+defaulted,CL:0000335,cell,CL:0008019,CL:0000000,mesenchyme condensation cell
+defaulted,CL:4029003,cell,CL:4029001,CL:0000000,somatic nurse-like cell
+ancestor,CL:4301613,oligodendrocyte,CL:4072002;CL:4300367,CL:0000128,myelin-forming oligodendrocyte (Mmus)
+defaulted,CL:0020040,cell,CL:1001607,CL:0000000,calcified zone articular chondrocyte
+ancestor,CL:0002545,endothelial cell,CL:0002544,CL:0000115,thoracic aorta endothelial cell
+ancestor,CL:4310126,interneuron,CL:4042001,CL:0000099,STR-BF TAC3-PLPP4-LHX8 GABA TAC3-positive striatal interneuron (Primate)
+ancestor,CL:0017011,epithelial cell,CL:0017003;CL:0017010;CL:4030024,CL:0000066,hillock cell of prostatic urethral epithelium
+ancestor,CL:0002063,epithelial cell,CL:0000322;CL:0020029,CL:0000066,pulmonary alveolar type 2 cell
+defaulted,CL:0013000,cell,CL:0000681,CL:0000000,forebrain radial glial cell
+ancestor,CL:4079010,neuron,CL:0000107,CL:0000540,intrinsic cardiac ganglion TH neuron
+miss,CL:0000986,B cell,CL:0000974,CL:0000236,IgM plasma cell
+ancestor,CL:0000903,T cell,CL:0000792,CL:0000084,natural T-regulatory cell
+miss,CL:4023066,glutamatergic neuron,CL:0000540;CL:0000598,CL:0000679,horizontal pyramidal neuron
+exact,CL:1000449,epithelial cell,CL:0000066;CL:0002518,CL:0000066,epithelial cell of nephron
+defaulted,CL:4301584,cell,CL:4300354,CL:0000000,CB Granule Glut_1 cerebellar granule cell (Mmus)
+defaulted,CL:0002661,cell,CL:0002662,CL:0000000,luminal cell of lactiferous terminal ductal lobular unit
+miss,CL:1000381,epithelial cell,CL:0002070;CL:3000004,CL:0000066,type 1 vestibular sensory cell of epithelium of crista of ampulla of semicircular duct of membranous labyrinth
+ancestor,CL:0002062,epithelial cell,CL:0000076;CL:0000322,CL:0000066,pulmonary alveolar type 1 cell
+defaulted,CL:0005002,cell,CL:0000255;CL:0011026,CL:0000000,xanthoblast
+ancestor,CL:0009069,T cell,CL:0000893,CL:0000084,CD8aa(II) thymocyte
+ancestor,CL:2000091,endothelial cell,CL:0009095;CL:2000008,CL:0000115,endometrial microvascular endothelial cell
+ancestor,CL:2000013,fibroblast,CL:0002620,CL:0000057,fibroblast of skin of abdomen
+defaulted,CL:4030003,cell,CL:4030001,CL:0000000,interstitial cell of thymus
+exact,CL:4052050,epithelial cell,CL:0000066;CL:0002149,CL:0000066,luminal epithelial cell of endometrium
+ancestor,CL:0002404,T cell,CL:0000893,CL:0000084,fetal thymocyte
+defaulted,CL:0000345,cell,CL:0000255;CL:0008019,CL:0000000,dental papilla cell
+defaulted,CL:0002268,cell,CL:0000164;CL:0002269,CL:0000000,P/D1 enteroendocrine cell
+ancestor,CL:4307037,astrocyte,CL:4301590,CL:0000127,Astro-NT NN_2 Gm30524 astrocyte (Mmus)
+defaulted,CL:0000486,cell,CL:0000227;CL:0000519;CL:0002520,CL:0000000,garland cell
+defaulted,CL:0009044,cell,CL:0000542,CL:0000000,lymphocyte of small intestine lamina propria
+ancestor,CL:1000435,epithelial cell,CL:0000068;CL:0000072,CL:0000066,epithelial cell of lacrimal drainage system
+ancestor,CL:1001575,epithelial cell,CL:0000076;CL:0002535,CL:0000066,uterine cervix squamous cell
+ancestor,CL:0002313,epithelial cell,CL:0000150;CL:0002159,CL:0000066,endocrine-paracrine cell of prostate gland
+exact,CL:0000798,T cell,CL:0000084,CL:0000084,gamma-delta T cell
+miss,CL:0001017,T cell,CL:0000841;CL:0001014,CL:0000084,mature CD1a-positive Langerhans cell
+exact,CL:0000068,epithelial cell,CL:0000066,CL:0000066,duct epithelial cell
+exact,CL:4033063,trophoblast cell,CL:0000351,CL:0000351,endovascular extravillous trophoblast cell
+miss,CL:0002045,T cell,CL:0000826,CL:0000084,fraction A pre-pro B cell
+exact,CL:4030024,epithelial cell,CL:0000066,CL:0000066,hillock cell
+ancestor,CL:0000925,T cell,CL:0000921;CL:0000923,CL:0000084,activated CD4-positive type I NK T cell
+defaulted,CL:0002465,cell,CL:0000990,CL:0000000,CD11b-positive dendritic cell
+defaulted,CL:4052058,cell,CL:0000242;CL:0000362,CL:0000000,Merkel cell of epidermis
+defaulted,CL:0000716,cell,CL:0000392;CL:0000735,CL:0000000,lymph gland crystal cell
+ancestor,CL:4307132,macrophage,CL:0000129,CL:0000235,microglial cell (Mmus)
+defaulted,CL:0003008,cell,CL:0000740,CL:0000000,G5 retinal ganglion cell
+ancestor,CL:4079027,neuron,CL:1001451,CL:0000540,sacral dorsal root ganglion substance P neuron
+ancestor,CL:4310111,dopaminergic neuron,CL:4042025,CL:0000700,SN-VTR GAD2 Dopa dopaminergic neuron (Primate)
+ancestor,CL:4052006,epithelial cell,CL:0002563;CL:0011026,CL:0000066,intestinal enteroendocrine progenitor
+defaulted,CL:0000614,cell,CL:0000768;CL:0002087,CL:0000000,basophilic myelocyte
+ancestor,CL:4028001,endothelial cell,CL:0002144;CL:2000016,CL:0000115,pulmonary capillary endothelial cell
+ancestor,CL:0000918,T cell,CL:0000908;CL:0001052,CL:0000084,Tc2 cell
+defaulted,CL:0000189,cell,CL:0008046,CL:0000000,slow muscle cell
+ancestor,CL:4079032,neuron,CL:1001451,CL:0000540,thoracic dorsal root ganglion Nav1.9 neuron
+ancestor,CL:1000357,epithelial cell,CL:0000682;CL:1000353,CL:0000066,microfold cell of epithelium proper of jejunum
+ancestor,CL:1001592,epithelial cell,CL:0000150;CL:1000415,CL:0000066,gallbladder glandular cell
+ancestor,CL:0020014,neuron,CL:0000210;CL:0000740,CL:0000540,intrinsically photosensitive retinal ganglion cell
+exact,CL:1000606,neuron,CL:0000540;CL:1000500;CL:2000032,CL:0000540,kidney nerve cell
+defaulted,CL:0000310,cell,CL:0000308,CL:0000000,iron accumulating cell
+exact,CL:0000523,trophoblast cell,CL:0000351,CL:0000351,mononuclear cytotrophoblast cell
+ancestor,CL:1001596,epithelial cell,CL:0000150;CL:0000152;CL:0002251;CL:0009005,CL:0000066,salivary gland glandular cell
+ancestor,CL:0000791,T cell,CL:0000789;CL:0002419,CL:0000084,mature alpha-beta T cell
+ancestor,CL:1000703,epithelial cell,CL:0000731;CL:0002518;CL:1000505,CL:0000066,kidney pelvis urothelial cell
+defaulted,CL:1000366,cell,CL:1000480,CL:0000000,transitional myocyte of middle internodal tract
+defaulted,CL:0000504,cell,CL:0000164;CL:0002274,CL:0000000,enterochromaffin-like cell
+exact,CL:4304384,glutamatergic neuron,CL:0000679;CL:0011111,CL:0000679,hypothalamic gonadotropin-releasing hormone neuron (Mmus)
+defaulted,CL:0000383,cell,CL:0000134;CL:0011026,CL:0000000,nephrogenic mesenchyme stem cell
+defaulted,CL:0002458,cell,CL:0001006;CL:0002461,CL:0000000,langerin-positive dermal dendritic cell
+defaulted,CL:0000489,cell,CL:0000210,CL:0000000,scotopic photoreceptor cell
+defaulted,CL:0000152,cell,CL:0000151;CL:0000255,CL:0000000,exocrine cell
+ancestor,CL:1000698,macrophage,CL:0000864;CL:1000500,CL:0000235,kidney resident macrophage
+ancestor,CL:0000818,B cell,CL:0001201,CL:0000236,transitional stage B cell
+defaulted,CL:0000776,cell,CL:0000775,CL:0000000,immature neutrophil
+ancestor,CL:4033008,endothelial cell,CL:0002543,CL:0000115,vein endothelial cell of respiratory system
+defaulted,CL:0000521,cell,CL:0000000;CL:0000255,CL:0000000,fungal cell
+miss,CL:0009014,epithelial cell,CL:0000542,CL:0000066,Peyer's patch lymphocyte
+ancestor,CL:0000884,macrophage,CL:0000867,CL:0000235,mucosa-associated lymphoid tissue macrophage
+miss,CL:4033045,T cell,CL:0000451,CL:0000084,lung migratory dendritic cell
+ancestor,CL:4072006,dopaminergic neuron,CL:0008060;CL:4042025,CL:0000700,A9 dopaminergic neuron
+defaulted,CL:0000256,cell,CL:0000325,CL:0000000,uric acid accumulating cell
+miss,CL:4023065,interneuron,CL:0000617;CL:0010012,CL:0000099,meis2 expressing cortical GABAergic cell
+miss,CL:0000095,neuron,CL:0002319,CL:0000540,neuron associated cell
+ancestor,CL:0020055,neuron,CL:0020046,CL:0000540,calretinin-positive intrinsic primary afferent neuron of myenteric plexus
+defaulted,CL:0003006,cell,CL:0003005;CL:4023032,CL:0000000,G4-ON retinal ganglion cell
+exact,CL:1001213,endothelial cell,CL:0000115;CL:1000413;CL:1001135,CL:0000115,arcuate artery endothelial cell
+defaulted,CL:0000425,cell,CL:0000658,CL:0000000,pore cell
+defaulted,CL:0001658,cell,CL:0000149;CL:0000341,CL:0000000,visual pigment cell (sensu Nematoda and Protostomia)
+ancestor,CL:0000926,T cell,CL:0000921;CL:0000923,CL:0000084,CD4-positive type I NK T cell secreting interferon-gamma
+defaulted,CL:0000301,cell,CL:0000670,CL:0000000,pole cell
+defaulted,CL:2000036,cell,CL:0000852,CL:0000000,anterior lateral line neuromast supporting cell
+defaulted,CL:0002170,cell,CL:0000237;CL:0002336,CL:0000000,keratinized cell of the oral mucosa
+defaulted,CL:0002375,cell,CL:0000255;CL:0011026,CL:0000000,Schwann cell precursor
+defaulted,CL:0003050,cell,CL:0000573,CL:0000000,S cone cell
+ancestor,CL:0000757,neuron,CL:0000752,CL:0000540,type 5 cone bipolar cell (sensu Mus)
+ancestor,CL:4079008,neuron,CL:1001451,CL:0000540,cervical dorsal root ganglion TRPV1 neuron
+exact,CL:0009114,B cell,CL:0000236,CL:0000236,monocytoid B cell
+defaulted,CL:0008019,cell,CL:0000219,CL:0000000,mesenchymal cell
+ancestor,CL:0000164,epithelial cell,CL:0000163;CL:1100001,CL:0000066,enteroendocrine cell
+ancestor,CL:1000488,epithelial cell,CL:0000069,CL:0000066,cholangiocyte
+defaulted,CL:0000423,cell,CL:0000422,CL:0000000,tip cell
+ancestor,CL:4307012,interneuron,CL:4042035;CL:4300028,CL:0000099,CBX MLI Cdh22 Gaba molecular layer interneuron (Mmus)
+ancestor,CL:4079024,neuron,CL:1001451,CL:0000540,sacral dorsal root ganglion peripherin neuron
+defaulted,CL:0000837,cell,CL:0000255;CL:0000988;CL:0008001,CL:0000000,hematopoietic multipotent progenitor cell
+ancestor,CL:4307035,astrocyte,CL:4301590,CL:0000127,Astro-NT NN_2 Sez6l astrocyte (Mmus)
+ancestor,CL:0002409,T cell,CL:0002405,CL:0000084,mature Vgamma2-negative thymocyte
+ancestor,CL:4301571,neuron,CL:4300348,CL:0000540,DCO Il22 Gly-Gaba_1 cerebellar neuron (Mmus)
+ancestor,CL:0008032,interneuron,CL:0010011,CL:0000099,rosehip neuron
+ancestor,CL:1000340,epithelial cell,CL:1000339,CL:0000066,enterocyte of epithelium proper of duodenum
+ancestor,CL:0000710,epithelial cell,CL:0000075;CL:0002077,CL:0000066,neurecto-epithelial cell
+ancestor,CL:4300101,neuron,CL:4023026,CL:0000540,STR D1 Gaba direct pathway medium spiny neuron (Mmus)
+exact,CL:4023038,glutamatergic neuron,CL:0000679;CL:0010012,CL:0000679,L6b glutamatergic cortical neuron
+defaulted,CL:0000854,cell,CL:0000133,CL:0000000,interneuromast cell
+miss,CL:4042019,neuron,CL:0002085;CL:1100001,CL:0000540,beta1-tanycyte
+ancestor,CL:4052029,fibroblast,CL:0002553,CL:0000057,subpleural fibroblast
+ancestor,CL:4023052,neuron,CL:0008049,CL:0000540,Betz upper motor neuron
+defaulted,CL:0000680,cell,CL:0000255;CL:0011026;CL:0011115,CL:0000000,muscle precursor cell
+defaulted,CL:0002343,cell,CL:0000349;CL:0000824;CL:4052028,CL:0000000,"decidual natural killer cell, human"
+ancestor,CL:0019022,endothelial cell,CL:1000398,CL:0000115,endothelial cell of pericentral hepatic sinusoid
+ancestor,CL:4310128,interneuron,CL:0020007,CL:0000099,STRd Cholinergic GABA dorso-striatal cholinergic-GABAergic neuron (Primate)
+defaulted,CL:0000494,cell,CL:0000210,CL:0000000,UV sensitive photoreceptor cell
+defaulted,CL:1000489,cell,CL:0000432;CL:2000051,CL:0000000,reticular cell of splenic cord
+defaulted,CL:0004220,cell,CL:0004251,CL:0000000,flag amacrine cell
+exact,CL:4023008,glutamatergic neuron,CL:0000679;CL:0010012,CL:0000679,intratelencephalic-projecting glutamatergic cortical neuron
+defaulted,CL:0000056,cell,CL:0000680,CL:0000000,myoblast
+ancestor,CL:0008037,neuron,CL:0008039,CL:0000540,gamma motor neuron
+defaulted,CL:0002622,cell,CL:0000499,CL:0000000,prostate stromal cell
+ancestor,CL:1000338,epithelial cell,CL:1000334,CL:0000066,enterocyte of epithelium of crypt of Lieberkuhn of small intestine
+defaulted,CL:0010020,cell,CL:0000125;CL:0002494,CL:0000000,cardiac glial cell
+defaulted,CL:0002214,cell,CL:0002210;CL:0002212,CL:0000000,type IIa muscle cell
+defaulted,CL:2000045,cell,CL:1000458,CL:0000000,foreskin melanocyte
+ancestor,CL:0002403,T cell,CL:0002404,CL:0000084,mature Vgamma2-positive fetal thymocyte
+miss,CL:0002533,T cell,CL:0000840;CL:0002532,CL:0000084,immature CD16-positive myeloid dendritic cell
+defaulted,CL:2000080,cell,CL:0002570,CL:0000000,mesenchymal stem cell of abdominal adipose tissue
+ancestor,CL:0001052,T cell,CL:0000625,CL:0000084,"CD8-positive, CXCR3-negative, CCR6-negative, alpha-beta T cell"
+defaulted,CL:0000645,cell,CL:0012000;CL:2000004,CL:0000000,pituicyte
+ancestor,CL:1000302,fibroblast,CL:0002551,CL:0000057,fibroblast of papillary layer of dermis
+ancestor,CL:4023118,interneuron,CL:0010011,CL:0000099,L5/6 non-Martinotti sst GABAergic interneuron (Mmus)
+defaulted,CL:0000051,cell,CL:0002032;CL:0011026,CL:0000000,common lymphoid progenitor
+defaulted,CL:0007005,cell,CL:0000255,CL:0000000,notochordal cell
+ancestor,CL:4033104,neuron,CL:0011103,CL:0000540,superior cervical ganglion TH/NPY neuron
+ancestor,CL:0002315,epithelial cell,CL:0001035;CL:0005014,CL:0000066,supporting cell of cochlea
+ancestor,CL:4033094,B cell,CL:0000787,CL:0000236,age-associated B cell
+defaulted,CL:0000192,cell,CL:0008000;CL:0008007,CL:0000000,smooth muscle cell
+ancestor,CL:4079005,neuron,CL:1001451,CL:0000540,cervical dorsal root ganglion Piezo2 neuron
+defaulted,CL:0002086,cell,CL:0000746,CL:0000000,specialized cardiac myocyte
+miss,CL:0000566,endothelial cell,CL:0000134;CL:0011026,CL:0000115,angioblastic mesenchymal cell
+miss,CL:0001005,T cell,CL:0000841;CL:0001000,CL:0000084,mature CD8-alpha-positive CD11b-negative dendritic cell
+ancestor,CL:4040003,epithelial cell,CL:0000322,CL:0000066,fetal pre-type II pulmonary alveolar epithelial cell
+defaulted,CL:0009025,cell,CL:0000077;CL:0008041,CL:0000000,mesothelial cell of colon
+defaulted,CL:0002383,cell,CL:0002381,CL:0000000,conidium of conidiophore head
+ancestor,CL:1000838,epithelial cell,CL:0002306;CL:0002307,CL:0000066,kidney proximal convoluted tubule epithelial cell
+ancestor,CL:0002115,B cell,CL:0002114,CL:0000236,B220-positive CD38-positive unswitched memory B cell
+ancestor,CL:4023041,glutamatergic neuron,CL:4023009;CL:4023111,CL:0000679,L5 extratelencephalic projecting glutamatergic cortical neuron
+ancestor,CL:0002412,T cell,CL:0002405,CL:0000084,"Vgamma1.1-positive, Vdelta6.3-positive thymocyte"
+ancestor,CL:1001590,epithelial cell,CL:0000068;CL:1100001,CL:0000066,epididymis secretory cell
+exact,CL:1001216,endothelial cell,CL:0000115;CL:1000413;CL:1001138,CL:0000115,interlobulary artery endothelial cell
+defaulted,CL:0000556,cell,CL:0000763,CL:0000000,megakaryocyte
+ancestor,CL:4032000,epithelial cell,CL:1000296,CL:0000066,club-like cell of the urethral epithelium
+ancestor,CL:4310122,interneuron,CL:4023017,CL:0000099,STR SST-ADARB2 GABA sst GABAergic interneuron (Primate)
+miss,CL:0002531,T cell,CL:0001010;CL:0002529,CL:0000084,mature CD1a-positive dermal dendritic cell
+ancestor,CL:4033132,neuron,CL:0011103,CL:0000540,celiac ganglion SOM neuron
+ancestor,CL:0002641,epithelial cell,CL:0002657,CL:0000066,epithelial cell of esophageal gland proper
+ancestor,CL:2000052,endothelial cell,CL:0000349;CL:1000413,CL:0000115,umbilical artery endothelial cell
+defaulted,CL:0000338,cell,CL:0000047,CL:0000000,neuroblast (sensu Nematoda and Protostomia)
+exact,CL:0000006,neuron,CL:0000101;CL:0000197;CL:0000540,CL:0000540,neuronal receptor cell
+defaulted,CL:1000479,cell,CL:0002068;CL:1000410,CL:0000000,Purkinje myocyte of atrioventricular node
+ancestor,CL:0000807,T cell,CL:0000893;CL:0002489,CL:0000084,DN3 thymocyte
+ancestor,CL:4028006,fibroblast,CL:0002241;CL:0002553,CL:0000057,alveolar adventitial fibroblast
+defaulted,CL:0002309,cell,CL:0000467;CL:0000639,CL:0000000,corticotroph
+miss,CL:0001002,T cell,CL:0000841;CL:0000998,CL:0000084,mature CD8-alpha-negative CD11b-negative dendritic cell
+ancestor,CL:0000935,T cell,CL:0000797,CL:0000084,"CD4-negative, CD8-negative, alpha-beta intraepithelial T cell"
+exact,CL:1001609,fibroblast,CL:0000057,CL:0000057,muscle fibroblast
+defaulted,CL:0004244,cell,CL:0004253,CL:0000000,WF4 amacrine cell
+defaulted,CL:0002492,cell,CL:0002491,CL:0000000,strial marginal cell
+defaulted,CL:4307114,cell,CL:4301616,CL:0000000,ABC NN_1 Dapl1 arachnoid barrier cell (Mmus)
+ancestor,CL:4023042,glutamatergic neuron,CL:4023013,CL:0000679,L6 corticothalamic-projecting glutamatergic cortical neuron
+miss,CL:1000333,epithelial cell,CL:0000313;CL:0019001;CL:1000272,CL:0000066,serous cell of epithelium of lobular bronchiole
+defaulted,CL:4052033,cell,CL:0002204,CL:0000000,biliary tuft cell
+exact,CL:0000131,endothelial cell,CL:0000115,CL:0000115,gut endothelial cell
+defaulted,CL:0002591,cell,CL:0000359;CL:0019018,CL:0000000,smooth muscle cell of the pulmonary artery
+exact,CL:4030009,epithelial cell,CL:0000066;CL:1000838,CL:0000066,epithelial cell of proximal tubule segment 1
+ancestor,CL:4307098,oligodendrocyte,CL:4301612,CL:0000128,NFOL NN_2 9630013A20Rik newly formed oligodendrocyte (Mmus)
+ancestor,CL:0002657,epithelial cell,CL:0000150;CL:0002252,CL:0000066,glandular cell of esophagus
+ancestor,CL:4042038,neuron,CL:0000533,CL:0000540,rostral primary motorneuron
+ancestor,CL:3000001,macrophage,CL:4033087,CL:0000235,Hofbauer cell
+ancestor,CL:4030039,glutamatergic neuron,CL:4023009,CL:0000679,von Economo neuron
+defaulted,CL:0000196,cell,CL:0008003,CL:0000000,insect flight muscle cell
+exact,CL:0000695,glutamatergic neuron,CL:0000679;CL:0012001,CL:0000679,Cajal-Retzius cell
+defaulted,CL:0004233,cell,CL:0004250;CL:0004252;CL:4030028,CL:0000000,DAPI-3 amacrine cell
+miss,CL:0001202,T cell,CL:0000980,CL:0000084,CD86-positive plasmablast
+ancestor,CL:4030008,epithelial cell,CL:0000653,CL:0000066,pronephric podocyte
+defaulted,CL:0000662,cell,CL:0000468,CL:0000000,neuroglioblast (sensu Nematoda)
+defaulted,CL:0004237,cell,CL:0004252;CL:4030027,CL:0000000,fountain amacrine cell
+defaulted,CL:0019002,cell,CL:0000138,CL:0000000,tracheobronchial chondrocyte
+exact,CL:0009047,macrophage,CL:0000235,CL:0000235,macrophage of medullary sinus of lymph node
+exact,CL:1000305,fibroblast,CL:0000057;CL:0002622,CL:0000057,fibroblast of connective tissue of glandular part of prostate
+defaulted,CL:1000682,cell,CL:1000500;CL:1000504,CL:0000000,kidney medulla interstitial cell
+ancestor,CL:4033161,neuron,CL:0007011,CL:0000540,myenteric ganglion of small intestine nNOS neuron
+miss,CL:0000162,glutamatergic neuron,CL:0000152;CL:0002659,CL:0000679,parietal cell
+ancestor,CL:0009077,epithelial cell,CL:0002364,CL:0000066,subcapsular thymic epithelial cell
+defaulted,CL:0002275,cell,CL:0000696;CL:0008024,CL:0000000,pancreatic PP cell
+exact,CL:0002217,trophoblast cell,CL:0000351,CL:0000351,intermediate trophoblast cell
+defaulted,CL:0008018,cell,CL:0000056,CL:0000000,somatic muscle myoblast
+defaulted,CL:0000210,cell,CL:0000101;CL:0000540;CL:0008028,CL:0000000,photoreceptor cell
+ancestor,CL:0002644,epithelial cell,CL:0002261,CL:0000066,endo-epithelial cell of tympanic part of viscerocranial mucosa
+exact,CL:0000789,T cell,CL:0000084,CL:0000084,alpha-beta T cell
+exact,CL:0020072,glutamatergic neuron,CL:0000679;CL:1001571,CL:0000679,CA1 pyramidal cell
+ancestor,CL:1001588,epithelial cell,CL:0000150;CL:0002658;CL:0011108,CL:0000066,colon glandular cell
+defaulted,CL:0000349,cell,CL:0000000;CL:0000255,CL:0000000,extraembryonic cell
+ancestor,CL:4033038,T cell,CL:0000897,CL:0000084,"lung resident memory CD4-positive, alpha-beta T cell"
+defaulted,CL:0000062,cell,CL:0002320,CL:0000000,osteoblast
+defaulted,CL:0002589,cell,CL:0000359;CL:0019018,CL:0000000,smooth muscle cell of the brachiocephalic vasculature
+exact,CL:4023062,neuron,CL:0000540;CL:0002608,CL:0000540,dentate gyrus neuron
+ancestor,CL:0002654,epithelial cell,CL:0002252,CL:0000066,epithelial cell of stratum corneum of esophageal epithelium
+defaulted,CL:4310104,cell,CL:4030053,CL:0000000,OT D1 ICj Islands of Calleja granule cell (Primate)
+ancestor,CL:0000896,T cell,CL:0000624,CL:0000084,"activated CD4-positive, alpha-beta T cell"
+defaulted,CL:0000060,cell,CL:0000710;CL:0002148,CL:0000000,odontoblast
+defaulted,CL:4033005,cell,CL:0000152;CL:0000313;CL:0019001,CL:0000000,serous secreting cell of bronchus submucosal gland
+ancestor,CL:4033158,neuron,CL:0000101,CL:0000540,geniculate ganglion SPARCL1 neuron
+ancestor,CL:4023050,glutamatergic neuron,CL:2000049;CL:4023095;CL:4030065,CL:0000679,L6 intratelencephalic projecting glutamatergic neuron of the primary motor cortex
+defaulted,CL:0019018,cell,CL:0000192;CL:0000359,CL:0000000,blood vessel smooth muscle cell
+ancestor,CL:1000909,epithelial cell,CL:1000494,CL:0000066,kidney loop of Henle epithelial cell
+exact,CL:0000410,interneuron,CL:0000099,CL:0000099,CNS long range interneuron
+ancestor,CL:0000799,T cell,CL:0000798;CL:0002420,CL:0000084,immature gamma-delta T cell
+ancestor,CL:0000501,epithelial cell,CL:0000174;CL:0002174;CL:1100001,CL:0000066,granulosa cell
+defaulted,CL:1000719,cell,CL:0005010;CL:1000547;CL:1001432,CL:0000000,kidney inner medulla collecting duct intercalated cell
+defaulted,CL:2000046,cell,CL:0000746,CL:0000000,ventricular cardiac muscle cell
+defaulted,CL:0000834,cell,CL:0000763;CL:0002191,CL:0000000,neutrophil progenitor cell
+defaulted,CL:0002175,cell,CL:0002174,CL:0000000,primary follicular cell of ovary
+defaulted,CL:0002082,cell,CL:0000336;CL:0000454,CL:0000000,type II cell of adrenal medulla
+defaulted,CL:4023108,cell,CL:0011003,CL:0000000,oxytocin-secreting magnocellular cell
+defaulted,CL:0000765,cell,CL:0000764;CL:0011026,CL:0000000,erythroblast
+exact,CL:0000420,epithelial cell,CL:0000066;CL:4052002,CL:0000066,syncytial epithelial cell
+ancestor,CL:0009000,neuron,CL:0000101;CL:3000004,CL:0000540,sensory neuron of spinal nerve
+defaulted,CL:0002567,cell,CL:0000148,CL:0000000,light melanocyte
+exact,CL:1001509,neuron,CL:0000151;CL:0000540,CL:0000540,glycinergic neuron
+defaulted,CL:0000341,cell,CL:0000147,CL:0000000,pigment cell (sensu Nematoda and Protostomia)
+ancestor,CL:0000091,macrophage,CL:0000864,CL:0000235,Kupffer cell
+ancestor,CL:0002060,macrophage,CL:0000864,CL:0000235,melanophage
+ancestor,CL:0005012,epithelial cell,CL:0000067;CL:0000075,CL:0000066,multiciliated epithelial cell
+defaulted,CL:0000488,cell,CL:0000210,CL:0000000,visible light photoreceptor cell
+defaulted,CL:0001075,cell,CL:0001072,CL:0000000,"KLRG1-positive innate lymphoid cell, human"
+miss,CL:0000560,T cell,CL:0000096,CL:0000084,band form neutrophil
+ancestor,CL:2000064,epithelial cell,CL:0002078,CL:0000066,ovarian surface epithelial cell
+defaulted,CL:0011114,cell,CL:0000096;CL:1001610,CL:0000000,segmented neutrophil of bone marrow
+ancestor,CL:4052032,T cell,CL:0000909,CL:0000084,granzyme H-associated CD8 T cell
+exact,CL:2000028,glutamatergic neuron,CL:0000679;CL:1001611,CL:0000679,cerebellum glutamatergic neuron
+defaulted,CL:0002362,cell,CL:0000031;CL:0002319,CL:0000000,cerebellar granule cell precursor
+miss,CL:0000485,T cell,CL:0000097,CL:0000084,mucosal type mast cell
+defaulted,CL:0000649,cell,CL:4052060;CL:4052061,CL:0000000,spinous cell of epidermis
+exact,CL:0002076,epithelial cell,CL:0000066,CL:0000066,endo-epithelial cell
+ancestor,CL:0000078,epithelial cell,CL:0000076;CL:0000362,CL:0000066,peridermal cell
+defaulted,CL:0000176,cell,CL:0000151;CL:0000174,CL:0000000,ecdysteroid secreting cell

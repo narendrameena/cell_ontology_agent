@@ -1,0 +1,501 @@
+is_existing,kind,query,score
+1,cell_type,femoral osteoblast,1.0
+0,cell_type,obsolete microspore,0.0
+1,cell_type,flat bistratified amacrine cell,1.0
+1,cell_type,epithelial cell of Malassez,1.0
+1,cell_type,conidium,1.0
+1,cell_type,thoracic ganglion TH neuron,1.0
+1,cell_type,specified double negative thymocyte (Homo sapiens),1.0
+0,cell_type,obsolete cell by lineage,0.0
+1,cell_type,interlobulary artery smooth muscle cell,1.0
+1,cell_type,"effector memory CD4-positive, alpha-beta T cell",1.0
+1,cell_type,unipolar neuron,1.0
+1,cell_type,"CD14-low, CD16-positive monocyte",1.0
+1,cell_type,gamma motor neuron,1.0
+1,cell_type,aortic endothelial cell,1.0
+1,cell_type,mature eosinophil,1.0
+1,cell_type,MFOL NN_3 Il23a myelin-forming oligodendrocyte (Mmus),1.0
+1,cell_type,cartwheel heterochromatin,1.0
+0,cell_type,obsolete prestalk 0 cell,0.0
+0,cell_type,obsolete L5/6 near-projecting glutamatergic neuron of the primary motor cortex (Homo sapiens),0.0
+1,cell_type,pigment cell (sensu Nematoda and Protostomia),1.0
+0,cell_type,obsolete L5 intratelencephalic projecting glutamatergic neuron of the primary motor cortex (Homo sapiens),0.0
+1,cell_type,superior cervical ganglion VIP neuron,1.0
+1,cell_type,canopy lamp5 GABAergic cortical interneuron (Mmus),1.0
+1,cell_type,outer root sheath cell,1.0
+1,cell_type,invertebrate nurse cell,1.0
+1,cell_type,immature T cell,1.0
+1,cell_type,pancreatic A cell,1.0
+1,cell_type,scotopic photoreceptor cell,1.0
+1,cell_type,interlobulary artery endothelial cell,1.0
+1,cell_type,male germ cell,1.0
+1,cell_type,"immature NK T cell stage IV, mouse",1.0
+0,cell_type,obsolete microvascular endothelium blood vessel endothelial cell,0.0
+1,cell_type,choroidal melanocyte,1.0
+1,cell_type,stromal cell of ovarian medulla,1.0
+1,cell_type,lung migratory dendritic cell,1.0
+1,cell_type,IgE plasmablast,1.0
+1,cell_type,warmth sensing thermoreceptor cell,1.0
+1,cell_type,pterygopalatine ganglion VIP neuron,1.0
+1,cell_type,microfold cell of epithelium of small intestine,1.0
+1,cell_type,B220-positive CD38-positive unswitched memory B cell,1.0
+1,cell_type,"CD8-alpha alpha positive, gamma-delta intraepithelial T cell",1.0
+1,cell_type,follicle stem cell (sensu Arthropoda),1.0
+1,cell_type,M9-ON retinal ganglion cell,1.0
+1,cell_type,Stiftchenzellen,1.0
+1,cell_type,endothelial cell of arteriole of lymph node,1.0
+1,cell_type,type I cell of carotid body,1.0
+1,cell_type,interrenal norepinephrine type cell,1.0
+1,cell_type,choroid plexus epithelial cell,1.0
+0,cell_type,type-1 epithelial cell of thymus,0.0
+1,cell_type,endothelial stalk cell,1.0
+1,cell_type,dermis microvascular lymphatic vessel endothelial cell,1.0
+0,cell_type,obsolete L2/3 intratelencephalic projecting glutamatergic neuron of the primary motor cortex (Callithrix jacchus),0.0
+1,cell_type,M13 retinal ganglion cell,1.0
+1,cell_type,fusion competent myoblast,1.0
+1,cell_type,WF2 amacrine cell,1.0
+0,cell_type,"CD24-positive, CD-133-positive, vimentin-positive proximal tubular cell",0.0
+1,cell_type,supporting cell (sensu Nematoda),1.0
+1,cell_type,"Axl+ dendritic cell, human",1.0
+1,cell_type,basal cell of prostatic acinus,1.0
+0,cell_type,obsolete sieve tube member,0.0
+1,cell_type,splenic tingible body macrophage,1.0
+1,cell_type,plasmacytoid dendritic cell,1.0
+1,cell_type,broad diffuse amacrine cell,1.0
+0,cell_type,obsolete somatic cell,0.0
+1,cell_type,granzyme H-associated CD8 T cell,1.0
+1,cell_type,mature CD16-positive myeloid dendritic cell,1.0
+1,cell_type,G10 retinal ganglion cell,1.0
+1,cell_type,L4 intratelencephalic projecting glutamatergic neuron (Homo sapiens),1.0
+1,cell_type,vacuolated fetal-type enterocyte,1.0
+1,cell_type,amnion mesenchymal stem cell,1.0
+1,cell_type,onychocyte,1.0
+1,cell_type,CD4-positive type I NK T cell,1.0
+1,cell_type,nail bed keratinocyte,1.0
+1,cell_type,mature natural killer cell,1.0
+1,cell_type,retinal ganglion cell A2,1.0
+1,cell_type,slow muscle myoblast,1.0
+1,cell_type,epithelial cell of lacrimal canaliculus,1.0
+1,cell_type,matrix D1 medium spiny neuron,1.0
+1,cell_type,taste receptor cell,1.0
+1,cell_type,CD16-positive myeloid dendritic cell,1.0
+1,cell_type,chondrocyte,1.0
+1,cell_type,plasmablast,1.0
+1,cell_type,colon glandular cell,1.0
+1,cell_type,blastemal cell,1.0
+1,cell_type,multinucleated phagocyte,1.0
+1,cell_type,"CD4-intermediate, CD8-positive double-positive thymocyte",1.0
+1,cell_type,brush border epithelial cell,1.0
+1,cell_type,middle cervical ganglion TH/NPY neuron,1.0
+1,cell_type,secretory epithelial cell,1.0
+1,cell_type,mesothelial fibroblast of the leptomeninx,1.0
+0,cell_type,obsolete secondary pigment cell,0.0
+1,cell_type,IgA short lived plasma cell,1.0
+1,cell_type,kidney distal convoluted tubule epithelial cell,1.0
+1,cell_type,early promyelocyte,1.0
+1,cell_type,ureter smooth muscle cell,1.0
+1,cell_type,epidermal cell,1.0
+1,cell_type,renal medullary fibroblast,1.0
+1,cell_type,intermediate mesodermal cell,1.0
+1,cell_type,CD38-positive naive B cell,1.0
+1,cell_type,molecular layer interneuron,1.0
+1,cell_type,arthroconidium,1.0
+1,cell_type,mature microglial cell,1.0
+1,cell_type,notochordal sheath cell,1.0
+1,cell_type,single nucleate cell,1.0
+1,cell_type,lateral ventricle neuron,1.0
+1,cell_type,koniocellular cell,1.0
+1,cell_type,olfactory ensheathing cell,1.0
+1,cell_type,intratelencephalic-projecting glutamatergic cortical neuron,1.0
+1,cell_type,brain pericyte,1.0
+1,cell_type,entorhinal cortex layer II stellate cell,1.0
+1,cell_type,"cycling CD4-positive, alpha-beta T cell",1.0
+1,cell_type,retinal ganglion cell D2,1.0
+1,cell_type,melanocyte of eyelid,1.0
+1,cell_type,pancreatic epsilon cell,1.0
+1,cell_type,plasma cell of medullary sinus of lymph node,1.0
+1,cell_type,ILC1,1.0
+1,cell_type,kidney connecting tubule intercalated cell,1.0
+1,cell_type,sensory neuron of spinal nerve,1.0
+1,cell_type,"central memory CD4-positive, alpha-beta T cell",1.0
+1,cell_type,embryonic cell (metazoa),1.0
+1,cell_type,Kit-positive megakaryocyte progenitor cell,1.0
+1,cell_type,luteal cell,1.0
+1,cell_type,hepatocyte,1.0
+1,cell_type,ectodermal cell,1.0
+1,cell_type,littoral cell of liver,1.0
+1,cell_type,growth hormone releasing hormone secreting cell,1.0
+1,cell_type,B220-low CD38-positive IgG-negative class switched memory B cell,1.0
+1,cell_type,pericardium fibroblast,1.0
+1,cell_type,neural crest derived neuron,1.0
+1,cell_type,small luteal cell,1.0
+0,cell_type,obsolete meristemoid,0.0
+1,cell_type,granzyme K-associated CD8 T cell,1.0
+1,cell_type,G11-ON retinal ganglion cell,1.0
+0,cell_type,obsolete caudal ganglionic eminence derived GABAergic cortical interneuron,0.0
+1,cell_type,activated type II NK T cell,1.0
+1,cell_type,kidney papillary duct intercalated cell,1.0
+1,cell_type,light melanocyte,1.0
+1,cell_type,smooth muscle cell of sigmoid colon,1.0
+0,cell_type,CD4-positive type I NK T cell secreting interleukin-4,0.0
+1,cell_type,inner phalangeal cell,1.0
+1,cell_type,"double-positive, alpha-beta thymocyte",1.0
+1,cell_type,undifferentiated cell of bronchus epithelium,1.0
+1,cell_type,kidney inner medulla collecting duct intercalated cell,1.0
+1,cell_type,imaginal disc cell,1.0
+1,cell_type,kidney pelvis urothelial cell,1.0
+1,cell_type,sphincter associated smooth muscle cell,1.0
+1,cell_type,spinous cell,1.0
+1,cell_type,peripheral blood stem cell,1.0
+1,cell_type,endothelial cell of sinusoid,1.0
+1,cell_type,fibrochondrocyte progenitor cell,1.0
+1,cell_type,branchiomotor neuron,1.0
+1,cell_type,type EC1 enteroendocrine cell,1.0
+1,cell_type,group 3 innate lymphoid cell,1.0
+1,cell_type,granule cell,1.0
+1,cell_type,cranial motor neuron,1.0
+1,cell_type,myoepithelial cell,1.0
+1,cell_type,alpha-beta intraepithelial T cell,1.0
+1,cell_type,mammary stem cell,1.0
+1,cell_type,mesenchyme condensation cell,1.0
+1,cell_type,choroid plexus macrophage,1.0
+1,cell_type,hillock cell of prostatic urethral epithelium,1.0
+1,cell_type,fetal derived definitive erythrocyte,1.0
+1,cell_type,naive B cell,1.0
+1,cell_type,Astro-TE NN_4 astrocyte (Mmus),1.0
+1,cell_type,vestibular dark cell,1.0
+1,cell_type,CD14-positive monocyte,1.0
+1,cell_type,L6b glutamatergic cortical neuron,1.0
+1,cell_type,small bistratified retinal ganglion cell,1.0
+1,cell_type,cycling pulmonary alveolar type 2 cell,1.0
+1,cell_type,globose cell of olfactory epithelium,1.0
+1,cell_type,intermediate trophoblast cell,1.0
+1,cell_type,monocyte-derived dendritic cell,1.0
+1,cell_type,STRv D2 MSN nucleus accumbens shell and olfactory tubercle D2 medium spiny neuron (Primate),1.0
+1,cell_type,interrenal epinephrin secreting cell,1.0
+1,cell_type,enterocyte of appendix,1.0
+1,cell_type,"CD27-high, CD11b-low natural killer cell, mouse",1.0
+1,cell_type,umbrella cell of urothelium,1.0
+1,cell_type,immature CD8-alpha-positive CD11b-negative dendritic cell,1.0
+1,cell_type,myofibroblast cell,1.0
+1,cell_type,granulocytopoietic cell,1.0
+1,cell_type,lung goblet cell,1.0
+0,cell_type,obsolete IgG B cell,0.0
+1,cell_type,hematopoietic stem cell,1.0
+1,cell_type,tuft cell of small intestine,1.0
+1,cell_type,invaginating midget bipolar cell,1.0
+1,cell_type,retinal ganglion cell B2,1.0
+1,cell_type,mechanoreceptor cell,1.0
+1,cell_type,hair follicle dermal stem cell,1.0
+1,cell_type,epithelial cell of lower respiratory tract,1.0
+1,cell_type,medullary thymic epithelial cell type 3,1.0
+1,cell_type,adaxial cell,1.0
+1,cell_type,360 nm-cone,1.0
+1,cell_type,red sensitive photoreceptor cell,1.0
+1,cell_type,immature dermal dendritic cell,1.0
+0,cell_type,obsolete cell by ploidy,0.0
+1,cell_type,Astro-NT NN_2 astrocyte (Mmus),1.0
+1,cell_type,subpial interlaminar astrocyte,1.0
+1,cell_type,basal cell,1.0
+1,cell_type,amniotic stem cell,1.0
+1,cell_type,"activated CD4-positive, alpha-beta T cell",1.0
+1,cell_type,type 3a cone bipolar cell,1.0
+1,cell_type,glomerular capillary endothelial cell,1.0
+1,cell_type,pulmonary alveolar epithelial cell,1.0
+1,cell_type,thoracic dorsal root ganglion substance P neuron,1.0
+1,cell_type,G8 retinal ganglion cell,1.0
+1,cell_type,myocyte of middle internodal tract,1.0
+1,cell_type,geniculate ganglion SPARCL1 neuron,1.0
+1,cell_type,newly formed oligodendrocyte (Mmus),1.0
+1,cell_type,fibroblast of villous mesenchyme,1.0
+1,cell_type,enteroendocrine cell,1.0
+1,cell_type,type 5 cone bipolar cell (sensu Mus),1.0
+1,cell_type,"CD4-positive, CD25-positive, CCR4-positive, alpha-beta regulatory T cell",1.0
+0,cell_type,obsolete epidermal initial,0.0
+1,cell_type,alpha2-tanycyte (Mmus),1.0
+1,cell_type,meso-epithelial cell,1.0
+1,cell_type,conidium of conidiophore head,1.0
+1,cell_type,primitive cardiac myocyte,1.0
+1,cell_type,M12 retinal ganglion cell,1.0
+1,cell_type,brown adipocyte,1.0
+1,cell_type,smooth muscle fiber of ascending colon,1.0
+1,cell_type,CD38-positive IgG memory B cell,1.0
+1,cell_type,kidney outer medulla interstitial cell,1.0
+1,cell_type,oRGC5,1.0
+1,cell_type,adventitial fibroblast,1.0
+1,cell_type,marginal zone B cell of spleen,1.0
+1,cell_type,D1/D2-hybrid medium spiny neuron,1.0
+1,cell_type,late promyelocyte,1.0
+1,cell_type,stomach smooth muscle outer longitudinal layer cell,1.0
+1,cell_type,H2 horizontal cell,1.0
+1,cell_type,mesothelial cell of epicardium,1.0
+1,cell_type,kidney interstitial fibrocyte,1.0
+1,cell_type,micropylar cell,1.0
+1,cell_type,prehypertrophic chondrocyte,1.0
+1,cell_type,parathyroid glandular cell,1.0
+1,cell_type,"CD34-negative, GlyA-negative proerythroblast",1.0
+1,cell_type,CD38-high pre-BCR positive cell,1.0
+1,cell_type,IgM memory B cell,1.0
+1,cell_type,branched duct epithelial cell,1.0
+1,cell_type,follicular epithelial cell,1.0
+1,cell_type,kidney artery smooth muscle cell,1.0
+1,cell_type,crypt-bottom fibroblast,1.0
+1,cell_type,Islands of Calleja granule cell,1.0
+1,cell_type,diploid cell,1.0
+1,cell_type,heterocyst,1.0
+1,cell_type,cycling B cell,1.0
+1,cell_type,epithelial cell of esophageal cardiac gland,1.0
+1,cell_type,"activated CD4-positive, alpha-beta T cell, human",1.0
+1,cell_type,"CD8-alpha-alpha-positive, alpha-beta intraepithelial T cell",1.0
+1,cell_type,cycling myeloid cell,1.0
+1,cell_type,Ammon's horn basket cell,1.0
+0,anatomy_decoy,CA3 stratum radiatum,0.0
+0,anatomy_decoy,submucosa of cardia of stomach,0.0
+0,anatomy_decoy,spinal artery,0.0
+0,anatomy_decoy,post-embryonic notochord,0.0
+0,anatomy_decoy,bone of dorsum,0.0
+0,anatomy_decoy,dopaminergic cell groups,0.169
+0,anatomy_decoy,otic pit,0.0
+0,anatomy_decoy,lip epithelium,0.242
+0,anatomy_decoy,digestive tract,0.0
+0,anatomy_decoy,tongue,0.633
+0,anatomy_decoy,neck cartilage,0.0
+0,anatomy_decoy,internal anal region,0.0
+0,anatomy_decoy,synchondrosis,0.0
+0,anatomy_decoy,lumbar vertebra cartilage element,0.0
+0,anatomy_decoy,inferior angle of scapula,0.0
+0,anatomy_decoy,joint of auditory ossicle,0.0
+0,anatomy_decoy,cardiac valve,0.817
+0,anatomy_decoy,spinal vein,0.0
+0,anatomy_decoy,meninx of spinal cord,0.0
+0,anatomy_decoy,metathalamus,0.0
+0,anatomy_decoy,intervertebral disk of thoracic vertebra,0.0
+0,anatomy_decoy,nucleus of ventral thalamus,0.0
+0,anatomy_decoy,root of sacral nerve,0.287
+0,anatomy_decoy,lung endothelium,0.26
+0,anatomy_decoy,upper leg nerve,0.0
+0,anatomy_decoy,femur endochondral element,0.0
+0,anatomy_decoy,endoderm,0.587
+0,anatomy_decoy,adventitia of esophagus,0.0
+0,anatomy_decoy,tendon sheath,0.0
+0,anatomy_decoy,skin of abdomen,0.85
+0,anatomy_decoy,midbrain,0.633
+0,anatomy_decoy,neural tube ventricular layer,0.0
+0,anatomy_decoy,urethral meatus,0.0
+0,anatomy_decoy,anterior uvea,0.0
+0,anatomy_decoy,ectoderm of footplate,0.0
+0,anatomy_decoy,papilla of tongue,0.0
+0,anatomy_decoy,epithelium of terminal part of digestive tract,0.0
+0,anatomy_decoy,foregut duodenum mesentery,0.0
+0,anatomy_decoy,small intestine arteriole,0.0
+0,anatomy_decoy,cerebellum vermis lobule,0.0
+0,anatomy_decoy,endocardial endothelium,0.0
+0,anatomy_decoy,hepatic acinus zone 2,0.0
+0,anatomy_decoy,short ciliary nerve,0.0
+0,anatomy_decoy,tracheal mucosa,0.0
+0,anatomy_decoy,hindlimb zeugopod bone,0.0
+0,anatomy_decoy,intra-ocular muscle,0.287
+0,anatomy_decoy,electroreceptor organ,0.0
+0,anatomy_decoy,intervertebral joint,0.0
+0,anatomy_decoy,otic ganglion,0.725
+0,anatomy_decoy,myenteric nerve plexus,0.42
+0,anatomy_decoy,wall of crypt of Lieberkuhn of large intestine,0.21
+0,anatomy_decoy,vas deferens,0.0
+0,anatomy_decoy,embryonic autopod plate,0.0
+0,anatomy_decoy,simple cuboidal epithelium,0.0
+0,anatomy_decoy,cuboidal epithelium,0.26
+0,anatomy_decoy,yolk sac cavity,0.0
+0,anatomy_decoy,anteroventral periventricular nucleus,0.0
+0,anatomy_decoy,striatum-like amygdalar nuclei,0.0
+0,anatomy_decoy,venous valve,0.0
+0,anatomy_decoy,neck,0.542
+0,anatomy_decoy,segmental subdivision of nervous system,0.0
+0,anatomy_decoy,regional part of brain,0.0
+0,anatomy_decoy,mesenchyme from rhombencephalic neural crest,0.0
+0,anatomy_decoy,acinus of parotid gland,0.0
+0,anatomy_decoy,iliac vein endothelium,0.0
+0,anatomy_decoy,third ventricle choroid plexus stroma,0.0
+0,anatomy_decoy,extraembryonic venous system,0.0
+0,anatomy_decoy,serous pericardium,0.0
+0,anatomy_decoy,rotator muscle of the vertebral column,0.0
+0,anatomy_decoy,sympathetic nerve plexus,0.357
+0,anatomy_decoy,mesentery of ileum,0.0
+0,anatomy_decoy,cervical ganglion,0.26
+0,anatomy_decoy,left forelimb,0.0
+0,anatomy_decoy,endoderm of buccopharyngeal membrane,0.0
+0,anatomy_decoy,vestigial structure,0.0
+0,anatomy_decoy,pectoral appendage field,0.0
+0,anatomy_decoy,germinal epithelium of ovary,0.0
+0,anatomy_decoy,mesonephric epithelium,0.0
+0,anatomy_decoy,macula,0.587
+0,anatomy_decoy,ossification center,0.0
+0,anatomy_decoy,caecum,0.0
+0,anatomy_decoy,heterogeneous tissue,0.0
+0,anatomy_decoy,auditory ossicle endochondral element,0.0
+0,anatomy_decoy,mesoderm blood island,0.0
+0,anatomy_decoy,laryngeal cartilage,0.0
+0,anatomy_decoy,muscle layer of infundibulum of uterine tube,0.0
+0,anatomy_decoy,proliferating neuroepithelium,0.0
+0,anatomy_decoy,insect larval sense organ,0.0
+0,anatomy_decoy,left internal carotid artery,0.0
+0,anatomy_decoy,muscle layer of urinary bladder,0.0
+0,anatomy_decoy,extraembryonic membrane mesenchyme,0.0
+0,anatomy_decoy,mediastinum,0.0
+0,anatomy_decoy,alveolar wall,0.0
+0,anatomy_decoy,naris,0.0
+0,anatomy_decoy,trophoblast,0.633
+0,anatomy_decoy,submucosal esophageal gland,0.0
+0,anatomy_decoy,brown adipose tissue,0.237
+0,anatomy_decoy,epithelium of foregut-midgut junction,0.0
+0,anatomy_decoy,ankle connective tissue,0.0
+0,anatomy_decoy,sensory ganglion,0.483
+0,anatomy_decoy,capsule of pancreas,0.0
+0,anatomy_decoy,anterior part of tongue,0.0
+0,anatomy_decoy,kidney,0.633
+0,anatomy_decoy,biliary ductule,0.0
+0,anatomy_decoy,acinus of lacrimal gland,0.0
+0,anatomy_decoy,insect larval head,0.0
+0,anatomy_decoy,metapodium region,0.0
+0,anatomy_decoy,carpometacarpal joint,0.0
+0,anatomy_decoy,cardiac gastric gland,0.63
+0,anatomy_decoy,muscle of larynx,0.0
+0,anatomy_decoy,pineal parenchyma,0.0
+0,anatomy_decoy,endocardium of atrium,0.0
+0,anatomy_decoy,hyoid arch skeleton,0.0
+0,anatomy_decoy,proximal tarsal cartilage,0.0
+0,anatomy_decoy,presumptive endocardium,0.0
+0,anatomy_decoy,entorhinal cortex,0.633
+0,anatomy_decoy,nasolacrimal groove,0.0
+0,anatomy_decoy,mesenchyme of umbilical cord,0.461
+0,anatomy_decoy,foregut epithelium,0.0
+0,anatomy_decoy,midbrain neural tube,0.0
+0,anatomy_decoy,pelvic girdle bone/zone,0.0
+0,anatomy_decoy,organ part,0.0
+0,anatomy_decoy,abdominal aorta artery,0.0
+0,anatomy_decoy,pelvic vein,0.0
+0,anatomy_decoy,left renal pelvis,0.0
+0,anatomy_decoy,sublumbar lymph node,0.0
+0,anatomy_decoy,sublaminar layer S1,0.0
+0,anatomy_decoy,respiratory system arteriole,0.0
+0,anatomy_decoy,axillary nerve trunk,0.0
+0,anatomy_decoy,tongue keratinized epithelium,0.0
+0,anatomy_decoy,dorsal lateral geniculate nucleus,0.0
+0,anatomy_decoy,pelvic girdle skeleton,0.0
+0,anatomy_decoy,ovary sex cord,0.0
+0,anatomy_decoy,3rd arch pharyngeal cleft,0.0
+0,anatomy_decoy,skeletal muscle tissue of diaphragm,0.0
+0,anatomy_decoy,endomeninx,0.0
+0,anatomy_decoy,sphenofrontal suture,0.0
+0,anatomy_decoy,epithelial sac,0.52
+0,anatomy_decoy,cervical region,0.0
+0,anatomy_decoy,middle cervical ganglion,0.78
+0,anatomy_decoy,iris smooth muscle,0.357
+0,anatomy_decoy,forebrain neural plate,0.0
+0,anatomy_decoy,lamina propria of esophagus,0.0
+0,anatomy_decoy,fascia,0.15
+0,anatomy_decoy,thymus lobule,0.0
+0,anatomy_decoy,facio-acoustic VII-VIII preganglion complex,0.0
+0,anatomy_decoy,cervical division of cord spinal central canal,0.0
+0,anatomy_decoy,portal lobule,0.0
+0,anatomy_decoy,ventral part of pharyngeal pouch 3,0.0
+0,anatomy_decoy,cranial cartilage,0.0
+0,anatomy_decoy,renal cortex vein,0.42
+0,anatomy_decoy,epithelium of crypt of Lieberkuhn of small intestine,0.85
+0,anatomy_decoy,white matter of temporal lobe,0.0
+0,anatomy_decoy,vertebral foramen,0.0
+0,anatomy_decoy,autopod region,0.0
+0,anatomy_decoy,lateral line primordium,0.0
+0,anatomy_decoy,mucosa of ureter,0.0
+0,anatomy_decoy,olfactory cortex layer 3,0.0
+0,anatomy_decoy,aorta wall,0.0
+0,anatomy_decoy,associated mesenchyme of foregut-midgut junction,0.0
+0,anatomy_decoy,sexually immature organism,0.0
+0,anatomy_decoy,clitoral smooth muscle,0.0
+0,anatomy_decoy,nasopharynx,0.0
+0,anatomy_decoy,major salivary gland,0.42
+0,anatomy_decoy,epithelium of female urethra,0.333
+0,anatomy_decoy,renal interlobular vein,0.475
+0,anatomy_decoy,intramembranous bone tissue,0.0
+0,anatomy_decoy,skin of limb,0.0
+0,anatomy_decoy,nail bed of toe,0.0
+0,anatomy_decoy,pedal digit mesenchyme,0.0
+0,anatomy_decoy,mucosa of neck of urinary bladder,0.0
+0,anatomy_decoy,limb cartilage element,0.0
+0,anatomy_decoy,serosa of colon,0.0
+0,anatomy_decoy,paleocortex,0.0
+0,anatomy_decoy,adrenal/interrenal gland,0.0
+0,anatomy_decoy,mesenchyme of pinna,0.0
+0,anatomy_decoy,subdivision of skeleton,0.0
+0,anatomy_decoy,lymph node endothelium,0.0
+0,anatomy_decoy,tarsus cartilage element,0.0
+0,anatomy_decoy,rib endochondral element,0.0
+0,anatomy_decoy,articular capsule,0.0
+0,anatomy_decoy,sublaminar layer S5,0.0
+0,anatomy_decoy,transparent eye structure,0.0
+0,anatomy_decoy,telencephalon neural crest,0.0
+0,anatomy_decoy,left ovarian vein,0.0
+0,anatomy_decoy,regional part of nervous system,0.129
+0,anatomy_decoy,pancreatic epithelial bud,0.0
+0,anatomy_decoy,distal convoluted tubule,0.725
+0,anatomy_decoy,pectoralis minor,0.0
+0,anatomy_decoy,muscle tissue of prostate,0.5
+0,anatomy_decoy,set of upper jaw teeth,0.0
+0,anatomy_decoy,bone tissue of long bone,0.185
+0,anatomy_decoy,anatomical lobe,0.0
+0,anatomy_decoy,liver blood vessel,0.0
+0,anatomy_decoy,artery of lower lip,0.0
+0,anatomy_decoy,lateral septal nucleus,0.0
+0,anatomy_decoy,upper leg mesenchyme,0.0
+0,anatomy_decoy,lymph node paracortex,0.78
+0,anatomy_decoy,hepatic duct smooth muscle,0.0
+0,anatomy_decoy,subcutaneous adipose tissue,0.237
+0,anatomy_decoy,spinal cord medial motor column,0.85
+0,anatomy_decoy,outer limiting layer of retina,0.0
+0,anatomy_decoy,larynx submucosa gland,0.0
+0,anatomy_decoy,high endothelial venule of appendix,0.0
+0,anatomy_decoy,diaphysis of metatarsal bone,0.0
+0,anatomy_decoy,tooth bud,0.0
+0,anatomy_decoy,midbrain subarachnoid space,0.0
+0,anatomy_decoy,kidney epithelium,0.26
+0,anatomy_decoy,urinary bladder neck smooth muscle,0.0
+0,anatomy_decoy,sublaminar layers S3 or S4,0.0
+0,anatomy_decoy,myenteric ganglion of small intestine,0.843
+0,anatomy_decoy,extraembryonic portion of umbilical artery,0.0
+0,anatomy_decoy,epithelium of male urethra,0.333
+0,anatomy_decoy,middle phalanx,0.0
+0,anatomy_decoy,abdomen element,0.0
+0,anatomy_decoy,urethra smooth muscle layer,0.0
+0,anatomy_decoy,tongue muscle,0.817
+0,anatomy_decoy,epithelium-associated lymphoid tissue,0.0
+0,anatomy_decoy,muscle of auditory ossicle,0.0
+0,anatomy_decoy,nerve of penis,0.0
+0,anatomy_decoy,lymphoid follicle,0.0
+0,anatomy_decoy,male genital tubercle,0.0
+0,anatomy_decoy,metanephric long descending thin limb,0.0
+0,anatomy_decoy,serous sac,0.0
+0,anatomy_decoy,pectoralis major,0.587
+0,anatomy_decoy,vertebra,0.15
+0,anatomy_decoy,posterior nucleus of thalamus,0.0
+0,anatomy_decoy,female reproductive gland,0.0
+0,anatomy_decoy,1st arch maxillary mesenchyme from head mesenchyme,0.0
+0,anatomy_decoy,enteric ganglion,0.369
+0,anatomy_decoy,trachea basement membrane,0.179
+0,anatomy_decoy,base of crypt of Lieberkuhn,0.287
+0,anatomy_decoy,pronephric glomerulus,0.0
+0,anatomy_decoy,dorsum,0.0
+0,anatomy_decoy,multi cell part structure,0.185
+0,anatomy_decoy,abdomen nerve,0.0
+0,anatomy_decoy,root of thoracic nerve,0.287
+0,anatomy_decoy,left cardiac chamber,0.0
+0,anatomy_decoy,wall of ventricular system of brain,0.0
+0,anatomy_decoy,ganglion of peripheral nervous system,0.121
+0,anatomy_decoy,caudal vertebra pre-cartilage condensation,0.0
+0,anatomy_decoy,tail blood vessel,0.0
+0,anatomy_decoy,placenta blood vessel,0.0
+0,anatomy_decoy,lower jaw region,0.0
+0,anatomy_decoy,floor plate of medulla oblongata,0.0
+0,anatomy_decoy,subdivision of conjunctiva,0.0
+0,anatomy_decoy,female organism,0.0
+0,anatomy_decoy,cardiac muscle tissue of atrium,0.129
+0,anatomy_decoy,esophagus secretion,0.0
+0,anatomy_decoy,undifferentiated genital tubercle,0.0

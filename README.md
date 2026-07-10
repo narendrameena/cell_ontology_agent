@@ -151,6 +151,30 @@ plus two end-to-end agent runs (align-existing and propose-new) — all offline.
 
 ---
 
+## Benchmark vs the manually-curated Cell Ontology
+
+CellScribe is evaluated against **CL's own expert-curated logical definitions** (3,537 terms;
+882 with `part_of` Uberon, 302 with PRO surface markers) as the gold standard. Full methods,
+per-term results and reproduction are in **[`benchmark/RESULTS.md`](benchmark/RESULTS.md)**.
+
+![CellScribe benchmark](benchmark/figures/benchmark_figure.png)
+
+| Metric (n) | Result |
+|---|---|
+| Term recognition, recall@5 — name → CL CURIE (n=400) | **90.8%** (91.5% via synonyms) |
+| Anatomical location → Uberon, exact@1 (n=400) | **100%** |
+| Existing-vs-novel discrimination (n=500) | **P 1.00 · R 0.93 · F1 0.96** |
+| Surface marker (bare symbol) → PRO, exact (n=149) | **69.8%** (82.6% any PRO) |
+| Genus derivation, hierarchically-valid (n=371) | **50.7%** — honest weak spot → roadmap |
+
+Reproduce:
+```bash
+curl -sL http://purl.obolibrary.org/obo/cl.json -o cl-full.json
+CL_JSON=cl-full.json python benchmark/run_benchmark.py && python benchmark/make_figures.py
+```
+
+---
+
 ## Biologically grounded (Tan et al. 2026, *The Cell Ontology in the age of single-cell omics*)
 
 - **Genus–differentia** logical definitions (the CL design pattern), meant to be classified by a reasoner.
