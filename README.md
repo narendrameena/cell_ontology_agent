@@ -230,23 +230,27 @@ issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** e
 - **ROBOT template → OWL → ODK round-trip** — [`tools/robot_tools.py`](cellscribe/tools/robot_tools.py)
   materialises a valid ROBOT template into OWL (`--robot-owl out.owl`); [`odk/`](odk/) scaffolds the
   `robot merge` → PR cycle.
-- **Real NS-Forest** — used automatically when `nsforest`+`scanpy`+`anndata` are installed
-  (`pip install cellscribe[nsforest]`), otherwise the built-in re-implementation runs.
+- **Real NS-Forest** — used automatically when the extra is installed
+  (`pip install 'cellscribe[nsforest]'`), otherwise the built-in re-implementation runs.
+  Verified end-to-end against **nsforest 4.1** (scanpy CP10K+log1p → `preprocessing.prep_medians` /
+  `prep_binary_scores` → `nsforesting.NSForest`); reproduce with
+  `demo_data/striatum_nsforest_demo_expr.csv` via `test_real_nsforest_when_installed`.
 - **SPIRES-style extraction** — [`spires.py`](cellscribe/spires.py) fills a fixed, grounded schema
   (defers to `ontogpt` if installed).
 - **Ecosystem adapters** — [`integrations.py`](cellscribe/integrations.py) detects and defers to
   **OntoGPT / DRAGON-AI / Aurelian** when installed, else falls back (`cellscribe integrations`).
 
 **Genuinely remaining:** classification against a full CL import module (vs the self-contained draft);
-the real NS-Forest run and the OntoGPT/DRAGON-AI/Aurelian hand-offs are wired but exercised only when
-those packages are installed.
+the OntoGPT/DRAGON-AI/Aurelian hand-offs are wired but exercised only when those packages are installed.
+(The real NS-Forest run is verified against nsforest 4.1; it is optional only because installing it
+force-upgrades numpy/pandas, so the built-in re-implementation is the default in a lean environment.)
 
 ## Verification
 
 Audited for correctness (an independent pass surfaced and fixed bugs — surface-vs-transcriptomic axioms,
 an OLS null-field crash, organism scoping, marker minimality, unreadable-matrix fallback, atomic caching).
-Three offline, deterministic test suites (39 tests) cover the tools, edge cases + audit regressions, and
-the integrations (ELK/ROBOT run for real when Java is present):
+Three offline, deterministic test suites (48 tests) cover the tools, edge cases + audit regressions, and
+the integrations (ELK/ROBOT and real NS-Forest run for real when their dependencies are present, else self-skip):
 
 ```bash
 python tests/test_cellscribe.py     # tools, agent runs

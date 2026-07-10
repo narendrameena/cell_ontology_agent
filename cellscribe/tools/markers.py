@@ -23,9 +23,11 @@ except Exception:  # pragma: no cover
 
 
 def nsforest_available() -> bool:
-    """True if the real NS-Forest package + Scanpy/AnnData are importable."""
+    """True if the real NS-Forest package + Scanpy/AnnData are importable.
+    (plotly is included because nsforest imports it at package init.)"""
     import importlib.util as u
-    return all(u.find_spec(m) is not None for m in ("nsforest", "anndata", "scanpy"))
+    return all(u.find_spec(m) is not None
+               for m in ("nsforest", "anndata", "scanpy", "plotly"))
 
 
 def real_nsforest_panel(expr_csv, cluster_col, target_cluster,
@@ -34,37 +36,59 @@ def real_nsforest_panel(expr_csv, cluster_col, target_cluster,
     on Scanpy/AnnData. Returns a MarkerPanel, or None if unavailable/failed so the
     caller falls back to the built-in re-implementation.
 
-    NS-Forest's API differs across versions; this tries the current entry points
-    defensively. Install with `pip install nsforest scanpy anndata`.
+    Mirrors the verified NS-Forest 4.1 entry points (Aevermann et al.):
+    scanpy log-normalisation -> `preprocessing.prep_medians` /
+    `prep_binary_scores` -> `nsforesting.NSForest`. Install with the extra:
+    `pip install 'cellscribe[nsforest]'`.
     """
+    import tempfile
     try:
         import anndata
-        import nsforest as ns
+        import scanpy as sc
+        from nsforest import preprocessing as pp
+        from nsforest import nsforesting
         df = pd.read_csv(expr_csv)
         genes = [c for c in df.columns if c != cluster_col]
-        obs = pd.DataFrame({cluster_col: df[cluster_col].astype(str).values})
+        obs = pd.DataFrame({cluster_col: pd.Categorical(df[cluster_col].astype(str).values)})
         adata = anndata.AnnData(X=df[genes].values.astype(float),
                                 obs=obs, var=pd.DataFrame(index=genes))
-        # NS-Forest preprocessing + run (module paths vary by version)
-        try:
-            from nsforest import pp, nsforesting
-            adata = pp.prep_medians(adata, cluster_col)
-            adata = pp.prep_binary_scores(adata, cluster_col)
-            res = nsforesting.NSForest(adata, cluster_header=cluster_col)
-        except Exception:
-            res = ns.NSForest(adata, cluster_header=cluster_col)  # older API
+        if str(target_cluster) not in set(obs[cluster_col].astype(str)):
+            return None                                   # unknown cluster -> let caller fall back
+        # NS-Forest scores log-normalised expression (CP10K + log1p), like the tutorials.
+        sc.pp.normalize_total(adata, target_sum=1e4)
+        sc.pp.log1p(adata)
+        adata = pp.prep_medians(adata, cluster_col)
+        adata = pp.prep_binary_scores(adata, cluster_col)
+        # BinaryFirst_mild = median threshold: robust on small/clean panels where the
+        # default (mean+2*std) can pre-select 0 genes and crash the RandomForest.
+        with tempfile.TemporaryDirectory() as tmp:
+            res = nsforesting.NSForest(adata, cluster_col,
+                                       gene_selection="BinaryFirst_mild",
+                                       output_folder=tmp + "/",
+                                       outputfilename_prefix="cellscribe")
+        col_cluster = "clusterName" if "clusterName" in res.columns else res.columns[0]
         col_markers = "NSForest_markers" if "NSForest_markers" in res.columns else "markers"
-        row = res[res[res.columns[0]].astype(str) == str(target_cluster)]
+        row = res[res[col_cluster].astype(str) == str(target_cluster)]
         if not len(row):
             return None
         markers = list(row[col_markers].iloc[0])
         fbeta = float(row["f_score"].iloc[0]) if "f_score" in row.columns else 0.0
         return MarkerPanel(markers=markers, score=round(fbeta, 3),
-                           method="NS-Forest (real package, Scanpy/AnnData)",
+                           method="NS-Forest (real package v%s, Scanpy/AnnData)"
+                                  % _nsforest_version(),
                            species=species, context=context,
-                           note="Computed by the nsforest package on the supplied matrix.")
+                           note="Computed by the nsforest package on the supplied matrix "
+                                "(CP10K+log1p, BinaryFirst_mild gene pre-selection).")
     except Exception:
         return None
+
+
+def _nsforest_version() -> str:
+    try:
+        import nsforest
+        return getattr(nsforest, "__version__", "?")
+    except Exception:  # pragma: no cover
+        return "?"
 
 
 def _binary_scores(expr, labels, target, gene, thresh):

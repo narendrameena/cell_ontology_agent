@@ -34,10 +34,27 @@ def test_integrations_status():
 
 
 def test_nsforest_fallback_still_works():
+    # prefer_nsforest=False forces the built-in NS-Forest-style path, so this is
+    # deterministic whether or not the real package is installed.
     mp = markers.MarkerPanelTool().from_matrix(
         CSV, "cluster", "striatal_PV_interneuron",
-        candidate_genes=["GAD1", "GAD2", "PVALB"], prefer_nsforest=True)
-    assert "PVALB" in mp.markers   # nsforest absent -> built-in fallback still produces a panel
+        candidate_genes=["GAD1", "GAD2", "PVALB"], prefer_nsforest=False)
+    assert "PVALB" in mp.markers   # built-in fallback still produces a specific panel
+
+
+def test_real_nsforest_when_installed():
+    """Runs the REAL nsforest package on the richer fixture when the extra is
+    installed (`pip install 'cellscribe[nsforest]'`); self-skips otherwise so the
+    base-env suite stays green. Verified against nsforest 4.1 in an isolated venv."""
+    if not markers.nsforest_available():
+        print("  [skip] nsforest/scanpy/anndata not installed")
+        return
+    rich = os.path.join(ROOT, "demo_data", "striatum_nsforest_demo_expr.csv")
+    mp = markers.real_nsforest_panel(rich, "cluster", "striatal_PV_interneuron",
+                                     species="Homo sapiens", context="striatum")
+    assert mp is not None and mp.markers, "real nsforest returned no panel"
+    assert "PVALB" in mp.markers
+    assert "real package" in mp.method
 
 
 # ---- SPIRES-style extraction ----
