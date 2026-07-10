@@ -1,0 +1,4 @@
+requests>=2.20
+# optional, only needed for the NS-Forest-style marker test on an expression matrix:
+pandas>=0.25
+numpy>=1.18

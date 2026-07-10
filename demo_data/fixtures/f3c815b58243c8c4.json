@@ -1,0 +1,1 @@
+{"version": "6.9", "hitCount": 0, "request": {"queryString": "\"striatal parvalbumin-positive GABAergic interneuron\" AND (GAD1 OR GAD2 OR PVALB)", "resultType": "core", "cursorMark": "*", "pageSize": 5, "sort": "", "synonym": false}, "resultList": {"result": []}}

@@ -1,0 +1,128 @@
+{
+  "295aaa1dd3bf3605": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "CD4-positive, alpha-beta T cell",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "103aae6906c371cd": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"CD4-positive, alpha-beta T cell\" AND (CD4 OR IL7R) AND \"Homo sapiens\"",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "a1cbedafacd24483": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "striatal parvalbumin-positive GABAergic interneuron",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "f089b605f810e6b1": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "interneuron",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "13f7d49179ae415d": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "striatum",
+      "ontology": "uberon",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "4e4efe7f264aef07": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"striatal parvalbumin-positive GABAergic interneuron\" AND (GAD1 OR GAD2 OR PVALB) AND \"Homo sapiens\"",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "bd4485015f014a94": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "T cell",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "31dfa6d7bc425de0": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"CD4-positive, alpha-beta T cell\" AND (CD4 OR IL7R)",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "f3c815b58243c8c4": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"striatal parvalbumin-positive GABAergic interneuron\" AND (GAD1 OR GAD2 OR PVALB)",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "f4e3730e80c59e29": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "striatal parvalbumin-positive GABAergic interneuron AND (GAD1 OR GAD2 OR PVALB)",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "636ca11c2c1bdfcf": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "villous cytotrophoblast",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "43f2b6f5d27d2eb2": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "placenta",
+      "ontology": "uberon",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "fd59675d4d1e07b1": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"villous cytotrophoblast\" AND (KRT7 OR TP63 OR TEAD4)",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "56cb7f82374e3927": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "trophoblast cell",
+      "ontology": "cl",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  }
+}

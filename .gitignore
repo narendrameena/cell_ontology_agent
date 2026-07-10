@@ -1,0 +1,20 @@
+# caches / generated
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.clara_cache/
+demo_output/
+demo_output_offline/
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# never commit real credentials
+.env
+*.pem
+id_*
