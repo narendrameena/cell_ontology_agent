@@ -178,6 +178,53 @@ def b6_one(item):
             "is_existing": int(bool(hits) and hits[0].score >= 0.90)}
 
 
+# ---- Tier 2/3 benchmarks ----
+def b7_one(cur):
+    """GO-function grounding: curated `capable_of` GO label -> exact GO CURIE."""
+    gos = LD[cur].get("capable_of", set())
+    if not gos:
+        return None
+    gold = sorted(gos)[0]
+    gl = LABEL.get(gold)
+    if not gl:
+        return None
+    hits = ols(gl, ontology="go", rows=5, offline=False)
+    curies = [h.curie for h in hits]
+    return {"curie": cur, "go_label": gl, "gold": gold,
+            "exact1": int(bool(curies) and curies[0] == gold),
+            "top5": int(gold in curies[:5])}
+
+
+def b8_one(cur):
+    """Logical-definition reconstruction: from curated surface forms, does CellScribe
+    reproduce CL's curated differentia (part_of Uberon / capable_of GO / hpmp PRO)?"""
+    ld = LD.get(cur, {})
+    gpo, ggo, gpr = ld.get("part_of", set()), ld.get("capable_of", set()), ld.get("hpmp", set())
+    total = len(gpo) + len(ggo) + len(gpr)
+    if total == 0:
+        return None
+    emit_po = set()
+    if gpo:
+        h = ols(LABEL.get(sorted(gpo)[0], ""), ontology="uberon", rows=5, offline=False)
+        if h:
+            emit_po.add(h[0].curie)
+    emit_go = set()
+    for g in ggo:
+        h = ols(LABEL.get(g, ""), ontology="go", rows=5, offline=False)
+        if h and h[0].curie.startswith("GO:"):
+            emit_go.add(h[0].curie)
+    emit_pr = set()
+    for p in gpr:
+        got = agent._ground_surface(_symbol(LABEL.get(p, "")))
+        if got:
+            emit_pr.add(got.curie)
+    matched = len(gpo & emit_po) + len(ggo & emit_go) + len(gpr & emit_pr)
+    return {"curie": cur, "partof_n": len(gpo), "partof_ok": len(gpo & emit_po),
+            "go_n": len(ggo), "go_ok": len(ggo & emit_go),
+            "pr_n": len(gpr), "pr_ok": len(gpr & emit_pr),
+            "total": total, "matched": matched, "completeness": round(matched / total, 3)}
+
+
 def dump(name, rows):
     if not rows:
         return
@@ -212,6 +259,16 @@ pos = [("cell_type", LABEL[c]) for c in random.sample(cl_terms, posN)]
 neg = [("anatomy_decoy", l) for l in random.sample(uberon_labels, min(posN, len(uberon_labels)))]
 print("B6 discrimination (pos=%d neg=%d) ..." % (len(pos), len(neg)), flush=True)
 r6 = pmap(b6_one, pos + neg); dump("b6_discrimination", r6)
+
+# ---- Tier 2/3 ----
+with_go = [c for c in with_def if LD[c]["capable_of"]]
+with_diff = [c for c in with_def if LD[c]["part_of"] or LD[c]["capable_of"] or LD[c]["hpmp"]]
+sample7 = random.sample(with_go, min(int(os.environ.get("N7", 250)), len(with_go)))
+print("B7 GO-function grounding (n=%d) ..." % len(sample7), flush=True)
+r7 = pmap(b7_one, sample7); dump("b7_go_function", r7)
+sample8 = random.sample(with_diff, min(int(os.environ.get("N8", 250)), len(with_diff)))
+print("B8 logical-definition reconstruction (n=%d) ..." % len(sample8), flush=True)
+r8 = pmap(b8_one, sample8); dump("b8_reconstruction", r8)
 
 
 def rate(rows, key):
@@ -250,6 +307,15 @@ metrics = {
                           "precision": round(prec, 4), "recall": round(rec, 4), "f1": round(f1, 4),
                           "mean_score_cell_type": round(sum(ct) / len(ct), 4) if ct else 0,
                           "mean_score_decoy": round(sum(dc) / len(dc), 4) if dc else 0},
+    "B7_go_function": {"n": len(r7), "exact@1": rate(r7, "exact1"), "recall@5": rate(r7, "top5")},
+    "B8_reconstruction": {
+        "n": len(r8),
+        "part_of_exact": round(sum(r["partof_ok"] for r in r8) / max(1, sum(r["partof_n"] for r in r8)), 4),
+        "go_function_recall": round(sum(r["go_ok"] for r in r8) / max(1, sum(r["go_n"] for r in r8)), 4),
+        "surface_marker_recall": round(sum(r["pr_ok"] for r in r8) / max(1, sum(r["pr_n"] for r in r8)), 4),
+        "overall_restriction_recall": round(sum(r["matched"] for r in r8) / max(1, sum(r["total"] for r in r8)), 4),
+        "mean_completeness": round(sum(r["completeness"] for r in r8) / len(r8), 4) if r8 else 0,
+        "fully_reconstructed_frac": round(sum(1 for r in r8 if r["completeness"] >= 0.999) / len(r8), 4) if r8 else 0},
     "runtime_sec": round(time.time() - t0, 1),
 }
 json.dump(metrics, open(os.path.join(RESULTS, "metrics.json"), "w"), indent=2)

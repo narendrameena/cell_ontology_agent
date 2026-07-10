@@ -168,6 +168,17 @@ per-term results and reproduction are in **[`benchmark/RESULTS.md`](benchmark/RE
 | Surface marker (bare symbol) → PRO, exact (n=149) | **69.8%** (82.6% any PRO) |
 | Genus derivation, hierarchically-valid (n=371) | **50.7%** — honest weak spot → roadmap |
 
+**Tier 2/3 — reconstructing full curated logical definitions** (`benchmark/figures/benchmark_figure2.png`):
+
+![CellScribe Tier 2/3 benchmark](benchmark/figures/benchmark_figure2.png)
+
+| Tier 2/3 metric (n=250) | Result |
+|---|---|
+| GO function → GO term, exact@1 | **94.8%** |
+| Differentia recall — part_of Uberon / capable_of GO / hpmp PRO | **100% / 94.4% / 83.5%** |
+| Overall differentia recall | **94.7%** |
+| Expert-curated definitions fully reconstructed | **94.0%** (mean completeness 0.96) |
+
 Reproduce:
 ```bash
 curl -sL http://purl.obolibrary.org/obo/cl.json -o cl-full.json

@@ -46,5 +46,19 @@
     "mean_score_cell_type": 0.928,
     "mean_score_decoy": 0.0964
   },
-  "runtime_sec": 165.9
+  "B7_go_function": {
+    "n": 250,
+    "exact@1": 0.948,
+    "recall@5": 0.948
+  },
+  "B8_reconstruction": {
+    "n": 250,
+    "part_of_exact": 1.0,
+    "go_function_recall": 0.9444,
+    "surface_marker_recall": 0.8354,
+    "overall_restriction_recall": 0.9467,
+    "mean_completeness": 0.9603,
+    "fully_reconstructed_frac": 0.94
+  },
+  "runtime_sec": 55.8
 }

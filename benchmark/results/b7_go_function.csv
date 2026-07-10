@@ -1,0 +1,251 @@
+curie,exact1,go_label,gold,top5
+CL:0000234,1,phagocytosis,GO:0006909,1
+CL:4023076,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0002028,1,basophil differentiation,GO:0030221,1
+CL:0002496,1,mucosal immune response,GO:0002385,1
+CL:0000863,0,interleukin-1 beta production,GO:0032611,0
+CL:0000921,1,glycosphingolipid binding,GO:0043208,1
+CL:0000885,1,immune response in gut-associated lymphoid tissue,GO:0002387,1
+CL:0000024,1,mitotic cell cycle,GO:0000278,1
+CL:0002399,0,interleukin-8 production,GO:0032637,0
+CL:0000879,1,scavenger receptor activity,GO:0005044,1
+CL:0000845,1,defense response to bacterium,GO:0042742,1
+CL:0000926,1,positive regulation of T-helper 1 type immune response,GO:0002827,1
+CL:0000943,1,type II interferon production,GO:0032609,1
+CL:0000623,1,natural killer cell mediated immunity,GO:0002228,1
+CL:0002491,1,detection of mechanical stimulus involved in sensory perception of sound,GO:0050910,1
+CL:0000456,1,mineralocorticoid secretion,GO:0035931,1
+CL:0000018,1,acrosome assembly,GO:0001675,1
+CL:0000488,1,detection of visible light,GO:0009584,1
+CL:4047023,1,extracellular matrix constituent secretion,GO:0070278,1
+CL:0000999,1,cytokine production,GO:0001816,1
+CL:0011024,1,negative regulation of immune response,GO:0050777,1
+CL:0020035,1,mucosal immune response,GO:0002385,1
+CL:0000036,1,epithelial cell differentiation,GO:0030855,1
+CL:4023170,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:0008061,1,"acetylcholine secretion, neurotransmission",GO:0014055,1
+CL:0000723,1,somatic stem cell division,GO:0048103,1
+CL:4023108,1,oxytocin production,GO:0036162,1
+CL:0000917,1,type II interferon production,GO:0032609,1
+CL:0002082,1,epinephrine secretion,GO:0048242,1
+CL:0002083,1,norepinephrine secretion,GO:0048243,1
+CL:0001201,1,B cell mediated immunity,GO:0019724,1
+CL:0000236,1,B cell mediated immunity,GO:0019724,1
+CL:0008025,1,"norepinephrine secretion, neurotransmission",GO:0061533,1
+CL:0000021,1,oogenesis,GO:0048477,1
+CL:0000588,1,negative regulation of odontogenesis,GO:0042483,1
+CL:0000862,1,negative regulation of immune response,GO:0050777,1
+CL:0000174,1,steroid hormone secretion,GO:0035929,1
+CL:0000940,1,innate immune response in mucosa,GO:0002227,1
+CL:0000205,1,detection of temperature stimulus involved in thermoception,GO:0050960,1
+CL:0000925,1,type II interferon production,GO:0032609,1
+CL:0000581,1,defense response to bacterium,GO:0042742,1
+CL:0000922,1,NK T cell activation,GO:0051132,1
+CL:0000968,1,cytokine production,GO:0001816,1
+CL:0000832,1,eosinophil differentiation,GO:0030222,1
+CL:0011115,1,cell differentiation,GO:0030154,1
+CL:0001041,0,interleukin-10 production,GO:0032613,0
+CL:0001042,0,interleukin-22 production,GO:0032626,0
+CL:0000343,1,detection of light stimulus involved in visual perception,GO:0050908,1
+CL:0000886,1,immune response in nasopharyngeal-associated lymphoid tissue,GO:0002395,1
+CL:0000319,1,mucus secretion,GO:0070254,1
+CL:0000453,1,regulation of type 2 immune response,GO:0002828,1
+CL:0000200,1,detection of mechanical stimulus involved in sensory perception of touch,GO:0050976,1
+CL:0020058,1,nitric oxide biosynthetic process,GO:0006809,1
+CL:0000738,1,ameboidal-type cell migration,GO:0001667,1
+CL:0000084,1,T cell mediated immunity,GO:0002456,1
+CL:0005018,1,ghrelin secretion,GO:0036321,1
+CL:0000793,1,mucosal immune response,GO:0002385,1
+CL:0000300,1,fertilization,GO:0009566,1
+CL:0001065,1,cytokine production,GO:0001816,1
+CL:0000994,1,antigen processing and presentation,GO:0019882,1
+CL:0000794,1,T cell mediated cytotoxicity,GO:0001913,1
+CL:0000838,1,lymphocyte differentiation,GO:0030098,1
+CL:0002088,1,regulation of hindgut contraction,GO:0043134,1
+CL:0002089,1,positive regulation of type 2 immune response,GO:0002830,1
+CL:0000969,0,interleukin-10 production,GO:0032613,0
+CL:0000098,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:0000203,1,detection of mechanical stimulus involved in sensory perception,GO:0050974,1
+CL:0000177,1,testosterone secretion,GO:0035936,1
+CL:0000785,1,antigen processing and presentation of peptide or polysaccharide antigen via MHC class II,GO:0002504,1
+CL:0000050,1,erythrocyte differentiation,GO:0030218,1
+CL:0000765,1,erythrocyte differentiation,GO:0030218,1
+CL:3000003,1,"acetylcholine secretion, neurotransmission",GO:0014055,1
+CL:0000670,1,cell motility,GO:0048870,1
+CL:0000451,1,cytokine production,GO:0001816,1
+CL:0000408,1,fertilization,GO:0009566,1
+CL:0000784,1,type I interferon production,GO:0032606,1
+CL:0001069,0,interleukin-5 production,GO:0032634,0
+CL:0002061,1,defense response to nematode,GO:0002215,1
+CL:0000583,1,antigen processing and presentation,GO:0019882,1
+CL:0000916,1,positive regulation of epithelial cell proliferation involved in wound healing,GO:0060054,1
+CL:0000546,0,interleukin-4 production,GO:0032633,0
+CL:0000096,1,respiratory burst involved in inflammatory response,GO:0002536,1
+CL:0000485,1,leukotriene production involved in inflammatory response,GO:0002540,1
+CL:0000034,1,stem cell division,GO:0017145,1
+CL:0000831,1,mast cell differentiation,GO:0060374,1
+CL:0000017,1,spermatocyte division,GO:0048137,1
+CL:0002067,1,glucagon secretion,GO:0070091,1
+CL:0000207,1,detection of chemical stimulus involved in sensory perception of smell,GO:0050911,1
+CL:0002080,1,bicarbonate transmembrane transporter activity,GO:0015106,1
+CL:0000648,1,renin secretion into blood stream,GO:0002001,1
+CL:0002063,1,surfactant homeostasis,GO:0043129,1
+CL:1001509,1,"glycine secretion, neurotransmission",GO:0061537,1
+CL:0011005,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000938,1,type II interferon production,GO:0032609,1
+CL:0000656,1,male meiotic nuclear division,GO:0007140,1
+CL:0000965,1,somatic hypermutation of immunoglobulin genes,GO:0016446,1
+CL:4023016,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000889,1,negative regulation of immune response,GO:0050777,1
+CL:0000814,1,MHC class Ib receptor activity,GO:0032394,1
+CL:0011013,1,sperm motility,GO:0097722,1
+CL:4032001,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000154,1,protein secretion,GO:0009306,1
+CL:0000880,1,scavenger receptor activity,GO:0005044,1
+CL:0000454,1,epinephrine secretion,GO:0048242,1
+CL:0002009,1,monocyte differentiation,GO:0030224,1
+CL:4030028,1,"glycine secretion, neurotransmission",GO:0061537,1
+CL:4023017,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000819,1,innate immune response,GO:0045087,1
+CL:0000850,1,"serotonin secretion, neurotransmission",GO:0060096,1
+CL:0000165,1,hormone secretion,GO:0046879,1
+CL:0000037,1,hematopoietic progenitor cell differentiation,GO:0002244,1
+CL:0000091,1,erythrocyte clearance,GO:0034102,1
+CL:0000939,1,cytokine production,GO:0001816,1
+CL:0000564,1,neutrophil differentiation,GO:0030223,1
+CL:0011110,1,"histamine secretion, neurotransmission",GO:0061538,1
+CL:0000014,1,stem cell division,GO:0017145,1
+CL:0000051,1,lymphocyte differentiation,GO:0030098,1
+CL:0002125,0,interleukin-17 production,GO:0032620,0
+CL:0000118,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000869,1,immune response in nasopharyngeal-associated lymphoid tissue,GO:0002395,1
+CL:0000815,1,negative regulation of immune response,GO:0050777,1
+CL:0000040,1,monocyte differentiation,GO:0030224,1
+CL:0000492,1,cytokine production,GO:0001816,1
+CL:0000934,1,T cell mediated cytotoxicity,GO:0001913,1
+CL:0000908,1,cytokine production,GO:0001816,1
+CL:0000657,1,male meiosis II,GO:0007142,1
+CL:0011105,1,"dopamine secretion, neurotransmission",GO:0061527,1
+CL:0002629,1,cytokine production,GO:0001816,1
+CL:0000700,1,"dopamine secretion, neurotransmission",GO:0061527,1
+CL:0000168,1,insulin secretion,GO:0030073,1
+CL:0000169,1,insulin secretion,GO:0030073,1
+CL:0000686,1,cerebrospinal fluid secretion,GO:0033326,1
+CL:0002062,1,respiratory gaseous exchange by respiratory system,GO:0007585,1
+CL:0002194,1,monocyte differentiation,GO:0030224,1
+CL:0000048,1,stem cell division,GO:0017145,1
+CL:0000176,1,ecdysteroid secretion,GO:0045457,1
+CL:0002128,0,interleukin-17 production,GO:0032620,0
+CL:0000930,1,positive regulation of type 2 immune response,GO:0002830,1
+CL:0000828,1,thrombocyte differentiation,GO:0002574,1
+CL:0000910,1,T cell mediated cytotoxicity,GO:0001913,1
+CL:0000931,1,T cell cytokine production,GO:0002369,1
+CL:4033091,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000991,1,cytokine production,GO:0001816,1
+CL:0000199,1,detection of mechanical stimulus involved in sensory perception,GO:0050974,1
+CL:4023068,1,"glutamate secretion, neurotransmission",GO:0061535,1
+CL:0000092,1,bone resorption,GO:0045453,1
+CL:0000928,1,T cell cytokine production,GO:0002369,1
+CL:0000180,1,estradiol secretion,GO:0035938,1
+CL:0000440,1,melanocyte-stimulating hormone secretion,GO:0036160,1
+CL:0002127,1,innate immune response,GO:0045087,1
+CL:0000679,1,"glutamate secretion, neurotransmission",GO:0061535,1
+CL:0000157,1,surfactant homeostasis,GO:0043129,1
+CL:0000874,1,immune response,GO:0006955,1
+CL:0000576,1,macrophage differentiation,GO:0030225,1
+CL:0000944,0,interleukin-10 production,GO:0032613,0
+CL:0000871,1,erythrocyte clearance,GO:0034102,1
+CL:0000890,1,tissue remodeling,GO:0048771,1
+CL:0000829,1,basophil differentiation,GO:0030221,1
+CL:0000439,1,prolactin secretion,GO:0070459,1
+CL:0020057,1,"acetylcholine secretion, neurotransmission",GO:0014055,1
+CL:4023088,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000617,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000235,1,antigen processing and presentation of peptide or polysaccharide antigen via MHC class II,GO:0002504,1
+CL:0000888,1,regulation of mature B cell apoptotic process,GO:0002905,1
+CL:0002274,1,histamine secretion,GO:0001821,1
+CL:0008059,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000899,0,interleukin-17 production,GO:0032620,0
+CL:0000459,1,norepinephrine secretion,GO:0048243,1
+CL:0000094,1,blood circulation,GO:0008015,1
+CL:0000545,1,type II interferon production,GO:0032609,1
+CL:0000438,1,luteinizing hormone secretion,GO:0032275,1
+CL:0000777,1,antigen processing and presentation,GO:0019882,1
+CL:4030027,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0011106,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:4023011,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000097,1,histamine production involved in inflammatory response,GO:0002349,1
+CL:0000725,1,nitrogen fixation,GO:0009399,1
+CL:0000795,1,negative regulation of immune response,GO:0050777,1
+CL:4023015,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000145,1,antigen processing and presentation of peptide or polysaccharide antigen via MHC class II,GO:0002504,1
+CL:0001002,1,cytokine production,GO:0001816,1
+CL:0000797,1,mucosal immune response,GO:0002385,1
+CL:0000834,1,neutrophil differentiation,GO:0030223,1
+CL:0000932,1,type II interferon production,GO:0032609,1
+CL:0002124,1,type II interferon production,GO:0032609,1
+CL:0000936,1,lymphocyte differentiation,GO:0030098,1
+CL:4033050,1,"catecholamine secretion, neurotransmission",GO:0160043,1
+CL:0002394,1,positive regulation of T-helper 1 type immune response,GO:0002827,1
+CL:0002313,1,hormone secretion,GO:0046879,1
+CL:0001067,1,type II interferon production,GO:0032609,1
+CL:0002079,1,bicarbonate transmembrane transporter activity,GO:0015106,1
+CL:0000929,1,positive regulation of T-helper 1 type immune response,GO:0002827,1
+CL:0000611,1,eosinophil differentiation,GO:0030222,1
+CL:0000179,1,progesterone secretion,GO:0042701,1
+CL:0000006,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:0000553,1,endomitotic cell cycle,GO:0007113,1
+CL:0000042,1,neutrophil differentiation,GO:0030223,1
+CL:0000219,1,cell motility,GO:0048870,1
+CL:0000482,1,juvenile hormone secretion,GO:0045443,1
+CL:0000197,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:4023087,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000792,1,negative regulation of immune response,GO:0050777,1
+CL:0002038,1,positive regulation of immunoglobulin production,GO:0002639,1
+CL:0000918,0,interleukin-4 production,GO:0032633,0
+CL:3000004,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:4023109,1,vasopressin secretion,GO:0030103,1
+CL:0000875,1,lymphocyte costimulation,GO:0031294,1
+CL:0000827,1,T cell differentiation,GO:0030217,1
+CL:0000830,1,basophil differentiation,GO:0030221,1
+CL:0002347,1,type II interferon production,GO:0032609,1
+CL:0002526,1,regulation of isotype switching,GO:0045191,1
+CL:0002191,1,granulocyte differentiation,GO:0030851,1
+CL:0011016,1,flagellated sperm motility,GO:0030317,1
+CL:0000877,1,apoptotic cell clearance,GO:0043277,1
+CL:4052045,1,steroid hormone biosynthetic process,GO:0120178,1
+CL:0000170,1,glucagon secretion,GO:0070091,1
+CL:0000041,1,antigen processing and presentation of peptide antigen via MHC class II,GO:0002495,1
+CL:0005019,1,ghrelin secretion,GO:0036321,1
+CL:0000101,1,detection of stimulus involved in sensory perception,GO:0050906,1
+CL:0000866,1,apoptotic cell clearance,GO:0043277,1
+CL:4023086,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000833,1,eosinophil differentiation,GO:0030222,1
+CL:0001000,1,cytokine production,GO:0001816,1
+CL:0000206,1,detection of chemical stimulus involved in sensory perception,GO:0050907,1
+CL:0000964,1,regulation of germinal center formation,GO:0002634,1
+CL:0000232,1,blood circulation,GO:0008015,1
+CL:0000839,1,myeloid cell differentiation,GO:0030099,1
+CL:0000467,1,corticotropin secretion,GO:0051458,1
+CL:1000488,1,bicarbonate transmembrane transporter activity,GO:0015106,1
+CL:4042035,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000887,1,positive regulation of natural killer cell activation,GO:0032816,1
+CL:0000762,1,blood coagulation,GO:0007596,1
+CL:0000209,1,detection of chemical stimulus involved in sensory perception of taste,GO:0050912,1
+CL:3000002,1,"norepinephrine secretion, neurotransmission",GO:0061533,1
+CL:0002180,1,mucus secretion,GO:0070254,1
+CL:4023039,1,"glutamate secretion, neurotransmission",GO:0061535,1
+CL:0000172,1,somatostatin secretion,GO:0070253,1
+CL:0001059,1,myeloid leukocyte differentiation,GO:0002573,1
+CL:0000210,1,detection of light stimulus involved in visual perception,GO:0050908,1
+CL:0002488,1,blood vessel remodeling,GO:0001974,1
+CL:0000129,1,innate immune response,GO:0045087,1
+CL:4023089,1,"gamma-aminobutyric acid secretion, neurotransmission",GO:0061534,1
+CL:0000860,1,monocyte chemotaxis,GO:0002548,1
+CL:0000998,1,antigen processing and presentation of peptide antigen via MHC class I,GO:0002474,1
+CL:0000167,1,peptide hormone secretion,GO:0030072,1
+CL:0001066,1,erythrocyte differentiation,GO:0030218,1
+CL:0000035,1,stem cell division,GO:0017145,1
+CL:0000901,0,interleukin-10 production,GO:0032613,0
+CL:0000295,1,growth hormone secretion,GO:0030252,1
+CL:0000613,1,basophil differentiation,GO:0030221,1

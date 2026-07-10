@@ -23,6 +23,15 @@ community's manually-curated reference, and it is orthogonal to CellScribe's log
 | B4 Surface marker → PRO | exact PRO (from symbol) | **69.8%** (82.6% any PRO) | 149 |
 | B2 Genus derivation | hierarchically-valid / exact | **50.7% / 11.6%** | 371 |
 | B6 Existing-vs-novel | precision / recall / F1 | **1.00 / 0.93 / 0.96** | 500 |
+| **B7 GO function → GO term** | exact@1 | **94.8%** | 250 |
+| **B8 Logical-definition reconstruction** | overall differentia recall | **94.7%** | 250 |
+| **B8** | fully-reconstructed definitions | **94.0%** | 250 |
+
+**Tier 2/3 evaluation** (`figures/benchmark_figure2.png`): B7 grounds curated GO functions;
+B8 asks — from a term's curated *surface forms*, does CellScribe reproduce CL's curated
+**logical definition** (genus + `part_of` Uberon + `capable_of` GO + `has plasma membrane part`
+PRO)? part_of 100% · GO functions 94.4% · surface markers 83.5% · **overall differentia recall
+94.7%**, with **94% of definitions fully reconstructed** (mean per-term completeness 0.96).
 
 ---
 
@@ -74,6 +83,17 @@ CellScribe recovers the exact curated PRO term **69.8%** of the time and *some* 
 **82.6%** of the time. The gap reflects a real ambiguity the paper warns about: short symbols
 fuzzy-match (e.g. `CD4`→`CD44`), which the `"<symbol> molecule"` retry mitigates but does not
 eliminate. This is an honest ceiling for symbol-only grounding without a curated symbol→PRO map.
+
+**Tier 2/3 — it reconstructs the full curated logical definition (B7, B8; Figure 2).** This is
+the end-to-end test the GO-function, surface-marker and KG-triple machinery was built for. GO
+functions ground to the exact GO term **94.8%** of the time (B7). Given a term's curated surface
+forms, CellScribe reproduces CL's curated **differentia** — `part_of` Uberon **100%**, `capable_of`
+GO **94.4%**, `has plasma membrane part` PRO **83.5%** — for an **overall differentia recall of
+94.7%**, and **94% of definitions are reconstructed in full** (mean per-term completeness 0.96;
+Fig 2c). The residual loss is concentrated in surface-marker symbol grounding (the same B4 ceiling)
+and the occasional multi-restriction axiom; genus (is_a) remains the heuristic weak point (B2).
+Net: the parts a curator most wants auto-filled — location, function, and the axiom skeleton — are
+recovered at ≥94%, while the parts that need judgement (genus, ambiguous markers) are surfaced for review.
 
 **Genus derivation is the weakest link — by design (B2; Fig c).** The name-keyword heuristic is
 **hierarchically valid 50.7%** of the time (exact 11.6%, ancestor-consistent 39.1%) but

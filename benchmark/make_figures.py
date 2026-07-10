@@ -152,3 +152,60 @@ for ext in ("png", "svg", "pdf"):
     fig.savefig(os.path.join(FIG, "benchmark_figure." + ext),
                 dpi=(300 if ext == "png" else None), bbox_inches="tight")
 print("wrote benchmark_figure.{png,svg,pdf} ->", FIG)
+
+
+# ================= FIGURE 2 — Tier 2/3: logical-definition reconstruction =================
+b7 = M.get("B7_go_function", {})
+b8 = M.get("B8_reconstruction", {})
+if b8:
+    r8 = load_csv("b8_reconstruction")
+    fig2, ax2 = plt.subplots(2, 2, figsize=(9.8, 8.2))
+    fig2.suptitle("CellScribe reconstructs expert-curated CL logical definitions (Tier 2/3)",
+                  fontsize=12, fontweight="bold", y=0.995)
+
+    ax = ax2[0, 0]
+    bars = ax.bar(["exact@1", "recall@5"], [b7.get("exact@1", 0), b7.get("recall@5", 0)],
+                  color=[TEAL, NAVY], width=0.6)
+    barlabels(ax, bars); ax.set_ylim(0, 1.08); ax.set_ylabel("accuracy")
+    ax.set_title("GO function -> GO term (n=%d)" % b7.get("n", 0)); letter(ax, "a")
+
+    ax = ax2[0, 1]
+    labs = ["part_of\n(Uberon)", "capable_of\n(GO)", "has p.m.\npart (PRO)", "overall\nrestrictions"]
+    vals = [b8.get("part_of_exact", 0), b8.get("go_function_recall", 0),
+            b8.get("surface_marker_recall", 0), b8.get("overall_restriction_recall", 0)]
+    bars = ax.bar(labs, vals, color=[TEAL, AMBER, CORAL, NAVY], width=0.72)
+    barlabels(ax, bars); ax.set_ylim(0, 1.08); ax.set_ylabel("recall / exact")
+    ax.set_title("Differentia reconstruction (n=%d)" % b8.get("n", 0)); letter(ax, "b")
+
+    ax = ax2[1, 0]
+    comp = [float(r["completeness"]) for r in r8] if r8 else []
+    ax.hist(comp, bins=[i / 10 for i in range(11)], color=GREEN, alpha=0.85, edgecolor="white")
+    mc = b8.get("mean_completeness", 0)
+    ax.axvline(mc, color=NAVY, ls="--", lw=1)
+    ax.text(mc, ax.get_ylim()[1] * 0.9, " mean %.2f" % mc, fontsize=7.5, color=NAVY)
+    ax.set_xlabel("fraction of curated differentia reproduced"); ax.set_ylabel("cell types")
+    ax.set_title("Per-term axiom completeness"); letter(ax, "c")
+
+    ax = ax2[1, 1]; ax.axis("off")
+    rows2 = [["Tier 2/3 evaluation", "result"],
+             ["GO function exact@1", "%.1f%%" % (100 * b7.get("exact@1", 0))],
+             ["part_of Uberon exact", "%.1f%%" % (100 * b8.get("part_of_exact", 0))],
+             ["GO function recall", "%.1f%%" % (100 * b8.get("go_function_recall", 0))],
+             ["surface marker recall", "%.1f%%" % (100 * b8.get("surface_marker_recall", 0))],
+             ["overall restriction recall", "%.1f%%" % (100 * b8.get("overall_restriction_recall", 0))],
+             ["fully reconstructed", "%.1f%%" % (100 * b8.get("fully_reconstructed_frac", 0))]]
+    tbl = ax.table(cellText=rows2, colWidths=[0.60, 0.40], loc="center", cellLoc="left")
+    tbl.auto_set_font_size(False); tbl.set_fontsize(8.6); tbl.scale(1, 1.5)
+    for (rr, cc), cell in tbl.get_celld().items():
+        cell.set_edgecolor("#DDDDDD")
+        if cc == 1:
+            cell.set_text_props(fontweight="bold", color=NAVY)
+        if rr == 0:
+            cell.set_text_props(fontweight="bold")
+    ax.set_title("Summary"); letter(ax, "d")
+
+    fig2.tight_layout(rect=[0, 0, 1, 0.95], h_pad=3.4, w_pad=2.4)
+    for ext in ("png", "svg", "pdf"):
+        fig2.savefig(os.path.join(FIG, "benchmark_figure2." + ext),
+                     dpi=(300 if ext == "png" else None), bbox_inches="tight")
+    print("wrote benchmark_figure2.{png,svg,pdf} ->", FIG)

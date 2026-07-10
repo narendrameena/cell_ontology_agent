@@ -21,4 +21,4 @@ out/
 *.pem
 id_*
 benchmark/.bench_cache/
-benchmark/run.log
+benchmark/run*.log
