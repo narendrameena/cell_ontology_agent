@@ -54,6 +54,7 @@ def cmd_curate(args) -> int:
         location_hint=args.location or "", parent_hint=args.parent or "",
         expr_csv=args.expr or "", cluster_col=args.cluster_col,
         target_cluster=args.target or "", taxonomy_ref=args.taxonomy or "",
+        reference_data=args.reference or "", orcid=args.orcid or "",
         organism=args.organism)
     dossier = agent.curate(req)
     _print_summary(dossier)
@@ -98,6 +99,8 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--cluster-col", default="cluster")
     c.add_argument("--target", default="", help="target cluster label in the CSV")
     c.add_argument("--taxonomy", default="", help="taxonomy/dataset reference")
+    c.add_argument("--reference", default="", help="versioned reference-dataset link (data-linked T-type)")
+    c.add_argument("--orcid", default="", help="submitter ORCID (for the GitHub new-term issue)")
     c.add_argument("--organism", default="Homo sapiens")
     c.add_argument("--out", default="", help="output directory for the dossier")
     c.add_argument("--offline", action="store_true", help="cache-only, no network")
