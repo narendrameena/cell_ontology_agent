@@ -23,3 +23,6 @@ id_*
 benchmark/.bench_cache/
 benchmark/run*.log
 .tools/
+
+# persistent Python 3.11 LLM stack (ontogpt/curategpt/aurelian)
+.llm-venv/

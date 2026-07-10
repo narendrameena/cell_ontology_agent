@@ -94,11 +94,11 @@ def classify(dossier, timeout: int = 180) -> Dict[str, Any]:
         result["reasoner"] = {"available": False,
                               "note": "install a JRE + robot.jar for ELK reasoning"}
         return result
-    tmp = tempfile.mkdtemp()
-    ofn = os.path.join(tmp, "draft.ofn"); out = os.path.join(tmp, "reasoned.ofn")
-    with open(ofn, "w") as fh:
-        fh.write(owl_from_dossier(dossier))
-    coherent, msg = reason(ofn, out, reasoner="ELK", timeout=timeout)
+    with tempfile.TemporaryDirectory() as tmp:
+        ofn = os.path.join(tmp, "draft.ofn"); out = os.path.join(tmp, "reasoned.ofn")
+        with open(ofn, "w") as fh:
+            fh.write(owl_from_dossier(dossier))
+        coherent, msg = reason(ofn, out, reasoner="ELK", timeout=timeout)
     genus = dossier.parent.curie if dossier.parent else "CL:0000000"
     result["reasoner"] = {"available": True, "coherent": coherent,
                           "classifies_under_genus": coherent and bool(dossier.parent),
@@ -144,8 +144,9 @@ def _parse_classification(reasoned_ofn: str) -> Dict[str, Any]:
     inferred EQUIVALENT to (i.e. the proposed term already exists in CL)."""
     txt = open(reasoned_ofn).read()
     labels = {}
-    for m in re.finditer(r'AnnotationAssertion\(rdfs:label\s+(obo:\S+)\s+"([^"]*)"', txt):
-        labels[_obo_to_curie(m.group(1))] = m.group(2)
+    # allow escaped quotes inside a label literal ("a \"b\" c")
+    for m in re.finditer(r'AnnotationAssertion\(rdfs:label\s+(obo:\S+)\s+"((?:[^"\\]|\\.)*)"', txt):
+        labels[_obo_to_curie(m.group(1))] = m.group(2).replace('\\"', '"')
     new = re.escape("<%s>" % NEW)
     supers: List[Dict[str, str]] = []
     equivs: List[Dict[str, str]] = []
@@ -157,11 +158,15 @@ def _parse_classification(reasoned_ofn: str) -> Dict[str, Any]:
             cur = _obo_to_curie(m.group(1))
             supers.append({"curie": cur, "label": labels.get(cur, "")})
             continue
-        # equivalence can be rendered NEW-first or CL-first; a bare named operand = redundancy
-        m = re.match(r"EquivalentClasses\((?:%s\s+(obo:\S+)|(obo:\S+)\s+%s)\)$" % (new, new), s)
-        if m:
-            tok = m.group(1) or m.group(2)
-            if tok and named.match(tok):
+        # Redundancy: an EquivalentClasses axiom relating NEW to one or more bare
+        # NAMED classes (no class expression). Handles the 2-operand and the rare
+        # >2-operand rendering; the candidate's own definitional axiom is excluded
+        # because it contains an ObjectIntersectionOf/…SomeValuesFrom.
+        elif (s.startswith("EquivalentClasses(") and ("<%s>" % NEW) in s
+                and not any(op in s for op in ("ObjectIntersectionOf", "ObjectSomeValuesFrom",
+                                               "ObjectUnionOf", "ObjectComplementOf",
+                                               "ObjectAllValuesFrom"))):
+            for tok in re.findall(r"obo:[A-Za-z]+_\w+", s):
                 cur = _obo_to_curie(tok)
                 equivs.append({"curie": cur, "label": labels.get(cur, "")})
     # de-dup, keep order
@@ -192,23 +197,32 @@ def classify_against_cl(dossier, cl_owl: str, timeout: int = 600) -> Dict[str, A
     if not (dossier.parent and dossier.parent.curie.startswith("CL:")):
         res["note"] = "no grounded CL genus — cannot classify against CL"
         return res
-    tmp = tempfile.mkdtemp()
-    cand = os.path.join(tmp, "candidate.ofn")
-    out = os.path.join(tmp, "classified.ofn")
-    with open(cand, "w") as fh:
-        fh.write(_candidate_owl_for_merge(dossier))
-    # merge CL + candidate, then reason — chained in one ROBOT invocation.
-    rc, so, se = run_robot(["merge", "--input", cl_owl, "--input", cand,
-                            "reason", "--reasoner", "ELK",
-                            "--axiom-generators", "subclass equivalentclass",
-                            "--output", out], timeout=timeout)
-    if rc != 0 or not os.path.exists(out):
-        # non-zero from `reason` => an unsatisfiable class (e.g. a taxon-constraint
-        # or disjointness violation the draft introduced): a real, useful signal.
-        res.update({"available": True, "coherent": False,
-                    "note": "ELK reported an incoherency: " + (se or so or "")[:300]})
-        return res
-    parsed = _parse_classification(out)
+    with tempfile.TemporaryDirectory() as tmp:
+        cand = os.path.join(tmp, "candidate.ofn")
+        out = os.path.join(tmp, "classified.ofn")
+        with open(cand, "w") as fh:
+            fh.write(_candidate_owl_for_merge(dossier))
+        # merge CL + candidate, then reason — chained in one ROBOT invocation.
+        rc, so, se = run_robot(["merge", "--input", cl_owl, "--input", cand,
+                                "reason", "--reasoner", "ELK",
+                                "--axiom-generators", "subclass equivalentclass",
+                                "--output", out], timeout=timeout)
+        if rc != 0 or not os.path.exists(out):
+            blob = (se or so or "")
+            low = blob.lower()
+            # DISTINGUISH a genuine logical incoherency (an unsatisfiable class ELK
+            # reports) from an unrelated tool failure (bad/non-OWL --cl-owl file, an
+            # ELK timeout, OOM). Only the former means the draft is inconsistent;
+            # calling a valid draft "incoherent" on a timeout would mislead a curator.
+            if any(t in low for t in ("unsatisfiable", "incoheren", "inconsisten")):
+                res.update({"available": True, "coherent": False,
+                            "note": "ELK found the draft incoherent (unsatisfiable class): " + blob[:300]})
+            else:
+                res.update({"available": True, "coherent": None, "error": blob[:300],
+                            "note": "classification did not complete — tool/file/timeout error, "
+                                    "not a logical incoherency"})
+            return res
+        parsed = _parse_classification(out)
     redundant = bool(parsed["equivalent_to"])
     res.update({"available": True, "coherent": True, "redundant_with_existing": redundant,
                 "disposition": "DUPLICATE_OF_EXISTING" if redundant else "NOVEL_placed_under_CL",
@@ -243,10 +257,10 @@ def taxon_incoherence_demo(timeout: int = 120) -> Dict[str, Any]:
         "  SubClassOf(%s %s)" % (X, A),
         "  SubClassOf(%s %s)" % (X, B),
         ")"])
-    tmp = tempfile.mkdtemp()
-    src = os.path.join(tmp, "taxon.ofn"); out = os.path.join(tmp, "r.ofn")
-    with open(src, "w") as fh:
-        fh.write(ofn)
-    coherent, msg = reason(src, out, reasoner="ELK", timeout=timeout)
+    with tempfile.TemporaryDirectory() as tmp:
+        src = os.path.join(tmp, "taxon.ofn"); out = os.path.join(tmp, "r.ofn")
+        with open(src, "w") as fh:
+            fh.write(ofn)
+        coherent, msg = reason(src, out, reasoner="ELK", timeout=timeout)
     return {"available": True, "incoherency_detected": (not coherent),
             "message": msg[:300]}

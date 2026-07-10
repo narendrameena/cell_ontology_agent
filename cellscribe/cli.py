@@ -75,8 +75,10 @@ def cmd_curate(args) -> int:
         dossier.reasoning = cc
         if not cc.get("available"):
             print("Classify: %s" % cc.get("note"))
-        elif not cc.get("coherent"):
+        elif cc.get("coherent") is False:
             print("Classify: INCOHERENT — %s" % cc.get("note"))
+        elif cc.get("coherent") is None:
+            print("Classify: could not classify — %s" % cc.get("note"))
         else:
             sup = ", ".join("%s (%s)" % (s["label"] or "?", s["curie"]) for s in cc["inferred_superclasses"]) or "—"
             print("Classify: %s  [ELK vs %s]" % (cc["disposition"], os.path.basename(args.cl_owl)))
@@ -110,7 +112,39 @@ def cmd_integrations(args) -> int:
         else:
             mark = "ERROR: %s" % e["error"]
         print("  %-16s -> %-52s [%s]" % (name, e["target"], mark))
+    from cellscribe import llm_ecosystem as L
+    s = L.status()
+    print("\nLive LLM hand-off (OntoGPT/SPIRES via subprocess):")
+    print("  venv        : %s" % (s["venv"] or "not built (run scripts/setup_llm_env.sh)"))
+    print("  model       : %s  (key var %s: %s)"
+          % (s["model"], s["key_var"], "SET" if s["key_present"] else "unset — get a free one at console.groq.com"))
     print("\n(built-in fallbacks run when an integration is unavailable)")
+    return 0
+
+
+def cmd_llm_extract(args) -> int:
+    from cellscribe import llm_ecosystem as L
+    text = args.text
+    if not text and args.name:
+        text = args.name + (". " + args.description if args.description else "")
+    if not text:
+        print("provide --text or --name"); return 2
+    print("Running OntoGPT SPIRES (cell_type template) via %s ...\n" % (args.model or L.DEFAULT_MODEL))
+    r = L.ontogpt_cell_type(text, model=args.model or None)
+    if not r["ok"]:
+        print("Live extraction unavailable: %s" % r.get("error"))
+        if r.get("needs_key"):
+            print("  -> set %s in your environment, then re-run" % r.get("key_var", "OPENAI_API_KEY"))
+        if r.get("needs_venv"):
+            print("  -> bash scripts/setup_llm_env.sh")
+        return 1
+    print("Model: %s" % r["model"])
+    ents = r.get("named_entities", [])
+    print("Grounded entities (%d):" % len(ents))
+    for e in ents:
+        print("  %-16s %s" % (e["id"], e["label"]))
+    print("\n--- raw SPIRES output (first 1500 chars) ---")
+    print((r.get("raw") or "")[:1500])
     return 0
 
 
@@ -173,6 +207,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     i = sub.add_parser("integrations", help="show which ecosystem integrations are live")
     i.set_defaults(func=cmd_integrations)
+
+    le = sub.add_parser("llm-extract", help="live OntoGPT/SPIRES cell_type extraction via an LLM (default Groq free tier)")
+    le.add_argument("--text", default="", help="text to extract from (e.g. an abstract or description)")
+    le.add_argument("--name", default="", help="cell-type name (used as text if --text omitted)")
+    le.add_argument("--description", default="")
+    le.add_argument("--model", default="", help="litellm model (default groq/llama-3.3-70b-versatile)")
+    le.set_defaults(func=cmd_llm_extract)
     return p
 
 

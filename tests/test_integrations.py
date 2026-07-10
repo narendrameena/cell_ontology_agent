@@ -52,6 +52,37 @@ def test_ecosystem_handoff_targets_verified():
                 "%s failed for a non-credentials reason (bad path?): %s" % (key, e["error"])
 
 
+def test_llm_ecosystem_status_and_parse():
+    from cellscribe import llm_ecosystem as L
+    s = L.status()
+    assert {"venv", "ontogpt", "model", "key_var", "key_present"} <= set(s)
+    assert L.key_var_for("groq/llama-3.3-70b-versatile") == "GROQ_API_KEY"
+    assert L.key_var_for("gpt-4o-mini") == "OPENAI_API_KEY"
+    assert L.key_var_for("xai/grok-4.5") == "XAI_API_KEY"        # audit fix: was OPENAI_API_KEY
+    assert L.key_var_for("anthropic/claude-3-5-haiku-latest") == "ANTHROPIC_API_KEY"
+    # light YAML parse keeps only grounded CURIEs, drops AUTO:/ungrounded
+    ents = L._parse_named_entities(
+        "named_entities:\n- id: CL:0000617\n  label: GABAergic neuron\n"
+        "- id: AUTO:xyz\n  label: junk\n- id: UBERON:0002435\n  label: striatum\nextracted_object:\n")
+    ids = [e["id"] for e in ents]
+    assert ids == ["CL:0000617", "UBERON:0002435"] and ents[0]["label"] == "GABAergic neuron"
+
+
+def test_llm_extract_graceful_without_key():
+    """With no provider key set, the live path never crashes — it returns a clear,
+    actionable ok=False (needs_key or needs_venv)."""
+    import os as _os
+    from cellscribe import llm_ecosystem as L
+    saved = _os.environ.pop("GROQ_API_KEY", None)
+    try:
+        r = L.ontogpt_cell_type("A GABAergic interneuron of the striatum.",
+                                model="groq/llama-3.3-70b-versatile")
+        assert r["ok"] is False and (r.get("needs_key") or r.get("needs_venv"))
+    finally:
+        if saved is not None:
+            _os.environ["GROQ_API_KEY"] = saved
+
+
 def test_nsforest_fallback_still_works():
     # prefer_nsforest=False forces the built-in NS-Forest-style path, so this is
     # deterministic whether or not the real package is installed.
@@ -124,6 +155,22 @@ def test_classify_against_real_cl():
     r2 = reasoning.classify_against_cl(stub, CL_OWL)
     assert r2["redundant_with_existing"] is True
     assert any(e["curie"] == "CL:0000014" for e in r2["equivalent_to"])
+
+
+def test_classify_tool_error_is_not_incoherency():
+    """Audit fix: a ROBOT/tool failure (here: a non-OWL --cl-owl file) must NOT be
+    reported as a logical incoherency. Expect coherent is None (could-not-classify),
+    never coherent=False. Self-skips without Java/ROBOT."""
+    if not robot_tools.robot_available():
+        print("    (skip: ROBOT/Java unavailable)"); return
+    bogus = os.path.join(tempfile.mkdtemp(), "not_an_ontology.owl")
+    with open(bogus, "w") as fh:
+        fh.write("this is plainly not OWL\n")
+    r = reasoning.classify_against_cl(_dossier(), bogus, timeout=120)
+    assert r["available"] is True
+    # must be the could-not-classify state, never coherent=False (a false incoherency)
+    assert r.get("coherent") is None, "tool error misreported as coherent=%r" % r.get("coherent")
+    assert "did not complete" in (r.get("note", "").lower())
 
 
 def test_elk_taxon_incoherence_detected():
