@@ -227,6 +227,11 @@ issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** e
 - **EL reasoner (ELK via ROBOT)** — [`reasoning.py`](cellscribe/reasoning.py) materialises the drafted
   equivalence axiom into OWL and runs **ELK** to check coherence + genus subsumption, and detects the
   incoherency that taxon-constraint violations produce (`--reason`; needs Java + `robot.jar`).
+- **Classification against the whole Cell Ontology** — `classify_against_cl()` merges the candidate's
+  axiom into a real CL import module and runs ELK over all of CL, reporting the term's **inferred CL
+  superclasses** and whether it is **equivalent to an existing CL class** (duplicate detection before a
+  term is minted). `--cl-owl cl-base.owl`; verified vs **CL v2026-06-08** (a novel term places under
+  `interneuron`; a candidate mirroring an existing axiom is flagged a duplicate of `CL:0000014`).
 - **ROBOT template → OWL → ODK round-trip** — [`tools/robot_tools.py`](cellscribe/tools/robot_tools.py)
   materialises a valid ROBOT template into OWL (`--robot-owl out.owl`); [`odk/`](odk/) scaffolds the
   `robot merge` → PR cycle.
@@ -238,19 +243,26 @@ issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** e
 - **SPIRES-style extraction** — [`spires.py`](cellscribe/spires.py) fills a fixed, grounded schema
   (defers to `ontogpt` if installed).
 - **Ecosystem adapters** — [`integrations.py`](cellscribe/integrations.py) detects and defers to
-  **OntoGPT / DRAGON-AI / Aurelian** when installed, else falls back (`cellscribe integrations`).
+  **OntoGPT / DRAGON-AI / Aurelian**, else falls back (`cellscribe integrations`). The hand-off targets
+  are the **verified** real import paths — `ontogpt.engines.spires_engine.SPIRESEngine`,
+  `curategpt.agents.dragon_agent.DragonAgent` (DRAGON-AI lives in CurateGPT, not OntoGPT),
+  `aurelian.agents.literature.literature_agent` — and `verify_handoffs()` imports each to prove it
+  resolves. Confirmed in a Python 3.11 venv (ontogpt 1.1.1 / curategpt 0.2.4 / aurelian 0.4.2): the
+  ontogpt + curategpt targets resolve; aurelian imports its whole chain and stops only at the
+  LLM-credentials boundary — never a wrong path.
 
-**Genuinely remaining:** classification against a full CL import module (vs the self-contained draft);
-the OntoGPT/DRAGON-AI/Aurelian hand-offs are wired but exercised only when those packages are installed.
-(The real NS-Forest run is verified against nsforest 4.1; it is optional only because installing it
-force-upgrades numpy/pandas, so the built-in re-implementation is the default in a lean environment.)
+**Optional by design (not gaps):** the real NS-Forest run (verified vs nsforest 4.1) and the
+OntoGPT/DRAGON-AI/Aurelian hand-offs are optional because they force a heavy Python/dependency stack
+(NS-Forest upgrades numpy/pandas; the LLM tools need Python ≥3.10/3.11 + an API key). CellScribe verifies
+each against the real package and degrades to a deterministic built-in path so it runs in a lean env.
 
 ## Verification
 
 Audited for correctness (an independent pass surfaced and fixed bugs — surface-vs-transcriptomic axioms,
 an OLS null-field crash, organism scoping, marker minimality, unreadable-matrix fallback, atomic caching).
-Three offline, deterministic test suites (48 tests) cover the tools, edge cases + audit regressions, and
-the integrations (ELK/ROBOT and real NS-Forest run for real when their dependencies are present, else self-skip):
+Three offline, deterministic test suites (50 tests) cover the tools, edge cases + audit regressions, and
+the integrations (ELK/ROBOT, real-CL classification, real NS-Forest, and the ecosystem hand-offs run for
+real when their dependencies are present, else self-skip):
 
 ```bash
 python tests/test_cellscribe.py     # tools, agent runs

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from typing import List
 
@@ -68,6 +69,21 @@ def cmd_curate(args) -> int:
         else:
             print("Reason  : structural %s (install a JRE + robot.jar for ELK)"
                   % dossier.reasoning["structural"])
+    if getattr(args, "cl_owl", ""):
+        from cellscribe import reasoning
+        cc = reasoning.classify_against_cl(dossier, args.cl_owl)
+        dossier.reasoning = cc
+        if not cc.get("available"):
+            print("Classify: %s" % cc.get("note"))
+        elif not cc.get("coherent"):
+            print("Classify: INCOHERENT — %s" % cc.get("note"))
+        else:
+            sup = ", ".join("%s (%s)" % (s["label"] or "?", s["curie"]) for s in cc["inferred_superclasses"]) or "—"
+            print("Classify: %s  [ELK vs %s]" % (cc["disposition"], os.path.basename(args.cl_owl)))
+            print("          inferred superclasses: %s" % sup)
+            if cc["redundant_with_existing"]:
+                dup = ", ".join("%s (%s)" % (e["label"] or "?", e["curie"]) for e in cc["equivalent_to"])
+                print("          ⚠ already in CL — equivalent to: %s" % dup)
     if getattr(args, "robot_owl", ""):
         from cellscribe.tools import robot_tools
         ok, msg = robot_tools.materialize_dossier(dossier, args.robot_owl, reason_after=True)
@@ -83,6 +99,17 @@ def cmd_integrations(args) -> int:
     print("CellScribe ecosystem integrations (live if the package/tool is installed):\n")
     for name, live in integrations.status().items():
         print("  [%s] %s" % ("live" if live else " -- ", name))
+    print("\nVerified LLM hand-off targets (import paths checked against the real packages):")
+    for name, e in integrations.verify_handoffs().items():
+        if not e["installed"]:
+            mark = "not installed (needs Python >=3.10/3.11 + LLM key)"
+        elif e["resolved"]:
+            mark = "resolved"
+        elif e["needs_key"]:
+            mark = "import OK; live call needs an LLM key"
+        else:
+            mark = "ERROR: %s" % e["error"]
+        print("  %-16s -> %-52s [%s]" % (name, e["target"], mark))
     print("\n(built-in fallbacks run when an integration is unavailable)")
     return 0
 
@@ -128,7 +155,10 @@ def build_parser() -> argparse.ArgumentParser:
     c.add_argument("--out", default="", help="output directory for the dossier")
     c.add_argument("--offline", action="store_true", help="cache-only, no network")
     c.add_argument("--no-llm", action="store_true", help="force deterministic mode")
-    c.add_argument("--reason", action="store_true", help="run the ELK reasoner (needs Java + robot.jar)")
+    c.add_argument("--reason", action="store_true", help="run the ELK reasoner over the self-contained draft (needs Java + robot.jar)")
+    c.add_argument("--cl-owl", default="", help="classify the draft against a real CL import module "
+                                                "(e.g. cl-base.owl): ELK places it in the CL hierarchy and "
+                                                "flags duplicates of existing terms (needs Java + robot.jar)")
     c.add_argument("--robot-owl", default="", help="materialise the draft into an OWL file via ROBOT")
     c.set_defaults(func=cmd_curate)
 

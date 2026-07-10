@@ -52,7 +52,8 @@ def extract_marker_assertions(papers, markers: List[str], ground_surface=None,
         assertions.append({"marker": m, "grounded": curie, "evidence": ev, "pmid": pmid})
     method = "deterministic (schema-constrained, grounded)"
     if ontogpt_available():
-        method = "ontogpt-available (would defer to SPIRES)"
+        # defer target: ontogpt.engines.spires_engine.SPIRESEngine.extract_from_text
+        method = "ontogpt-available (defers to SPIRESEngine)"
     elif llm is not None and getattr(llm, "available", False):
         method = "llm-refined (schema-constrained)"
     return {"assertions": assertions, "method": method,

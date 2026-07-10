@@ -33,6 +33,25 @@ def test_integrations_status():
     assert all(isinstance(v, bool) for v in s.values())
 
 
+def test_ecosystem_handoff_targets_verified():
+    """The LLM hand-offs declare the REAL import paths (checked against ontogpt
+    1.1.x / curategpt 0.2.x / aurelian 0.4.x); and when a package IS installed, its
+    target must actually import — so this self-verifies on a Python >=3.11 env with
+    the packages present, and documents the paths everywhere else."""
+    h = integrations.verify_handoffs()
+    assert h["dragon_ai"]["target"] == "curategpt.agents.dragon_agent.DragonAgent"
+    assert h["ontogpt_spires"]["target"] == "ontogpt.engines.spires_engine.SPIRESEngine"
+    assert h["aurelian"]["target"] == "aurelian.agents.literature.literature_agent.literature_agent"
+    # Invariant: when a package IS installed, its hand-off target either resolves
+    # outright or stops only at the LLM-credentials boundary — NEVER a wrong/renamed
+    # import path (ImportError/ModuleNotFoundError/AttributeError). Verified true in a
+    # Python 3.11 venv: ontogpt+curategpt resolve; aurelian needs_key.
+    for key, e in h.items():
+        if e["installed"] and not e["resolved"]:
+            assert e["needs_key"] is True, \
+                "%s failed for a non-credentials reason (bad path?): %s" % (key, e["error"])
+
+
 def test_nsforest_fallback_still_works():
     # prefer_nsforest=False forces the built-in NS-Forest-style path, so this is
     # deterministic whether or not the real package is installed.
@@ -81,6 +100,30 @@ def test_elk_classify():
         print("    (skip: ROBOT/Java unavailable)"); return
     r = reasoning.classify(_dossier())["reasoner"]
     assert r["available"] and r["coherent"] is True
+
+
+CL_OWL = os.path.join(ROOT, ".tools", "cl-base.owl")
+
+
+def test_classify_against_real_cl():
+    """ELK classification against a real CL import module: a novel term is placed
+    under CL and flagged NOT redundant; a candidate that mirrors an existing CL
+    term's logical definition is flagged a DUPLICATE. Self-skips unless Java +
+    robot.jar + a downloaded cl-base.owl are present (verified vs CL v2026-06-08)."""
+    if not (robot_tools.robot_available() and os.path.exists(CL_OWL)):
+        print("    (skip: needs Java + robot.jar + .tools/cl-base.owl)"); return
+    # (a) novel term -> coherent, placed under a CL superclass, no duplicate
+    r = reasoning.classify_against_cl(_dossier(), CL_OWL)
+    assert r["available"] and r["coherent"] is True
+    assert r["redundant_with_existing"] is False
+    assert any(s["curie"].startswith("CL:") for s in r["inferred_superclasses"])
+    # (b) mirror the real axiom CL:0000014 == CL:0000039 and (capable_of some GO:0017145)
+    from types import SimpleNamespace as NS
+    stub = NS(parent=NS(curie="CL:0000039", label="germ line cell"), location=None,
+              surface=[], functions=[NS(curie="GO:0017145", label="stem cell division")])
+    r2 = reasoning.classify_against_cl(stub, CL_OWL)
+    assert r2["redundant_with_existing"] is True
+    assert any(e["curie"] == "CL:0000014" for e in r2["equivalent_to"])
 
 
 def test_elk_taxon_incoherence_detected():
