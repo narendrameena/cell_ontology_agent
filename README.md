@@ -1,8 +1,8 @@
-# CLARA — a grounded, agentic assistant for Cell Ontology curation
+# CellScribe — a grounded, agentic assistant for Cell Ontology curation
 
 *Cell-ontology Literature-And-marker Reasoning Agent.*
 
-CLARA takes a cell type (a name, optionally a description, marker genes and an
+CellScribe takes a cell type (a name, optionally a description, marker genes and an
 expression matrix) and returns a **curation dossier**: grounded ontology terms,
 a tested marker panel, cited literature, a *computable* draft definition
 (OWL + ROBOT), and the agent's own critique + recommended disposition —
@@ -24,12 +24,12 @@ public resources (EBI OLS, Europe PMC).
 
 ```bash
 pip install -r requirements.txt          # requests (+ pandas/numpy for the marker test)
-# or: pip install -e .                    # gives a `clara` command
+# or: pip install -e .                    # gives a `cellscribe` command
 
 python run_demo.py                        # OFFLINE by default (uses shipped fixtures)
 python run_demo.py --online               # refresh from EBI OLS / Europe PMC
-python -m clara.cli tools                 # list the tool registry
-python -m clara.cli curate --name "..." --markers GENE1,GENE2 --location "..." --out out/
+python -m cellscribe.cli tools                 # list the tool registry
+python -m cellscribe.cli curate --name "..." --markers GENE1,GENE2 --location "..." --out out/
 ```
 
 See **[`examples/`](examples/)** for runnable scripts and **[Tests](#tests)** below.
@@ -39,7 +39,7 @@ See **[`examples/`](examples/)** for runnable scripts and **[Tests](#tests)** be
 ## What it does (verified, live)
 
 ```
-$ python -m clara.cli curate --name "striatal parvalbumin-positive GABAergic interneuron" \
+$ python -m cellscribe.cli curate --name "striatal parvalbumin-positive GABAergic interneuron" \
       --description "A GABAergic interneuron of the striatum expressing parvalbumin" \
       --markers GAD1,GAD2,PVALB --location striatum \
       --expr demo_data/striatum_demo_expr.csv --target striatal_PV_interneuron --out out/
@@ -92,12 +92,14 @@ Two behaviours worth seeing in the demo:
    Tool registry (declarative schemas):
      • ols_search        EBI OLS4      → ground CL / Uberon / GO / PR terms  (anti-hallucination)
      • literature_search Europe PMC    → papers + extracted evidence sentence (RAG)
-     • marker_panel      numpy/pandas  → NS-Forest-style minimal, specific panel + F-beta score
-     • draft_definition  templating    → genus–differentia text + OWL axiom + ROBOT row
-     • critic            rules         → grounding/duplication/support checks → confidence + flags
+     • marker_panel       numpy/pandas  → NS-Forest-style minimal, specific panel + F-beta score
+     • go_marker_support  QuickGO       → GO × marker intersection (evidence ECO:0000269/0000318)
+     • draft_definition   templating    → genus-differentia + OWL (part of / capable of /
+                                          has plasma membrane part / expresses) + ROBOT row
+     • critic             rules         → grounding/duplication/support checks → confidence + flags
 ```
 
-| Biomni | CLARA |
+| Biomni | CellScribe |
 |---|---|
 | Biomni-E1 environment (150 tools / 59 DBs) | `registry.py` — tool schemas over OLS, Europe PMC, NS-Forest-style analysis |
 | Biomni-A1 retrieval → plan → code → self-critique | `agent.py` — `select()` → `plan_tools()` → grounded execution → `critic` |
@@ -108,16 +110,16 @@ Two behaviours worth seeing in the demo:
 
 ## Optional LLM (planner / polisher)
 
-CLARA is *useful without an LLM*. With a key it adds two judgement tasks —
+CellScribe is *useful without an LLM*. With a key it adds two judgement tasks —
 ordering tools and polishing prose — but never invents ontology terms.
 
 ```bash
 export ANTHROPIC_API_KEY=...   # or OPENAI_API_KEY=...
-export CLARA_MODEL=claude-sonnet-5   # optional
-python -m clara.cli curate --name "..." --markers ...      # (omit --no-llm)
+export CELLSCRIBE_MODEL=claude-sonnet-5   # optional
+python -m cellscribe.cli curate --name "..." --markers ...      # (omit --no-llm)
 ```
 
-**Offline / air-gapped:** `CLARA_OFFLINE=1` forces cache-only using the shipped
+**Offline / air-gapped:** `CELLSCRIBE_OFFLINE=1` forces cache-only using the shipped
 `demo_data/fixtures/`, so the demo and tests run with no network.
 
 ---
@@ -138,7 +140,7 @@ See **[`examples/README.md`](examples/README.md)** for a walk-through.
 No pytest required — the suite self-runs and is also pytest-compatible:
 
 ```bash
-python tests/test_clara.py     # -> "N passed" (offline, deterministic)
+python tests/test_cellscribe.py     # -> "N passed" (offline, deterministic)
 # or, if you have pytest:
 pytest -q
 ```
@@ -149,11 +151,18 @@ plus two end-to-end agent runs (align-existing and propose-new) — all offline.
 
 ---
 
+## Biologically grounded (Tan et al. 2026, *The Cell Ontology in the age of single-cell omics*)
+
+- **Genus–differentia** logical definitions (the CL design pattern), meant to be classified by a reasoner.
+- **Anatomical location** → `part of` (BFO:0000050) Uberon; **GO function** → `capable of` (RO:0002215) a GO biological process.
+- **Surface-protein markers** → `has plasma membrane part` some **PRO** (RO:0002104) — the canonical CD4 T-cell form — while **transcriptomic markers** → `expresses` (RO:0002292). The paper stresses protein ≠ transcript, so CellScribe models them differently.
+- **GO × marker intersection** (Fig 1 / Table 1): a marker also annotated to a *defining* GO function (QuickGO, manual evidence ECO:0000269/0000318) is flagged higher-confidence — e.g. *GAD1/GAD2* support "GABA biosynthetic process" while *PVALB* (an identification marker) does not.
+
 ## Design principles
 
 1. **Grounding over generation** — terms from OLS, evidence from Europe PMC; the LLM plans/polishes only.
 2. **Evidence & provenance are first-class** — the output is a dossier (markers, papers, CURIEs, confidence), not an answer.
-3. **Human-in-the-loop** — CLARA never writes to CL; it proposes a *disposition* (ALIGN / PROPOSE_NEW / INSUFFICIENT).
+3. **Human-in-the-loop** — CellScribe never writes to CL; it proposes a *disposition* (ALIGN / PROPOSE_NEW / INSUFFICIENT).
 4. **Test, don't assert** — marker specificity is measured on data (NS-Forest-style), not claimed.
 5. **Auditable** — every run emits a step-by-step trace.
 

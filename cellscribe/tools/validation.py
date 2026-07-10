@@ -69,7 +69,7 @@ def critique(name: str,
     needs_review = confidence < REVIEW_THRESHOLD or is_dup or not checks["parent_grounded"]
 
     # Recommended action. Note: a PROPOSE_NEW disposition still requires curator
-    # approval — CLARA never writes to CL. "needs_expert_review" flags *blocking*
+    # approval — CellScribe never writes to CL. "needs_expert_review" flags *blocking*
     # problems, not the routine human-in-the-loop sign-off every draft receives.
     if is_dup:
         disposition = "ALIGN to existing term — do not create a duplicate"

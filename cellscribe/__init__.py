@@ -1,7 +1,7 @@
-"""CLARA — a grounded, agentic assistant for Cell Ontology curation.
+"""CellScribe — a grounded, agentic assistant for Cell Ontology curation.
 
 Design bet (from evaluating frontier models): LLMs are strong drafters but weak
-authorities. So CLARA grounds every claim in real ontology terms (EBI OLS) and
+authorities. So CellScribe grounds every claim in real ontology terms (EBI OLS) and
 real papers (Europe PMC), tests markers on data, and hands a curator an
 evidence-bearing dossier plus its own critique — never an unverified answer.
 """

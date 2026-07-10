@@ -4,7 +4,7 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-.clara_cache/
+.cellscribe_cache/
 demo_output/
 demo_output_offline/
 examples/out/

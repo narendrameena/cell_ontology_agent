@@ -1,8 +1,8 @@
-"""Command-line interface for CLARA.
+"""Command-line interface for CellScribe.
 
-    python -m clara.cli curate --name "..." --markers GAD1,PVALB --location striatum --out out/
-    python -m clara.cli demo --out demo_output/
-    python -m clara.cli tools
+    python -m cellscribe.cli curate --name "..." --markers GAD1,PVALB --location striatum --out out/
+    python -m cellscribe.cli demo --out demo_output/
+    python -m cellscribe.cli tools
 """
 from __future__ import annotations
 
@@ -49,6 +49,8 @@ def cmd_curate(args) -> int:
     agent = CuratorAgent(offline=args.offline, use_llm=not args.no_llm, verbose=True)
     req = CurationRequest(
         name=args.name, description=args.description or "", markers=_csv(args.markers),
+        surface_markers=_csv(args.surface_markers), functions=_csv(args.functions),
+        components=_csv(args.components),
         location_hint=args.location or "", parent_hint=args.parent or "",
         expr_csv=args.expr or "", cluster_col=args.cluster_col,
         target_cluster=args.target or "", taxonomy_ref=args.taxonomy or "",
@@ -63,7 +65,7 @@ def cmd_curate(args) -> int:
 
 def cmd_tools(args) -> int:
     agent = CuratorAgent(use_llm=False, verbose=False)
-    print("CLARA tool registry (Biomni-E1-style declarative schemas):\n")
+    print("CellScribe tool registry (Biomni-E1-style declarative schemas):\n")
     for t in agent.registry.all():
         print("• %s" % t.spec.name)
         print("    %s" % t.spec.description)
@@ -80,13 +82,16 @@ def cmd_demo(args) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="clara", description="Agentic Cell Ontology curation assistant.")
+    p = argparse.ArgumentParser(prog="cellscribe", description="Agentic Cell Ontology curation assistant.")
     sub = p.add_subparsers(dest="cmd")
 
     c = sub.add_parser("curate", help="curate one cell type")
     c.add_argument("--name", required=True)
     c.add_argument("--description", default="")
-    c.add_argument("--markers", default="", help="comma-separated gene symbols")
+    c.add_argument("--markers", default="", help="comma-separated transcriptomic (expression) markers")
+    c.add_argument("--surface-markers", default="", help="cell-surface protein markers (grounded to PRO)")
+    c.add_argument("--functions", default="", help="GO biological-process functions (grounded to GO)")
+    c.add_argument("--components", default="", help="GO cellular components")
     c.add_argument("--location", default="", help="anatomical location (grounded to Uberon)")
     c.add_argument("--parent", default="", help="parent/genus hint (grounded to CL)")
     c.add_argument("--expr", default="", help="path to cells x genes CSV with a cluster column")

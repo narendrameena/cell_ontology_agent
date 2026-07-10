@@ -5,7 +5,7 @@ Two jobs:
   2. Make a *fully offline* demo possible — pre-fetched responses are shipped as
      fixtures so the tool runs on an air-gapped interview laptop.
 
-Set CLARA_CACHE to point at a fixtures directory; set CLARA_OFFLINE=1 to force
+Set CELLSCRIBE_CACHE to point at a fixtures directory; set CELLSCRIBE_OFFLINE=1 to force
 cache-only (never touch the network).
 """
 from __future__ import annotations
@@ -24,7 +24,7 @@ except Exception:  # pragma: no cover
 
 
 def cache_dir() -> str:
-    d = os.environ.get("CLARA_CACHE") or os.path.join(os.getcwd(), ".clara_cache")
+    d = os.environ.get("CELLSCRIBE_CACHE") or os.path.join(os.getcwd(), ".cellscribe_cache")
     os.makedirs(d, exist_ok=True)
     return d
 
@@ -65,7 +65,7 @@ def http_get_json(
     """
     params = params or {}
     if offline is None:
-        offline = os.environ.get("CLARA_OFFLINE", "0") == "1"
+        offline = os.environ.get("CELLSCRIBE_OFFLINE", "0") == "1"
 
     key = _key(url, params)
     path = os.path.join(cache_dir(), key + ".json")
@@ -80,7 +80,7 @@ def http_get_json(
     if offline or requests is None:
         return None
 
-    hdrs = headers or {"User-Agent": "CLARA/0.1 (cell-ontology curation)"}
+    hdrs = headers or {"User-Agent": "CellScribe/0.1 (cell-ontology curation)"}
     data = None
     for attempt in range(3):  # public APIs occasionally return empty/5xx; retry
         try:

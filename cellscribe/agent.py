@@ -23,6 +23,7 @@ from .llm import LLMClient
 from .models import CurationRequest, MarkerPanel, Step, TermMatch
 from .registry import ToolRegistry
 from .tools.definition import DefinitionDrafter
+from .tools.go_support import QuickGOTool
 from .tools.literature import EuropePMCTool
 from .tools.markers import MarkerPanelTool
 from .tools.ontology import OLSSearchTool
@@ -67,6 +68,7 @@ class CuratorAgent:
         self.ols = self.registry.register(OLSSearchTool())
         self.lit = self.registry.register(EuropePMCTool())
         self.mark = self.registry.register(MarkerPanelTool())
+        self.go = self.registry.register(QuickGOTool())
         self.drafter = self.registry.register(DefinitionDrafter())
         self.llm = LLMClient() if use_llm else LLMClient.__new__(LLMClient)
         if not use_llm:
@@ -153,30 +155,71 @@ class CuratorAgent:
                 request.expr_csv, request.cluster_col, request.target_cluster,
                 candidate_genes=request.markers or None)
         else:
-            co = sum(1 for m in request.markers
+            prior_markers = list(request.markers) + list(request.surface_markers)
+            co = sum(1 for m in prior_markers
                      if any(m.lower() in (p.title + " " + p.snippet).lower() for p in papers))
-            panel = self.mark.from_prior(request.markers, literature_hits=len(papers),
+            panel = self.mark.from_prior(prior_markers, literature_hits=len(papers),
                                          grounded=co)
         self._log(trace, "marker_panel", "test marker specificity",
                   summary="panel=[%s] score=%.2f (%s)"
                   % (", ".join(panel.markers), panel.score, panel.method))
 
-        # 6. draft definition (+ optional LLM prose polish)
+        # 6. ground GO functions ('capable of') and surface-protein markers (PRO)
+        functions = []
+        for fq in request.functions:
+            t = self._ground(fq, "go")
+            if t and t.curie.startswith("GO:"):
+                functions.append(t)
+        if request.functions:
+            self._log(trace, "ols_search", "ground functions in GO",
+                      summary=(", ".join("%s (%s)" % (f.label, f.curie) for f in functions)
+                               or "none grounded"), prov="EBI OLS4")
+        surface, surface_ungrounded = [], []
+        for sm in request.surface_markers:
+            t = self._ground_surface(sm)
+            if t:
+                surface.append(t)
+            else:
+                surface_ungrounded.append(sm)
+        if request.surface_markers:
+            self._log(trace, "ols_search", "ground surface markers in PRO",
+                      summary="grounded=[%s] unverified=[%s]"
+                      % (", ".join("%s->%s" % (s.query, s.curie) for s in surface),
+                         ", ".join(surface_ungrounded) or "-"), prov="EBI OLS4 (PRO)")
+
+        # 6b. GO x marker intersection (QuickGO) — which markers a defining function supports
+        all_markers = list(request.markers) + list(request.surface_markers)
+        go_support = {}
+        if functions and all_markers:
+            go_support = self.go.support(all_markers, functions,
+                                         organism=request.organism, offline=self.offline)
+            self._log(trace, "go_marker_support", "GO x marker intersection (QuickGO)",
+                      summary=(", ".join("%s<-%s" % (m, "/".join(g)) for m, g in go_support.items())
+                               or "no marker supported by a defining GO function"),
+                      prov="QuickGO (ECO:0000269/0000318)")
+
+        # 7. draft definition (+ optional LLM CL-standard prose)
         definition = self.drafter(request.name, parent, location, panel,
+                                  functions=functions, surface=surface,
+                                  surface_ungrounded=surface_ungrounded,
                                   organism=request.organism)
         if self.llm.available:
-            ctx = "parent=%s; location=%s; markers=%s" % (
+            facts = ("genus=%s; location=%s; GO functions=%s; transcriptomic markers=%s (in %s); "
+                     "surface markers=%s") % (
                 parent.label if parent else "cell",
                 location.label if location else "n/a",
-                ", ".join(panel.markers))
-            polished = self.llm.polish_definition(definition.textual, ctx)
-            if polished:
-                definition.textual = polished
-                definition.drafted_by = "llm:%s (grounded)" % self.llm.model
+                "; ".join(f.label for f in functions) or "n/a",
+                ", ".join(panel.markers) or "n/a", request.organism,
+                ", ".join([s.label for s in surface] + surface_ungrounded) or "n/a")
+            refs = "; ".join("%s (PMID %s)" % (p.title, p.pmid) for p in papers[:5])
+            drafted = self.llm.draft_cl_definition(parent.label if parent else "cell", facts, refs)
+            if drafted:
+                definition.textual = drafted
+                definition.drafted_by = "llm:%s (grounded, CL house-style)" % self.llm.model
         self._log(trace, "draft_definition", "compose text + OWL + ROBOT",
                   summary=definition.textual)
 
-        # 7. critique
+        # 8. critique
         crit = critique(request.name, existing, parent, location, panel, papers)
         self._log(trace, "critic", "verification & confidence",
                   summary="confidence=%.2f needs_review=%s"
@@ -184,9 +227,22 @@ class CuratorAgent:
 
         return CurationDossier(
             request=request, existing=existing, parent=parent, location=location,
-            panel=panel, papers=papers, definition=definition, critique=crit,
-            trace=trace, llm_used=llm_used)
+            functions=functions, surface=surface, surface_ungrounded=surface_ungrounded,
+            go_support=go_support, panel=panel, papers=papers, definition=definition,
+            critique=crit, trace=trace, llm_used=llm_used)
 
     def _ground(self, query: str, ontology: str) -> Optional[TermMatch]:
         hits = self.ols(query, ontology=ontology, rows=5, offline=self.offline)
         return hits[0] if hits else None
+
+    def _ground_surface(self, symbol: str):
+        """Ground a surface-marker symbol to PRO. Bare symbols like 'CD4' fuzzy-match
+        (e.g. CD44), so we try '<sym> molecule' first and require an exact/synonym hit."""
+        sym = symbol.lower().strip()
+        for q in (symbol + " molecule", symbol):
+            for h in self.ols(q, ontology="pr", rows=8, offline=self.offline):
+                lbl = h.label.lower().strip()
+                syns = [s.lower() for s in h.synonyms]
+                if lbl == sym or lbl == sym + " molecule" or sym in lbl.split() or sym in syns:
+                    return h
+        return None

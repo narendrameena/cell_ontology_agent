@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Example 1 — use CLARA programmatically (no CLI).
+"""Example 1 — use CellScribe programmatically (no CLI).
 
-An EXISTING type: CLARA recognises it's already in CL and says "align, don't
+An EXISTING type: CellScribe recognises it's already in CL and says "align, don't
 create". Runs OFFLINE from the shipped fixtures, so no network is needed.
 
     python examples/01_curate_api.py
@@ -12,10 +12,10 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
-os.environ.setdefault("CLARA_OFFLINE", "1")
-os.environ.setdefault("CLARA_CACHE", os.path.join(ROOT, "demo_data", "fixtures"))
+os.environ.setdefault("CELLSCRIBE_OFFLINE", "1")
+os.environ.setdefault("CELLSCRIBE_CACHE", os.path.join(ROOT, "demo_data", "fixtures"))
 
-from clara import CuratorAgent, CurationRequest
+from cellscribe import CuratorAgent, CurationRequest
 
 agent = CuratorAgent(offline=True, use_llm=False, verbose=True)
 

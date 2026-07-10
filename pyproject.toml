@@ -3,9 +3,9 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "clara-cl"
+name = "cellscribe"
 version = "0.1.0"
-description = "CLARA — a grounded, agentic assistant for Cell Ontology curation (Biomni-inspired)"
+description = "CellScribe — a grounded, agentic assistant for Cell Ontology curation (Biomni-inspired)"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = ["requests>=2.20"]
@@ -14,7 +14,7 @@ dependencies = ["requests>=2.20"]
 markers = ["pandas>=0.25", "numpy>=1.18"]
 
 [project.scripts]
-clara = "clara.cli:main"
+cellscribe = "cellscribe.cli:main"
 
 [tool.setuptools]
-packages = ["clara", "clara.tools"]
+packages = ["cellscribe", "cellscribe.tools"]

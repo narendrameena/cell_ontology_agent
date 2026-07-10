@@ -1,11 +1,11 @@
 """Two worked examples that exercise the whole agent.
 
   A) An existing type — "CD4-positive, alpha-beta T cell".
-     CLARA should recognise it already exists in CL and say *align, don't create*.
+     CellScribe should recognise it already exists in CL and say *align, don't create*.
 
   B) A novel brain type — "striatal parvalbumin-positive GABAergic interneuron",
      with a real marker panel tested on a (bundled, synthetic) expression matrix.
-     CLARA should ground the genus (interneuron) and location (striatum), test
+     CellScribe should ground the genus (interneuron) and location (striatum), test
      GAD1/GAD2/PVALB, pull literature, draft a computable definition, and flag it
      for expert review.
 """
@@ -29,7 +29,9 @@ def run_demo(out: str = "demo_output", offline: Optional[bool] = None,
     a = CurationRequest(
         name="CD4-positive, alpha-beta T cell",
         description="A mature alpha-beta T cell that expresses CD4",
-        markers=["CD4", "IL7R"], organism="Homo sapiens")
+        surface_markers=["CD4", "IL7R"],           # cell-surface proteins -> PRO
+        functions=["T cell receptor signaling pathway"],  # -> GO 'capable of'
+        organism="Homo sapiens")
     da = agent.curate(a)
     pa = da.save(out)
 
@@ -38,6 +40,7 @@ def run_demo(out: str = "demo_output", offline: Optional[bool] = None,
         name="striatal parvalbumin-positive GABAergic interneuron",
         description="A GABAergic inhibitory interneuron of the striatum expressing parvalbumin",
         markers=["GAD1", "GAD2", "PVALB"],
+        functions=["GABA biosynthetic process"],   # GAD1/GAD2 are the GABA-synthesis enzymes
         location_hint="striatum",
         expr_csv=DEMO_CSV if os.path.exists(DEMO_CSV) else "",
         cluster_col="cluster", target_cluster="striatal_PV_interneuron",

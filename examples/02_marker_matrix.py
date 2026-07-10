@@ -2,7 +2,7 @@
 """Example 2 — curate a NOVEL type using an expression matrix.
 
 The marker panel is tested on data (NS-Forest-style) rather than asserted.
-CLARA grounds the genus + location, tests GAD1/GAD2/PVALB, drafts a computable
+CellScribe grounds the genus + location, tests GAD1/GAD2/PVALB, drafts a computable
 definition, and routes it for curator approval. Runs OFFLINE.
 
     python examples/02_marker_matrix.py
@@ -13,10 +13,10 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
-os.environ.setdefault("CLARA_OFFLINE", "1")
-os.environ.setdefault("CLARA_CACHE", os.path.join(ROOT, "demo_data", "fixtures"))
+os.environ.setdefault("CELLSCRIBE_OFFLINE", "1")
+os.environ.setdefault("CELLSCRIBE_CACHE", os.path.join(ROOT, "demo_data", "fixtures"))
 
-from clara import CuratorAgent, CurationRequest
+from cellscribe import CuratorAgent, CurationRequest
 
 CSV = os.path.join(ROOT, "demo_data", "striatum_demo_expr.csv")
 

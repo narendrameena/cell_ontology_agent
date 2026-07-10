@@ -1,4 +1,4 @@
-"""The curation dossier — CLARA's deliverable.
+"""The curation dossier — CellScribe's deliverable.
 
 Not "an answer": a reviewable package (verdict + grounded terms + tested markers
 + cited evidence + computable draft + the agent's own trace), rendered to JSON,
@@ -21,7 +21,10 @@ class CurationDossier:
     existing: Optional[TermMatch] = None
     parent: Optional[TermMatch] = None
     location: Optional[TermMatch] = None
-    function: Optional[TermMatch] = None
+    functions: List[TermMatch] = field(default_factory=list)          # grounded GO functions
+    surface: List[TermMatch] = field(default_factory=list)            # grounded PRO surface markers
+    surface_ungrounded: List[str] = field(default_factory=list)       # symbols that didn't ground
+    go_support: Dict[str, List[str]] = field(default_factory=dict)    # marker -> supporting GO ids
     panel: Optional[MarkerPanel] = None
     papers: List[Paper] = field(default_factory=list)
     definition: Optional[Definition] = None
@@ -40,7 +43,10 @@ class CurationDossier:
             "existing_match": d(self.existing),
             "parent": d(self.parent),
             "location": d(self.location),
-            "function": d(self.function),
+            "functions": [f.to_dict() for f in self.functions],
+            "surface_markers": [s.to_dict() for s in self.surface],
+            "surface_ungrounded": self.surface_ungrounded,
+            "go_marker_support": self.go_support,
             "marker_panel": d(self.panel),
             "literature": [p.to_dict() for p in self.papers],
             "definition": d(self.definition),
@@ -70,7 +76,7 @@ class CurationDossier:
         r = self.request
         c = self.critique
         L: List[str] = []
-        L.append("# CLARA curation dossier — %s" % r.name)
+        L.append("# CellScribe curation dossier — %s" % r.name)
         L.append("_Agentic Cell Ontology draft · sources: %s · LLM: %s_\n"
                  % (", ".join(self.sources), self.llm_used))
 
@@ -79,7 +85,7 @@ class CurationDossier:
             L.append("**Disposition: %s**" % c.disposition)
             flag = "  ⚠️ blocking issues to resolve" if c.needs_expert_review else ""
             L.append("Confidence **%.2f**%s" % (c.confidence, flag))
-            L.append("_Human-in-the-loop: CLARA never writes to CL — a curator makes the final call._\n")
+            L.append("_Human-in-the-loop: CellScribe never writes to CL — a curator makes the final call._\n")
 
         L.append("## Request")
         L.append("- name: **%s**" % r.name)
@@ -103,12 +109,26 @@ class CurationDossier:
             L.append("")
 
         L.append("## Grounded terms")
-        for role, t in [("genus / parent", self.parent), ("location", self.location),
-                        ("function", self.function)]:
+        for role, t in [("genus / parent", self.parent), ("location", self.location)]:
             if t:
                 L.append("- %s: **%s** `%s` (match %.2f, %s)"
                          % (role, t.label, t.curie, t.score, t.source))
+        for f in self.functions:
+            L.append("- GO function (`capable of`): **%s** `%s`" % (f.label, f.curie))
+        for s in self.surface:
+            L.append("- surface marker (`has plasma membrane part`): **%s** `%s`" % (s.label, s.curie))
+        if self.surface_ungrounded:
+            L.append("- surface markers not confidently grounded to PRO (verify): %s"
+                     % ", ".join(self.surface_ungrounded))
         L.append("")
+
+        if self.go_support:
+            L.append("## GO-supported markers (Fig 1 / Table 1 intersection)")
+            L.append("_Markers that are also annotated to a defining GO function "
+                     "(QuickGO, evidence ECO:0000269/0000318) — higher-confidence:_")
+            for m, gos in self.go_support.items():
+                L.append("- **%s** ← %s" % (m, ", ".join(gos)))
+            L.append("")
 
         if self.panel:
             p = self.panel

@@ -124,5 +124,103 @@
       "rows": 5,
       "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
     }
+  },
+  "aec5eb8c649e94cc": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "params": {
+      "query": "\"CD4-positive, alpha-beta T cell\"",
+      "format": "json",
+      "pageSize": 5,
+      "resultType": "core"
+    }
+  },
+  "a7ebf71e919089ab": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "T cell receptor signaling pathway",
+      "ontology": "go",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "a35c356ea838e66a": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "CD4 molecule",
+      "ontology": "pr",
+      "rows": 8,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "e33cd0b66a2a6c1d": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "IL7R molecule",
+      "ontology": "pr",
+      "rows": 8,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "23eb4731dad9fcbb": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "IL7R",
+      "ontology": "pr",
+      "rows": 8,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "e0f7cae0e5c2435e": {
+    "url": "https://www.ebi.ac.uk/QuickGO/services/annotation/search",
+    "params": {
+      "goId": "GO:0050852",
+      "taxonId": "9606",
+      "evidenceCode": "ECO:0000269,ECO:0000318",
+      "evidenceCodeUsage": "descendants",
+      "limit": 200,
+      "geneProductType": "protein"
+    }
+  },
+  "26db65381ff17771": {
+    "url": "https://www.ebi.ac.uk/QuickGO/services/annotation/search",
+    "params": {
+      "goId": "GO:0050852",
+      "taxonId": "10090",
+      "evidenceCode": "ECO:0000269,ECO:0000318",
+      "evidenceCodeUsage": "descendants",
+      "limit": 200,
+      "geneProductType": "protein"
+    }
+  },
+  "abb967be18d36bb8": {
+    "url": "https://www.ebi.ac.uk/ols4/api/search",
+    "params": {
+      "q": "GABA biosynthetic process",
+      "ontology": "go",
+      "rows": 5,
+      "fieldList": "iri,label,short_form,obo_id,description,ontology_name,synonym"
+    }
+  },
+  "dae3d6a96aff50ee": {
+    "url": "https://www.ebi.ac.uk/QuickGO/services/annotation/search",
+    "params": {
+      "goId": "GO:0009449",
+      "taxonId": "9606",
+      "evidenceCode": "ECO:0000269,ECO:0000318",
+      "evidenceCodeUsage": "descendants",
+      "limit": 200,
+      "geneProductType": "protein"
+    }
+  },
+  "659e1be68defbbce": {
+    "url": "https://www.ebi.ac.uk/QuickGO/services/annotation/search",
+    "params": {
+      "goId": "GO:0009449",
+      "taxonId": "10090",
+      "evidenceCode": "ECO:0000269,ECO:0000318",
+      "evidenceCodeUsage": "descendants",
+      "limit": 200,
+      "geneProductType": "protein"
+    }
   }
 }

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""CLARA test suite — offline, deterministic, no pytest required.
+"""CellScribe test suite — offline, deterministic, no pytest required.
 
 Run either way:
-    python tests/test_clara.py      # self-running harness -> "N passed"
+    python tests/test_cellscribe.py      # self-running harness -> "N passed"
     pytest -q                       # standard pytest discovery
 
 All tests run fully offline against the shipped fixtures in demo_data/fixtures,
@@ -16,18 +16,19 @@ ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 
 # Force offline + point the HTTP cache at the shipped fixtures BEFORE importing.
-os.environ["CLARA_OFFLINE"] = "1"
-os.environ["CLARA_CACHE"] = os.path.join(ROOT, "demo_data", "fixtures")
+os.environ["CELLSCRIBE_OFFLINE"] = "1"
+os.environ["CELLSCRIBE_CACHE"] = os.path.join(ROOT, "demo_data", "fixtures")
 
 CSV = os.path.join(ROOT, "demo_data", "striatum_demo_expr.csv")
 
-from clara.agent import CuratorAgent, _derive_parent
-from clara.models import CurationRequest, MarkerPanel, TermMatch
-from clara.tools.definition import DefinitionDrafter
-from clara.tools.literature import build_query_cascade
-from clara.tools.markers import MarkerPanelTool
-from clara.tools.ontology import OLSSearchTool
-from clara.tools.validation import critique
+from cellscribe.agent import CuratorAgent, _derive_parent
+from cellscribe.models import CurationRequest, MarkerPanel, TermMatch
+from cellscribe.tools.definition import DefinitionDrafter
+from cellscribe.tools.go_support import QuickGOTool, taxon_for
+from cellscribe.tools.literature import build_query_cascade
+from cellscribe.tools.markers import MarkerPanelTool
+from cellscribe.tools.ontology import OLSSearchTool
+from cellscribe.tools.validation import critique
 
 
 # --------------------------------------------------------------- unit tests
@@ -120,6 +121,47 @@ def test_agent_novel_type_proposes():
     assert "PVALB" in d.panel.markers and d.panel.score >= 0.9
     assert "PROPOSE" in d.critique.disposition
     assert d.critique.confidence >= 0.8
+
+
+# ----------------------------------------------- GO / PRO / relations (paper-grounded)
+def test_go_function_grounding():
+    # rows=5 matches what the agent caches when grounding functions
+    go = OLSSearchTool()("GABA biosynthetic process", ontology="go", rows=5, offline=True)
+    assert go and go[0].curie == "GO:0009449", go[:1]
+
+
+def test_surface_marker_grounds_to_pro():
+    # bare 'CD4' fuzzy-matches CD44; the tool retries 'CD4 molecule' and requires an exact hit
+    agent = CuratorAgent(offline=True, use_llm=False, verbose=False)
+    cd4 = agent._ground_surface("CD4")
+    assert cd4 is not None and cd4.curie == "PR:000001004", cd4
+
+
+def test_go_marker_support_intersection():
+    # GAD1/GAD2 ARE the GABA-synthesis enzymes; PVALB (an ID marker) is NOT annotated to synthesis
+    go = TermMatch("GABA biosynthetic process", "GO:0009449", "", "GABA biosynthetic process", "go", score=1.0)
+    support = QuickGOTool().support(["GAD1", "PVALB"], [go], organism="Homo sapiens", offline=True)
+    assert "GAD1" in support and "GO:0009449" in support["GAD1"]
+    assert "PVALB" not in support
+
+
+def test_definition_uses_correct_relations():
+    parent = TermMatch("interneuron", "CL:0000099", "", "interneuron", "cl", score=1.0)
+    loc = TermMatch("striatum", "UBERON:0002435", "", "striatum", "uberon", score=1.0)
+    func = TermMatch("GABA biosynthetic process", "GO:0009449", "", "GABA biosynthetic process", "go", score=1.0)
+    surf = TermMatch("CD4", "PR:000001004", "", "CD4 molecule", "pr", score=1.0)
+    d = DefinitionDrafter()("test type", parent, loc, MarkerPanel(["GAD1"], 1.0, "test"),
+                            functions=[func], surface=[surf])
+    assert "capable of" in d.manchester_owl              # GO function
+    assert "has plasma membrane part" in d.manchester_owl  # surface protein
+    assert "expresses" in d.manchester_owl               # transcriptomic marker
+    assert d.relations["has plasma membrane part"] == "RO:0002104"
+    assert d.relations["capable of"] == "RO:0002215"
+
+
+def test_taxon_mapping():
+    assert "9606" in taxon_for("Homo sapiens")
+    assert "10090" in taxon_for("Mus musculus")
 
 
 # --------------------------------------------------------------- self-runner

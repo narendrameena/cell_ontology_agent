@@ -1,4 +1,4 @@
-"""Shared, dependency-free data models for CLARA.
+"""Shared, dependency-free data models for CellScribe.
 
 Everything a tool returns is a small, JSON-serialisable dataclass.  Keeping the
 shapes explicit is deliberate: the whole design bet is *grounding + provenance*,
@@ -105,7 +105,10 @@ class CurationRequest:
     """What the curator (or an upstream atlas-ingest step) hands the agent."""
     name: str
     description: str = ""
-    markers: List[str] = field(default_factory=list)
+    markers: List[str] = field(default_factory=list)          # transcriptomic (expression) markers
+    surface_markers: List[str] = field(default_factory=list)  # cell-surface protein markers -> PRO
+    functions: List[str] = field(default_factory=list)        # GO biological processes -> 'capable of'
+    components: List[str] = field(default_factory=list)        # GO cellular components -> 'has part'
     location_hint: str = ""
     parent_hint: str = ""
     expr_csv: str = ""              # optional path to cells x genes matrix
