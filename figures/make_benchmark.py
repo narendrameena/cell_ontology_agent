@@ -18,6 +18,7 @@ BLUE="#2C6FA6"; TEAL="#2F9E8F"; GREEN="#4C8C4A"; AMBER="#C6791F"; PURPLE="#7E6BB
 plt.rcParams["font.family"] = "DejaVu Sans"
 
 # (label, value, n, color) — pulled from the real metrics
+WEAK = "#A0522D"   # muted sienna marks the honest weak spot
 rows = [
     ("Location → Uberon\n(exact@1)",          M["B3_location"]["exact@1"],            M["B3_location"]["n"],       GREEN),
     ("Existing-vs-novel\ndiscrimination (F1)", M["B6_discrimination"]["f1"],           M["B6_discrimination"]["n"], BLUE),
@@ -25,10 +26,11 @@ rows = [
     ("Logical-def reconstruction\n(fully rebuilt)", M["B8_reconstruction"]["fully_reconstructed_frac"], M["B8_reconstruction"]["n"], PURPLE),
     ("Term recognition\n(recall@5)",           M["B1_recognition"]["recall@5"],        M["B1_recognition"]["n"],    TEAL),
     ("Surface marker → PRO\n(symbol match)",   M["B4_surface"]["any_PR"],              M["B4_surface"]["n"],        ROSE),
+    ("Genus derivation\n(hierarchically valid)", M["B2_genus"]["hierarchically_valid_rate"], M["B2_genus"]["n"],   WEAK),
 ]
 rows = sorted(rows, key=lambda r: r[1], reverse=True)
 
-fig, ax = plt.subplots(figsize=(11, 6.2), dpi=200)
+fig, ax = plt.subplots(figsize=(11, 7.0), dpi=200)
 fig.patch.set_facecolor("white")
 ax.set_xlim(0, 1.0); ax.set_ylim(-0.7, len(rows)-0.3)
 ys = list(range(len(rows)))[::-1]
@@ -58,9 +60,10 @@ ax.set_title("gold standard: cl.json — %s CL terms, %s with logical definition
              % (gs.get("cl_terms_with_label", "3537"), gs.get("cl_terms_with_logical_def", "1737")),
              loc="left", fontsize=10, color=MUT, pad=12)
 fig.subplots_adjust(left=0.28, right=0.93, top=0.86, bottom=0.09)
-fig.text(0.28, 0.015, "B6 precision = 1.00 (0 false positives) · reproduce: python3 benchmark/run_benchmark.py",
-         color=MUT, fontsize=8.5, style="italic")
+fig.text(0.55, 0.015, "Genus derivation is the honest weak spot (heuristic) → roadmap: reasoner-derived parent.   "
+         "B6 precision = 1.00 (0 false positives).",
+         color=MUT, fontsize=8.5, style="italic", ha="center")
 
-fig.savefig(os.path.join(HERE, "benchmark.png"), facecolor="white")
-fig.savefig(os.path.join(HERE, "benchmark.pdf"), facecolor="white")
-print("wrote benchmark.{png,pdf}")
+for ext in ("png", "pdf", "svg"):
+    fig.savefig(os.path.join(HERE, "benchmark." + ext), facecolor="white")
+print("wrote benchmark.{png,pdf,svg}")
