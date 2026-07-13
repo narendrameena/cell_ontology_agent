@@ -242,6 +242,13 @@ issue** (with ORCID), **SSSOM** mapping (align / cross-species), **KG-triple** e
   `demo_data/striatum_nsforest_demo_expr.csv` via `test_real_nsforest_when_installed`.
 - **SPIRES-style extraction** — [`spires.py`](cellscribe/spires.py) fills a fixed, grounded schema
   (defers to `ontogpt` if installed).
+- **Live LLM extraction** — [`llm_ecosystem.py`](cellscribe/llm_ecosystem.py) + `cellscribe llm-extract`.
+  Default `--engine direct` calls the LLM over its OpenAI-compatible REST API (any litellm provider;
+  **Groq free tier** by default) for schema-constrained cell-type extraction, then grounds every term
+  with CellScribe's own **EBI OLS4** grounder — no BioPortal key, no multi-GB semsql download. Verified
+  live on Groq `llama-3.3-70b`: extracts markers/location/functions and grounds e.g. *striatum →
+  UBERON:0002435*, *GABA biosynthetic process → GO:0009449*. `--engine ontogpt` uses the native OntoGPT
+  CLI in the venv instead (which needs its own grounding backend).
 - **Ecosystem adapters** — [`integrations.py`](cellscribe/integrations.py) detects and defers to
   **OntoGPT / DRAGON-AI / Aurelian**, else falls back (`cellscribe integrations`). The hand-off targets
   are the **verified** real import paths — `ontogpt.engines.spires_engine.SPIRESEngine`,

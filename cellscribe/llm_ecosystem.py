@@ -44,6 +44,31 @@ _KEY_HELP = {
     "ANTHROPIC_API_KEY": "https://console.anthropic.com/settings/keys",
 }
 
+# OpenAI-compatible REST base URL per provider prefix — lets CellScribe (Python 3.8)
+# call the LLM directly with `requests`, no venv needed, for the keyless extraction path.
+_PROVIDER_BASE = {
+    "groq/": "https://api.groq.com/openai/v1",
+    "xai/": "https://api.x.ai/v1",
+    "openai/": "https://api.openai.com/v1",
+    "gpt-": "https://api.openai.com/v1",
+    "o1": "https://api.openai.com/v1",
+    "o3": "https://api.openai.com/v1",
+    "deepseek/": "https://api.deepseek.com",
+    "together/": "https://api.together.xyz/v1",
+    "cerebras/": "https://api.cerebras.ai/v1",
+}
+
+
+def _base_url_for(model: str) -> str:
+    for prefix, url in _PROVIDER_BASE.items():
+        if model.startswith(prefix):
+            return url
+    return os.environ.get("CELLSCRIBE_LLM_BASE", "https://api.openai.com/v1")
+
+
+def _bare_model(model: str) -> str:
+    return model.split("/", 1)[1] if "/" in model else model
+
 
 def key_var_for(model: str) -> str:
     """Env var holding the API key for `model`'s litellm provider. Falls back to
@@ -151,3 +176,81 @@ def ontogpt_cell_type(text: str, model: Optional[str] = None,
                     "error": (proc.stderr or proc.stdout or "ontogpt failed")[-500:]}
         return {"ok": True, "model": model, "raw": raw,
                 "named_entities": _parse_named_entities(raw)}
+
+
+# --------------------------------------------------------------------------- direct
+# A keyless-grounding live path: CellScribe calls the LLM directly over the provider's
+# OpenAI-compatible REST API (via `requests`, so it works in the base 3.8 env with no
+# venv), does SPIRES-style schema-constrained extraction, and grounds the result with
+# CellScribe's own OLS grounder — no BioPortal key and no multi-GB semsql downloads.
+
+_EXTRACT_SYSTEM = (
+    "You are a careful cell-biology ontology curator. From the text, extract a STRICT "
+    "JSON object with exactly these keys: "
+    '"cell_type" (string), '
+    '"transcriptomic_markers" (list of gene symbols), '
+    '"surface_markers" (list of cell-surface protein/gene symbols), '
+    '"location" (a single anatomical structure), '
+    '"functions" (list of Gene-Ontology biological-process names). '
+    "Use ONLY facts explicitly stated in the text; use [] or \"\" when absent. "
+    "Output ONLY the JSON object — no markdown, no commentary."
+)
+
+
+def _first_json(s: str):
+    import json as _json
+    m = re.search(r"\{.*\}", s or "", re.S)
+    if not m:
+        return None
+    try:
+        return _json.loads(m.group(0))
+    except Exception:
+        return None
+
+
+def chat_complete(prompt: str, model: Optional[str] = None, system: Optional[str] = None,
+                  timeout: int = 60, max_tokens: int = 800) -> Dict[str, Any]:
+    """One chat turn against the provider's OpenAI-compatible endpoint via `requests`."""
+    import requests
+    model = model or DEFAULT_MODEL
+    kvar = key_var_for(model)
+    key = os.environ.get(kvar)
+    if not key:
+        hint = _KEY_HELP.get(kvar, "")
+        return {"ok": False, "needs_key": True, "key_var": kvar, "model": model,
+                "error": "%s not set%s" % (kvar, (" (%s)" % hint if hint else ""))}
+    msgs = ([{"role": "system", "content": system}] if system else []) + \
+           [{"role": "user", "content": prompt}]
+    try:
+        r = requests.post(_base_url_for(model) + "/chat/completions",
+                          headers={"Authorization": "Bearer " + key,
+                                   "Content-Type": "application/json"},
+                          json={"model": _bare_model(model), "messages": msgs,
+                                "temperature": 0, "max_tokens": max_tokens},
+                          timeout=timeout)
+    except Exception as e:  # network/timeout
+        return {"ok": False, "error": "request failed: %s" % e, "model": model}
+    if r.status_code != 200:
+        return {"ok": False, "model": model,
+                "error": "HTTP %s: %s" % (r.status_code, r.text[:200])}
+    try:
+        content = r.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        return {"ok": False, "model": model, "error": "unexpected response: %s" % e}
+    return {"ok": True, "model": model, "content": content}
+
+
+def extract_celltype_facts(text: str, model: Optional[str] = None,
+                           timeout: int = 60) -> Dict[str, Any]:
+    """SPIRES-style: LLM fills a fixed cell-type schema from `text`. Returns
+    {ok, model, facts:{cell_type, transcriptomic_markers, surface_markers, location,
+    functions}, raw}. The caller grounds the strings with CellScribe's OLS grounder."""
+    res = chat_complete("Text:\n" + (text or ""), model=model,
+                        system=_EXTRACT_SYSTEM, timeout=timeout)
+    if not res.get("ok"):
+        return res
+    facts = _first_json(res["content"])
+    if facts is None:
+        return {"ok": False, "model": res["model"],
+                "error": "model did not return parseable JSON", "raw": res["content"][:400]}
+    return {"ok": True, "model": res["model"], "facts": facts, "raw": res["content"]}

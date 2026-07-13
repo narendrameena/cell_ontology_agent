@@ -83,6 +83,26 @@ def test_llm_extract_graceful_without_key():
             _os.environ["GROQ_API_KEY"] = saved
 
 
+def test_llm_direct_path_helpers():
+    """The keyless direct path (LLM REST + OLS grounding): pure helpers are correct
+    and chat_complete degrades gracefully with no key (never a crash / live call)."""
+    from cellscribe import llm_ecosystem as L
+    assert L._bare_model("groq/llama-3.3-70b-versatile") == "llama-3.3-70b-versatile"
+    assert L._bare_model("gpt-4o-mini") == "gpt-4o-mini"
+    assert L._base_url_for("groq/x").endswith("groq.com/openai/v1")
+    assert L._base_url_for("xai/grok-4.5") == "https://api.x.ai/v1"
+    assert L._first_json('noise {"a": 1, "b": [2, 3]} tail') == {"a": 1, "b": [2, 3]}
+    assert L._first_json("no json here") is None
+    import os as _os
+    saved = _os.environ.pop("GROQ_API_KEY", None)
+    try:
+        r = L.chat_complete("hi", model="groq/llama-3.1-8b-instant")
+        assert r["ok"] is False and r["needs_key"] is True and r["key_var"] == "GROQ_API_KEY"
+    finally:
+        if saved is not None:
+            _os.environ["GROQ_API_KEY"] = saved
+
+
 def test_nsforest_fallback_still_works():
     # prefer_nsforest=False forces the built-in NS-Forest-style path, so this is
     # deterministic whether or not the real package is installed.

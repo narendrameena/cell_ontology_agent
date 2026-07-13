@@ -129,22 +129,57 @@ def cmd_llm_extract(args) -> int:
         text = args.name + (". " + args.description if args.description else "")
     if not text:
         print("provide --text or --name"); return 2
-    print("Running OntoGPT SPIRES (cell_type template) via %s ...\n" % (args.model or L.DEFAULT_MODEL))
-    r = L.ontogpt_cell_type(text, model=args.model or None)
+    model = args.model or L.DEFAULT_MODEL
+
+    if args.engine == "ontogpt":   # native OntoGPT CLI (needs the venv + a grounding backend)
+        print("Running OntoGPT SPIRES (cell_type template) via %s ...\n" % model)
+        r = L.ontogpt_cell_type(text, model=model)
+        if not r["ok"]:
+            print("Live extraction unavailable: %s" % r.get("error"))
+            if r.get("needs_key"):
+                print("  -> set %s in your environment, then re-run" % r.get("key_var", "OPENAI_API_KEY"))
+            if r.get("needs_venv"):
+                print("  -> bash scripts/setup_llm_env.sh")
+            return 1
+        print("Model: %s" % r["model"])
+        for e in r.get("named_entities", []):
+            print("  %-16s %s" % (e["id"], e["label"]))
+        print("\n--- raw SPIRES output (first 1500 chars) ---")
+        print((r.get("raw") or "")[:1500])
+        return 0
+
+    # default: keyless-grounding path — LLM extraction + CellScribe's OLS grounder
+    print("SPIRES-style extraction via %s → grounding via EBI OLS (no extra key) ...\n" % model)
+    r = L.extract_celltype_facts(text, model=model)
     if not r["ok"]:
         print("Live extraction unavailable: %s" % r.get("error"))
         if r.get("needs_key"):
             print("  -> set %s in your environment, then re-run" % r.get("key_var", "OPENAI_API_KEY"))
-        if r.get("needs_venv"):
-            print("  -> bash scripts/setup_llm_env.sh")
         return 1
-    print("Model: %s" % r["model"])
-    ents = r.get("named_entities", [])
-    print("Grounded entities (%d):" % len(ents))
-    for e in ents:
-        print("  %-16s %s" % (e["id"], e["label"]))
-    print("\n--- raw SPIRES output (first 1500 chars) ---")
-    print((r.get("raw") or "")[:1500])
+    facts = r["facts"]
+    print("Extracted by %s:" % r["model"])
+    for k in ("cell_type", "transcriptomic_markers", "surface_markers", "location", "functions"):
+        if facts.get(k) not in (None, "", []):
+            print("  %-22s %s" % (k, facts[k]))
+
+    from cellscribe.tools.ontology import OLSSearchTool, best_match
+    tool = OLSSearchTool()
+
+    def _g(label, onto):
+        if not label:
+            return None
+        m = best_match(tool, str(label), ontology=onto)
+        return "%s (%s)" % (m.label, m.curie) if m else "unmatched"
+
+    print("\nGrounded to ontologies (EBI OLS4):")
+    if facts.get("cell_type"):
+        print("  cell type  → %s" % _g(facts["cell_type"], "cl"))
+    if facts.get("location"):
+        print("  location   → %s" % _g(facts["location"], "uberon"))
+    for fn in (facts.get("functions") or [])[:4]:
+        print("  function   → %s" % _g(fn, "go"))
+    for mk in (facts.get("surface_markers") or [])[:4]:
+        print("  surface    → %s" % _g(mk, "pr"))
     return 0
 
 
@@ -212,7 +247,9 @@ def build_parser() -> argparse.ArgumentParser:
     le.add_argument("--text", default="", help="text to extract from (e.g. an abstract or description)")
     le.add_argument("--name", default="", help="cell-type name (used as text if --text omitted)")
     le.add_argument("--description", default="")
-    le.add_argument("--model", default="", help="litellm model (default groq/llama-3.3-70b-versatile)")
+    le.add_argument("--model", default="", help="model (default groq/llama-3.3-70b-versatile)")
+    le.add_argument("--engine", default="direct", choices=["direct", "ontogpt"],
+                    help="direct = LLM + OLS grounding (keyless); ontogpt = native OntoGPT CLI (needs grounding backend)")
     le.set_defaults(func=cmd_llm_extract)
     return p
 
