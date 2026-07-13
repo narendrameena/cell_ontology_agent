@@ -60,8 +60,7 @@ ax.set_title("gold standard: cl.json — %s CL terms, %s with logical definition
              % (gs.get("cl_terms_with_label", "3537"), gs.get("cl_terms_with_logical_def", "1737")),
              loc="left", fontsize=10, color=MUT, pad=12)
 fig.subplots_adjust(left=0.28, right=0.93, top=0.86, bottom=0.09)
-fig.text(0.55, 0.015, "Genus derivation is the honest weak spot (heuristic) → roadmap: reasoner-derived parent.   "
-         "B6 precision = 1.00 (0 false positives).",
+fig.text(0.5, 0.015, "Genus is the honest weak spot (heuristic) → roadmap: reasoner-derived parent   ·   B6 precision 1.00 (0 FP)",
          color=MUT, fontsize=8.5, style="italic", ha="center")
 
 for ext in ("png", "pdf", "svg"):
