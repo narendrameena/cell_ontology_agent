@@ -82,7 +82,8 @@ node(10.8, 3.05, 0.17, GREEN, "striatum", "UBERON:0002435", 0.32, 0.0)
 node(10.3, 1.9, 0.17, AMBER, "GABA biosynth.", "GO:0009449", 0.32, 0.0)
 edge(10.35, 4.1, 8.68, 3.24, "is a")
 edge(8.7, 3.1, 10.65, 3.06, "part of")
-edge(8.62, 2.95, 10.2, 2.02, "capable of")
+edge(8.62, 2.95, 10.2, 2.02, "")   # label placed manually, clear of the node label below
+ax.text(10.05, 2.24, "capable of", color=MUT, fontsize=8.6, ha="center", va="center", style="italic")
 ax.text(9.9, 1.35, "a concept", color=WHITE, fontsize=12.5, fontweight="bold", ha="center")
 ax.text(9.9, 1.05, "grounded · reasoner-verified", color=LIGHT, fontsize=9.2, ha="center", style="italic")
 
