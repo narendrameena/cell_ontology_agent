@@ -5,8 +5,11 @@ drafts on its own.  When a key is present the LLM adds two things that need
 judgement — planning the tool order and polishing the prose definition — but it
 never invents ontology terms; those always come from grounded tool output.
 
-    export ANTHROPIC_API_KEY=...     # or OPENAI_API_KEY=...
+    export ANTHROPIC_API_KEY=...     # or OPENAI_API_KEY / GROQ_API_KEY / XAI_API_KEY
     export CELLSCRIBE_MODEL=claude-sonnet-5   # optional override
+
+Groq (free tier) and xAI are OpenAI-compatible, so they reuse the OpenAI code path
+with a different base URL — set GROQ_API_KEY and the planner/polisher run on Groq.
 """
 from __future__ import annotations
 
@@ -23,13 +26,28 @@ except Exception:  # pragma: no cover
 class LLMClient:
     def __init__(self) -> None:
         self.provider = None
+        self.key_env = None
+        self.base_url = None
         self.model = os.environ.get("CELLSCRIBE_MODEL", "")
         if os.environ.get("ANTHROPIC_API_KEY"):
             self.provider = "anthropic"
+            self.key_env = "ANTHROPIC_API_KEY"
             self.model = self.model or "claude-sonnet-5"
         elif os.environ.get("OPENAI_API_KEY"):
             self.provider = "openai"
+            self.key_env = "OPENAI_API_KEY"
+            self.base_url = "https://api.openai.com/v1"
             self.model = self.model or "gpt-4o"
+        elif os.environ.get("GROQ_API_KEY"):        # free tier, OpenAI-compatible
+            self.provider = "openai"
+            self.key_env = "GROQ_API_KEY"
+            self.base_url = "https://api.groq.com/openai/v1"
+            self.model = self.model or "llama-3.3-70b-versatile"
+        elif os.environ.get("XAI_API_KEY"):         # Grok, OpenAI-compatible
+            self.provider = "openai"
+            self.key_env = "XAI_API_KEY"
+            self.base_url = "https://api.x.ai/v1"
+            self.model = self.model or "grok-4.5"
 
     @property
     def available(self) -> bool:
@@ -52,10 +70,10 @@ class LLMClient:
                     timeout=40)
                 r.raise_for_status()
                 return r.json()["content"][0]["text"]
-            else:
+            else:   # OpenAI-compatible (OpenAI / Groq / xAI), differing only by base URL
                 r = requests.post(
-                    "https://api.openai.com/v1/chat/completions",
-                    headers={"Authorization": "Bearer " + os.environ["OPENAI_API_KEY"],
+                    self.base_url + "/chat/completions",
+                    headers={"Authorization": "Bearer " + os.environ[self.key_env],
                              "content-type": "application/json"},
                     data=json.dumps({"model": self.model, "max_tokens": max_tokens,
                                      "messages": [{"role": "system", "content": system},

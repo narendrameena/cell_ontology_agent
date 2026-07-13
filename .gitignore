@@ -26,3 +26,4 @@ benchmark/run*.log
 
 # persistent Python 3.11 LLM stack (ontogpt/curategpt/aurelian)
 .llm-venv/
+figures/*.dot
