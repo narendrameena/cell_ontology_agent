@@ -171,14 +171,19 @@ def cmd_llm_extract(args) -> int:
         m = best_match(tool, str(label), ontology=onto)
         return "%s (%s)" % (m.label, m.curie) if m else "unmatched"
 
+    def _as_list(v):                       # the LLM may return a bare string for a 1-item field
+        if isinstance(v, list):
+            return v
+        return [] if v in (None, "") else [v]
+
     print("\nGrounded to ontologies (EBI OLS4):")
     if facts.get("cell_type"):
         print("  cell type  → %s" % _g(facts["cell_type"], "cl"))
     if facts.get("location"):
         print("  location   → %s" % _g(facts["location"], "uberon"))
-    for fn in (facts.get("functions") or [])[:4]:
+    for fn in _as_list(facts.get("functions"))[:4]:
         print("  function   → %s" % _g(fn, "go"))
-    for mk in (facts.get("surface_markers") or [])[:4]:
+    for mk in _as_list(facts.get("surface_markers"))[:4]:
         print("  surface    → %s" % _g(mk, "pr"))
     return 0
 

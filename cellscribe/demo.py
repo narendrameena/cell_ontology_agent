@@ -23,6 +23,12 @@ DEMO_CSV = os.path.join(os.path.dirname(__file__), "..", "demo_data",
 
 def run_demo(out: str = "demo_output", offline: Optional[bool] = None,
              use_llm: bool = True) -> None:
+    # Default the HTTP cache to the shipped fixtures so the demo runs with no network
+    # (via `cellscribe demo` too, not only `python run_demo.py`). setdefault respects
+    # an explicit CELLSCRIBE_CACHE and doesn't affect online refreshes.
+    fixtures = os.path.join(os.path.dirname(__file__), "..", "demo_data", "fixtures")
+    if os.path.isdir(fixtures):
+        os.environ.setdefault("CELLSCRIBE_CACHE", fixtures)
     agent = CuratorAgent(offline=offline, use_llm=use_llm, verbose=True)
 
     print("\n########## EXAMPLE A — existing type (expect: align, don't create) ##########")

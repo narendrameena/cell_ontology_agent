@@ -193,6 +193,19 @@ def test_classify_tool_error_is_not_incoherency():
     assert "did not complete" in (r.get("note", "").lower())
 
 
+def test_classify_no_differentia_is_not_a_duplicate():
+    """Audit fix: a genus-only dossier (no location/function/surface differentia) must
+    NOT be reported DUPLICATE_OF_EXISTING against its own genus — that's a misleading
+    'already exists' verdict; expect INSUFFICIENT_DIFFERENTIA. Self-skips without Java."""
+    if not (robot_tools.robot_available() and os.path.exists(CL_OWL)):
+        print("    (skip: needs Java + robot.jar + cl-base.owl)"); return
+    from types import SimpleNamespace as NS
+    stub = NS(parent=NS(curie="CL:0000540", label="neuron"), location=None, surface=[], functions=[])
+    r = reasoning.classify_against_cl(stub, CL_OWL, timeout=180)
+    assert r["disposition"] == "INSUFFICIENT_DIFFERENTIA"
+    assert r["redundant_with_existing"] is False and r["equivalent_to"] == []
+
+
 def test_elk_taxon_incoherence_detected():
     if not robot_tools.robot_available():
         print("    (skip: ROBOT/Java unavailable)"); return

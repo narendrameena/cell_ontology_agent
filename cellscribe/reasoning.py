@@ -197,6 +197,22 @@ def classify_against_cl(dossier, cl_owl: str, timeout: int = 600) -> Dict[str, A
     if not (dossier.parent and dossier.parent.curie.startswith("CL:")):
         res["note"] = "no grounded CL genus — cannot classify against CL"
         return res
+    # If there are no grounded differentia, the candidate axiom is `NEW ≡ genus`,
+    # which ELK trivially infers — reporting the genus as a "duplicate". That is a
+    # misleading curation signal (the real issue is missing differentia), so short-
+    # circuit with a clear disposition instead of a bogus DUPLICATE_OF_EXISTING.
+    has_diff = bool(
+        (dossier.location and getattr(dossier.location, "curie", "").startswith("UBERON:"))
+        or any(getattr(f, "curie", "").startswith("GO:") for f in (dossier.functions or []))
+        or any(getattr(s, "curie", "").startswith("PR:") for s in (dossier.surface or [])))
+    if not has_diff:
+        res.update({"available": True, "coherent": True, "redundant_with_existing": False,
+                    "disposition": "INSUFFICIENT_DIFFERENTIA", "equivalent_to": [],
+                    "inferred_superclasses": [{"curie": dossier.parent.curie,
+                                               "label": getattr(dossier.parent, "label", "") or ""}],
+                    "note": "only a grounded genus, no differentia (location / function / surface "
+                            "marker) — cannot distinguish from the genus; add differentia to classify."})
+        return res
     with tempfile.TemporaryDirectory() as tmp:
         cand = os.path.join(tmp, "candidate.ofn")
         out = os.path.join(tmp, "classified.ofn")
