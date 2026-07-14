@@ -282,6 +282,24 @@ differentia under a specific object property:
 | `markers` (transcriptomic) | (gene symbols, not grounded) | `expresses` (RO:0002292) — in the drafter's Manchester OWL, but **omitted from the ELK axiom** (bare gene symbols aren't OWL classes) |
 | `parent_hint`/derived genus | CL | the genus (`is_a`) |
 
+**A contrasting trace — a transcriptomic marker (`PVALB`) takes a *different* path.** Not
+every input is grounded to an ontology: a marker is **tested, not grounded**, and is kept
+**out** of the reasoning axiom on purpose:
+
+| Hop | State | By |
+|---|---|---|
+| 0 | `markers = ["GAD1","GAD2","PVALB"]` | the request |
+| 1 | **not grounded** — a gene symbol isn't an ontology class; it flows to the marker step instead | — |
+| 2 | `MarkerPanel(markers=["GAD2","PVALB","GAD1"], score=1.00, method="NS-Forest-style", context="striatum")` — specificity *tested* on the expression matrix | `MarkerPanelTool.from_matrix` |
+| 3 | `expresses some PVALB` in the drafter's Manchester OWL; prose "…expressing GAD2, PVALB, GAD1" | `DefinitionDrafter` |
+| 4 | **omitted from the ELK axiom** — `_candidate_owl_for_merge` includes only genus + Uberon/GO/PRO restrictions (real classes), never a bare gene symbol | `classify_against_cl` |
+| 5 | `PVALB` appears in the definition prose, the ROBOT `MARKERS` column, and the KG triples — but never the OWL equivalence axiom | renderers |
+
+The contrast is the mechanism in miniature: **`part of some UBERON:0002435` is reasoned
+over; `expresses some PVALB` is not** — because `UBERON:0002435` is a real ontology class
+and `PVALB` is a marker symbol. CellScribe keeps the computable axiom clean for the reasoner
+while still recording the marker evidence in the prose, the ROBOT template, and the outputs.
+
 **③ PROVENANCE flow — every hop is auditable.** This runs *alongside* the data: each
 returned object is a dataclass that **carries its `source`** (`TermMatch.source="EBI
 OLS4"`, `Definition.drafted_by`, `MarkerPanel.method/species/context`), and each stage is
