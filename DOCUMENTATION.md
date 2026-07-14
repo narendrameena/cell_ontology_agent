@@ -20,6 +20,7 @@ programmatic API, and **all 55 tests** — each with runnable examples.
 3. [Architecture: the agent loop + tool registry](#3-architecture-the-agent-loop--tool-registry)
 4. [Data model (every dataclass)](#4-data-model)
 5. [The curation pipeline, step by step](#5-the-curation-pipeline-step-by-step)
+   - [5.1 Mechanism & information flow — the three flows](#51-mechanism--information-flow--the-three-concurrent-flows)
 6. [The tools (one section each)](#6-the-tools)
 7. [Grounding & the offline cache](#7-grounding--the-offline-cache)
 8. [The reasoning layer (ELK / ROBOT)](#8-the-reasoning-layer)
@@ -236,6 +237,62 @@ replaces this with a CL‑house‑style paragraph, still from the grounded facts
 
 The **self‑correction** in step 2 is real: if the first genus guess doesn't ground, the
 agent re‑derives from the description and retries — visible as a `self-correct` step.
+
+### 5.1 Mechanism & information flow — the three concurrent flows
+
+![data flow](figures/dataflow.png)
+
+At runtime, **three flows run at once**. Keeping them separate is what makes the output
+trustworthy.
+
+**① CONTROL flow — what runs, and in what order.** The agent, not a fixed script, drives
+this. `registry.select(goal)` retrieves candidate tools by lexical relevance; the planner
+(LLM or a default order) sequences them; `execute` runs each; `self-correct` reacts to a
+failure (the genus re‑derivation); `critique` scores the whole. Control is *data‑dependent*
+— e.g. the marker step branches on whether `expr_csv` is present, and surface markers are
+grounded only if supplied.
+
+**② DATA flow — strings become grounded, then verified, identifiers.** This is the core
+transformation. Follow **one value, `"striatum"`, end to end** (this is the figure above):
+
+| Hop | State | Produced by | Type |
+|---|---|---|---|
+| 0 | `location_hint = "striatum"` | the `CurationRequest` | `str` |
+| 1 | query `"striatum"` → `sha1(url+params)[:16]` → cache hit **or** OLS4 fetch → JSON | `cache.http_get_json` (cache‑first) | `dict` |
+| 2 | `TermMatch(curie="UBERON:0002435", label="striatum", ontology="uberon", score=1.0, source="EBI OLS4")` | `OLSSearchTool.search` → `agent._ground("striatum","uberon")` | `TermMatch` |
+| 3 | `part of some UBERON:0002435` (relation `BFO:0000050`) — a **differentia** in the class expression | `DefinitionDrafter` | Manchester OWL / ROBOT row |
+| 4 | `EquivalentClasses(NEW, interneuron and part_of some UBERON:0002435 and …)` merged into `cl-base.owl`, run through ELK → **NOVEL, under interneuron** | `reasoning.classify_against_cl` (ROBOT subprocess) | reasoned OWL → parsed dict |
+| 5 | `UBERON:0002435` appears in KGCL, ROBOT/OWL, SSSOM, KG‑triples | `dossier.to_*` renderers | text files |
+
+The **grounding mechanism** (hops 1–2) is the same for every ontology: build a query
+(`_derive_parent` for the genus, `build_query_cascade` for literature), key it, check the
+cache, fetch on a miss (retry + write‑through), parse the JSON into a `TermMatch`, and
+**filter by ontology prefix** — only a `CL:` hit counts as a cell‑type genus, only a
+`UBERON:` hit as a location, etc. A miss returns `None`, which the agent handles (a
+`self-correct` for the genus; an `UNGROUNDED` note elsewhere) — nothing crashes.
+
+The **assembly mechanism** (hop 3) is a fixed relation map — each grounded term becomes a
+differentia under a specific object property:
+
+| Input field | Grounds to | Relation (property) |
+|---|---|---|
+| `location_hint` | Uberon | `part of` (BFO:0000050) |
+| `functions` | GO | `capable of` (RO:0002215) |
+| `surface_markers` | PRO | `has plasma membrane part` (RO:0002104) |
+| `markers` (transcriptomic) | (gene symbols, not grounded) | `expresses` (RO:0002292) — in the drafter's Manchester OWL, but **omitted from the ELK axiom** (bare gene symbols aren't OWL classes) |
+| `parent_hint`/derived genus | CL | the genus (`is_a`) |
+
+**③ PROVENANCE flow — every hop is auditable.** This runs *alongside* the data: each
+returned object is a dataclass that **carries its `source`** (`TermMatch.source="EBI
+OLS4"`, `Definition.drafted_by`, `MarkerPanel.method/species/context`), and each stage is
+appended to `dossier.trace` as a `Step` (its `inputs` and an `output_summary`). Because
+grounding is cache‑keyed, a result is also reproducible. The **LLM only ever taps two
+points** — the planner (order) and the definition (prose) — and both return `None` on
+failure, so the deterministic path is always the floor. **No LLM output ever becomes an
+identifier.**
+
+That separation is the whole design: *control can be smart, data must be grounded, and
+provenance is never optional.*
 
 ---
 
