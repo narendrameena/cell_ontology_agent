@@ -1,7 +1,7 @@
 # CellScribe — a grounded, agentic assistant for Cell Ontology curation
 
-> 📖 **Full reference:** [`DOCUMENTATION.md`](DOCUMENTATION.md) — every module, tool,
-> reasoning path, CLI command, output format, and all 55 tests explained with runnable examples.
+> **Full reference:** [`DOCUMENTATION.md`](DOCUMENTATION.md) — every module, tool,
+> reasoning path, CLI command, and output format, with runnable examples.
 
 CellScribe takes a cell type (a name, optionally a description, marker genes and an
 expression matrix) and returns a **curation dossier**: grounded ontology terms,

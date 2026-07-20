@@ -3,9 +3,9 @@
 > A grounded, agentic assistant for **Cell Ontology (CL)** curation.
 > LLM speed, ontology rigour, curator‑in‑the‑loop — and it runs on a free LLM (or none at all).
 
-This document explains **every part** of CellScribe: the design, the data model, each
-module and tool, the reasoning layer, the LLM integrations, the outputs, the CLI, the
-programmatic API, and **all 55 tests** — each with runnable examples.
+A reference for the whole tool — the design, the data model, each module and tool, the
+reasoning layer, the LLM integration, the outputs, the CLI, and the programmatic API —
+with runnable examples throughout, and a walk‑through of the test suite at the end.
 
 - Package: `cellscribe` (version `0.2.0`), Python ≥ 3.8, one hard dependency (`requests`).
 - Repo layout is described in [§13](#13-repository-map).
@@ -332,14 +332,13 @@ best_match(t, "GABAergic neuron", ontology="cl")     # -> TermMatch(curie="CL:00
 best_match(t, "striatum", ontology="uberon")         # -> UBERON:0002435
 ```
 
-**Robustness (audit‑fixed):** a null `short_form` from OLS no longer crashes grounding.
+**Robustness:** a null `short_form` from OLS no longer crashes grounding.
 
 ### 6.2 `literature_search` — `tools/literature.py`
 `EuropePMCTool.search(...) -> List[Paper]`. Uses **`build_query_cascade()`**: it tries a
 tight query first (`"<name>" AND <marker> AND "<organism>"`) and progressively relaxes if
 there are too few hits — so you always get evidence when it exists. Each `Paper` carries an
-extracted evidence `snippet`. **Organism is part of the first query** (audit‑fixed — it was
-silently dropped before).
+extracted evidence `snippet`. **Organism is part of the first query**.
 
 ### 6.3 `marker_panel` — `tools/markers.py`
 Two entry points on `MarkerPanelTool`:
@@ -369,7 +368,7 @@ this function" from a claim to evidence.
 builds the genus–differentia entry: a prose sentence, a **Manchester OWL** class
 expression, OBO `def:` lines, and a **ROBOT template** row. Relations used:
 `part of` (BFO:0000050) → Uberon, `capable of` (RO:0002215) → GO, `has plasma membrane
-part` (RO:0002104) → PRO. **Empty genus labels no longer break the article** (audit‑fixed).
+part` (RO:0002104) → PRO. **Empty genus labels no longer break the article**.
 
 ### 6.6 taxon & naming — `tools/taxon.py`, `tools/naming.py`
 - `ground_taxon(organism) -> Optional[TermMatch]` — organism → NCBITaxon.
@@ -402,8 +401,7 @@ Control it with two env vars:
 - `CELLSCRIBE_OFFLINE=1` — never touch the network; a cache miss returns `None` (graceful).
 
 `run_demo()` **auto‑defaults** `CELLSCRIBE_CACHE` to the shipped fixtures, so both
-`python run_demo.py` and `cellscribe demo --offline` work air‑gapped (audit‑fixed — the CLI
-path previously used an empty cache). Note: `cellscribe curate --offline` on an *arbitrary*
+`python run_demo.py` and `cellscribe demo --offline` work air‑gapped. Note: `cellscribe curate --offline` on an *arbitrary*
 cell type still needs a populated cache — only the demo's exact queries are shipped.
 
 ---
@@ -424,7 +422,7 @@ genus? Fast, no ontology download; needs Java + `robot.jar`.
 ### 8.3 `classify_against_cl(dossier, cl_owl, timeout=600)` — against the whole CL
 The payoff a self‑contained draft can't give. It **merges the candidate's equivalence axiom
 into a real CL import module** (`cl-base.owl`) and runs ELK over all of CL, then reports:
-- `coherent` — `True`; `False` **only** for a genuine unsatisfiable class; `None` for a tool/file/timeout error (audit‑fixed: a timeout is no longer mislabelled "incoherent").
+- `coherent` — `True`; `False` **only** for a genuine unsatisfiable class; `None` for a tool/file/timeout error (a timeout is reported as a tool error, not an incoherency).
 - `inferred_superclasses` — where CL places the term.
 - `equivalent_to` / `redundant_with_existing` — **duplicate detection** before a term is minted.
 - `disposition` — `NOVEL_placed_under_CL`, `DUPLICATE_OF_EXISTING`, or `INSUFFICIENT_DIFFERENTIA`.
@@ -439,7 +437,7 @@ r["disposition"], r["inferred_superclasses"]
 Verified against **CL v2026‑06‑08**: a novel striatal PV interneuron places under
 `interneuron`; a candidate mirroring `CL:0000014`'s axiom is flagged a **duplicate**; a
 **genus‑only** dossier (no differentia) returns **`INSUFFICIENT_DIFFERENTIA`** instead of a
-misleading "duplicate of its own genus" (audit‑fixed — [test](#14-tests--all-55-explained)).
+misleading "duplicate of its own genus" ([test](#14-tests--all-55-explained)).
 
 ### 8.4 `taxon_incoherence_demo()` — how taxon constraints work
 A self‑contained ELK demo: two disjoint taxa + a class asserted in both → **unsatisfiable**.
@@ -536,7 +534,7 @@ renderer on `CurationDossier`:
 | `<name>.kg.tsv` | `to_kg_tsv()` | Knowledge‑graph triples (subject / predicate / object). |
 
 Plus `to_sssom()` — an **SSSOM** mapping when the term ALIGNs to an existing CL class
-(guarded: returns a "no mapping" note when there's nothing to map — audit‑fixed).
+(guarded: returns a "no mapping" note when there's nothing to map).
 
 ---
 
@@ -616,7 +614,7 @@ always green). Run them:
 
 ```bash
 python3 tests/test_cellscribe.py     # 19 — tools + agent, happy paths
-python3 tests/test_edge_cases.py     # 20 — degenerate inputs + audit-finding regressions
+python3 tests/test_edge_cases.py     # 20 — degenerate inputs + regression tests
 python3 tests/test_integrations.py   # 16 — ELK / ROBOT / real-CL / NS-Forest / LLM hand-offs
 ```
 
@@ -642,10 +640,10 @@ python3 tests/test_integrations.py   # 16 — ELK / ROBOT / real-CL / NS-Forest 
 | `test_cl_native_outputs` | KGCL/MIRACL/GitHub‑issue/KG renderers produce well‑formed output. |
 | `test_sssom_align_output` | SSSOM mapping is produced when the term aligns. |
 
-### `test_edge_cases.py` — degenerate inputs + audit regressions (20)
+### `test_edge_cases.py` — degenerate inputs + regressions (20)
 Empty/Unicode/None names don't crash; a bad matrix path, absent target cluster, or all‑absent
 candidate genes fall back cleanly; duplicate markers are deduped; a missing cluster column
-raises a **clear** error. **Audit‑finding regressions:**
+raises a **clear** error. **Regression tests:**
 `test_surface_markers_not_asserted_as_expresses` (surface ≠ transcriptomic),
 `test_organism_scopes_a_literature_query` (organism kept in the query),
 `test_absent_target_returns_empty_panel`, `test_marker_dedup`,
@@ -656,7 +654,7 @@ raises a **clear** error. **Audit‑finding regressions:**
 |---|---|
 | `test_integrations_status` | `status()` returns the expected boolean map. |
 | `test_ecosystem_handoff_targets_verified` | the hand‑off import paths are the **real** ones, and any installed package's target either resolves or only needs a key — never a wrong path. |
-| `test_llm_ecosystem_status_and_parse` | `status()` shape + `key_var_for("xai/…")=="XAI_API_KEY"` (audit fix) + the light YAML parser. |
+| `test_llm_ecosystem_status_and_parse` | `status()` shape + `key_var_for("xai/…")=="XAI_API_KEY"` + the light YAML parser. |
 | `test_llm_extract_graceful_without_key` | no key → clean `ok:False` (needs_key/needs_venv), never a crash. |
 | `test_llm_direct_path_helpers` | `_bare_model`/`_base_url_for`/`_first_json` + `chat_complete` degrades gracefully with no key. |
 | `test_nsforest_fallback_still_works` | the built‑in panel path is deterministic without NS‑Forest. |
@@ -665,8 +663,8 @@ raises a **clear** error. **Audit‑finding regressions:**
 | `test_structural_check`, `test_owl_from_dossier_wellformed` | the always‑on structural layer + OWL builder. |
 | `test_elk_classify` | ELK finds the self‑contained draft coherent (needs Java+ROBOT). |
 | `test_classify_against_real_cl` | novel term → placed under CL, not duplicate; a mirrored axiom → flagged **duplicate** of `CL:0000014` (needs cl‑base.owl). |
-| `test_classify_tool_error_is_not_incoherency` | a non‑OWL `--cl-owl` file → `coherent=None`, never a false "incoherent" (audit fix). |
-| `test_classify_no_differentia_is_not_a_duplicate` | a **genus‑only** dossier → `INSUFFICIENT_DIFFERENTIA`, not a false duplicate (audit fix). |
+| `test_classify_tool_error_is_not_incoherency` | a non‑OWL `--cl-owl` file → `coherent=None`, never a false "incoherent". |
+| `test_classify_no_differentia_is_not_a_duplicate` | a **genus‑only** dossier → `INSUFFICIENT_DIFFERENTIA`, not a false duplicate. |
 | `test_elk_taxon_incoherence_detected` | the disjoint‑taxa demo is detected unsatisfiable. |
 | `test_robot_template_roundtrip` | dossier → ROBOT template → OWL round‑trips + reasons. |
 
